@@ -17,13 +17,33 @@ footer {
 
 .second_transparent_logo {
   position: absolute;
+  display: block;
   width: 220px; 
   height: auto;
   top: 8px;
   left: 30px;
 }
 
+.telephone_icon {
+  position: absolute;
+  display: block;
+  width: 50px; 
+  height: auto;
+  top: 8px;
+  left: 30px;
+}
+
+.site_icon {
+  position: absolute;
+  display: block;
+  width: 50px; 
+  height: auto;
+  top: 8px;
+  left: 30px;
+}
+
 .f_home_button {
+  position: absolute;
   color: black;
   background: none;
   border: none;
@@ -37,6 +57,7 @@ footer {
 }
 
 .f_listings_button {
+  position: absolute;
   color: black;
   background: none;
   border: none;
@@ -50,6 +71,7 @@ footer {
 }
 
 .f_features_button {
+  position: absolute;
   color: black;
   background: none;
   border: none;
@@ -63,6 +85,7 @@ footer {
 }
 
 .f_about_us_button {
+  position: absolute;
   color: black;
   background: none;
   border: none;
@@ -76,6 +99,7 @@ footer {
 }
 
 .f_contact_button {
+  position: absolute;
   color: black;
   background: none;
   border: none;
@@ -89,6 +113,7 @@ footer {
 }
 
 .f_sign_in_button {
+  position: absolute;
   color: black;
   background: none;
   border: none;
