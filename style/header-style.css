@@ -125,7 +125,7 @@ header {
 } 
 
 .sign_in_button:hover {
-  background-color: rgb(231, 125, 82);
+  background-color: rgb(247, 133, 88);
   border-color: rgb(252, 228, 153);
   transform: scale(1.10);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
