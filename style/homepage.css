@@ -418,16 +418,26 @@
 
 .Section_5 {
     background-color: rgb(146, 213, 215);
-    height: 400px;
+    height: 450px;
     width: 1240px;
     margin: auto;
     padding-top: 60px;
     text-align: center;
+    position: relative;
 }
 
 .how_it_works_text {
     margin-top: -5px;
     padding-bottom: 0px;
+}
+
+.search_icon {
+   position: absolute;
+   display: block;
+   width: 100px; 
+   height: auto;
+   top: 180px;
+   left: 150px;
 }
 
 .search_text {
@@ -437,17 +447,43 @@
     left: 150px;
 }
 
+.connect_icon {
+   position: absolute;
+   display: block;
+   width: 100px; 
+   height: auto;
+   top: 185px;
+   left: 435px;
+}
+
 .connect_text {
     position: absolute;
     margin-top: 170px;
     left: 420px;
 
 }
+.rent_icon {
+    position: absolute;
+    display: block;
+    width: 100px; 
+    height: auto;
+    top: 190px;
+    right: 450px;
+}
 
 .rent_text {
     position: absolute;
     margin-top: 170px;
     right: 460px;
+}
+
+.live_happily_icon {
+   position: absolute;
+   display: block;
+   width: 150px; 
+   height: auto;
+   top: 190px;
+   right: 155px;
 }
 
 .live_happily_text {
