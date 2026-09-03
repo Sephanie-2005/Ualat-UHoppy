@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Arial Rounded MT Bold';
+  src: url("../fonts/arialroundedmtbold.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Berlin Sans FB Demi';
+  src: url("../fonts/BRLNSDB.TTF") format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+}
+
+.web-app {
+    width: 1240px;
+    margin: auto;
+    position: relative;
+    overflow-x: hidden;
+}

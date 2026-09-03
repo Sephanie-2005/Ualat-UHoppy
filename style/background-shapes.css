@@ -1,0 +1,72 @@
+.square1 {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    background: rgb(246, 144, 104);
+    top: 130px;
+    left: 0px;
+}
+
+.square2 {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    background: rgb(255, 246, 223);
+    top: 235px;
+    right: 0px;
+}
+
+.square3 {
+    width: 500px;
+    height: 400px;
+    background: rgb(254, 227, 147);
+    left: -75px;
+    top: 370px;
+    position: absolute;
+    z-index: 0;
+    transform: rotate(22deg);
+}
+
+.square4 {
+    width: 500px;
+    height: 300px;
+    background: rgb(146, 213, 215);
+    right: -82px;
+    top: 800px;
+    position: absolute;
+    z-index: 0;
+    transform: rotate(-20deg);
+}
+
+.square5 {
+    width: 1000px;
+    height: 500px;
+    background: rgb(246, 144, 104);
+    left: -160px;
+    top: 1200px;
+    position: absolute;
+    z-index: 0;
+    transform: rotate(15deg);
+}
+
+.square6 {
+    width: 500px;
+    height: 400px;
+    background: rgb(255, 246, 223);
+    right: -270px;
+    top: 1550px;
+    position: absolute;
+    z-index: 0;
+    transform: rotate(10deg);
+}
+
+.square7 {
+    width: 500px;
+    height: 400px;
+    background:rgb(146, 213, 215);
+    left: 150px;
+    top: 2050px;
+    position: absolute;
+    z-index: 0;
+    transform: rotate(-25deg);
+}

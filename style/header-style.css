@@ -1,0 +1,132 @@
+header {
+  background-color: rgb(255, 246, 223);
+  height: 60px;
+  width: 1240px;
+  margin: auto;
+  padding-top: 15px;
+}
+
+.transparent_logo { 
+  position: absolute; 
+  display: block; 
+  width: 220px; 
+  height: auto; 
+  top: 8px; 
+  left: 65px;
+}
+
+
+.home_button {
+  color: black;
+  background: none;
+  border: none;
+  margin-left: 600px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+} 
+
+.home_button.active {
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1.5px;
+}
+
+.home_button:hover {
+  transform: scale(1.05);
+}
+
+.listings_button {
+  color: black;
+  background: none;
+  border: none;
+  margin-left: 28px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+} 
+
+.listings_button.active {
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1.5px;
+}
+
+.listings_button:hover {
+  transform: scale(1.05);
+}
+
+.features_button {
+  color: black;
+  background: none;
+  border: none;
+  margin-left: 28px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+} 
+
+.features_button.active {
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1.5px;
+}
+
+.features_button:hover {
+  transform: scale(1.05);
+}
+
+.about_us_button {
+  color: black;
+  background: none;
+  border: none;
+  margin-left: 28px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+} 
+
+.about_us_button.active {
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1.5px;
+}
+
+.about_us_button:hover {
+  transform: scale(1.05);
+}
+
+.contact_button {
+  color: black;
+  background: none;
+  border: none;
+  margin-left: 28px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+} 
+
+.contact_button.active {
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1.5px;
+}
+
+.contact_button:hover {
+  transform: scale(1.05);
+}
+
+.sign_in_button {
+  color: black;
+  background-color: rgb(246, 144, 104);
+  border-color: rgb(252, 228, 153);
+  border-style: solid;
+  border-radius: 7px;
+  height: 26px;
+  width: 80px;
+  margin-left: 40px;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+} 
+
+.sign_in_button:hover {
+  background-color: rgb(231, 125, 82);
+  border-color: rgb(252, 228, 153);
+  transform: scale(1.10);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
