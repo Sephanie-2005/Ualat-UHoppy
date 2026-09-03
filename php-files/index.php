@@ -277,7 +277,7 @@
             </main>
 
             <main class="Section_5">
-                <h1 class="text_3">How it Works</h1>
+                <h1 class="how_it_works_text">How it Works</h1>
                 <img src="../system-images/Search icon.png" alt="Search icon" class="search_icon">
                 <h2 class="search_text">1. Search</h2>
                 <img src="../system-images/Connect icon.png" alt="Connect icon" class="connect_icon">
@@ -290,6 +290,8 @@
             
             <footer>
                 <img src="../system-images/Logo.png" alt="Second Website Logo" class="second_transparent_logo">
+                <img src="../system-images/Telephone icon.png" alt="Telephone icon" class="telephone_icon">
+                <img src="../system-images/Site icon.png" alt="Site icon" class="site_icon">
                 <h5 class="quicklinks">QUICKLINKS</h5>
                 <button id="f-home-btn" class="f_home_button">HOME</button> 
                 <button id="f-listings-btn" class="f_listings_button" onclick="window.location.href='listings.html'">LISTINGS</button>
