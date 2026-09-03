@@ -279,13 +279,13 @@
             <main class="Section_5">
                 <h1 class="text_3">How it Works</h1>
                 <img src="../system-images/Search icon.png" alt="Search icon" class="search_icon">
-                <h2 class="text_4">1. Search</h2>
+                <h2 class="search_text">1. Search</h2>
                 <img src="../system-images/Connect icon.png" alt="Connect icon" class="connect_icon">
-                <h2 class="text_5">2. Connect</h2>
+                <h2 class="connect_text">2. Connect</h2>
                 <img src="../system-images/Rent icon.png" alt="Rent icon" class="rent_icon">
-                <h2 class="text_6">3. Rent</h2>
+                <h2 class="rent_text">3. Rent</h2>
                 <img src="../system-images/Live happily icon.png" alt="Live Happily icon" class="live_happily_icon">
-                <h2 class="text_7">4. Live Happily</h2>
+                <h2 class="live_happily_text">4. Live Happily</h2>
             </main>
             
             <footer>

@@ -425,32 +425,32 @@
     text-align: center;
 }
 
-.text_3 {
+.how_it_works_text {
     margin-top: -5px;
     padding-bottom: 0px;
 }
 
-.text_4 {
+.search_text {
     position: absolute;
     margin-top: 170px;
     padding-bottom: 0px;
     left: 150px;
 }
 
-.text_5 {
+.connect_text {
     position: absolute;
     margin-top: 170px;
     left: 420px;
 
 }
 
-.text_6 {
+.rent_text {
     position: absolute;
     margin-top: 170px;
     right: 460px;
 }
 
-.text_7 {
+.live_happily_text {
     position: absolute;
     margin-top: 170px;
     right: 150px;
