@@ -285,7 +285,7 @@
             </main>
             
             <footer>
-                <img src="../system-images/Logoh.jpg" alt="Second Website Logo" class="second-transparent-logo">
+                <img src="../system-images/Logo.png" alt="Second Website Logo" class="second_transparent_logo">
                 <h5 class="quicklinks">QUICKLINKS</h5>
                 <button id="f-home-btn" class="f_home_button">HOME</button> 
                 <button id="f-listings-btn" class="f_listings_button" onclick="window.location.href='listings.html'">LISTINGS</button>

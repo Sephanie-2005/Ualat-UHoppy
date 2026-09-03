@@ -9,19 +9,18 @@ footer {
 }
 
 .quicklinks {
-    position: absolute;
-    margin-top: 170px;
-    padding-bottom: 0px;
-    right: 150px;
+  position: absolute;
+  margin-top: 10px;
+  padding-bottom: 0px;
+  right: 150px;
 }
 
-.second-transparent-logo {
+.second_transparent_logo {
   position: absolute;
-  mix-blend-mode: multiply; 
   width: 220px; 
   height: auto;
   top: 8px;
-  left: 65px;
+  left: 30px;
 }
 
 .f_home_button {
