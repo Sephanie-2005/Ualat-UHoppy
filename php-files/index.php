@@ -292,13 +292,16 @@
                 <img src="../system-images/Logo.png" alt="Second Website Logo" class="second_transparent_logo">
                 <img src="../system-images/Telephone icon.png" alt="Telephone icon" class="telephone_icon">
                 <img src="../system-images/Site icon.png" alt="Site icon" class="site_icon">
-                <h5 class="quicklinks">QUICKLINKS</h5>
-                <button id="f-home-btn" class="f_home_button">HOME</button> 
+                <p class="quicklinks">QUICKLINKS</p>
+                <button id="f-home-btn" class="f_home_button" onclick="window.location.href='index.php'">HOME</button> 
                 <button id="f-listings-btn" class="f_listings_button" onclick="window.location.href='listings.html'">LISTINGS</button>
                 <button id="f-features-btn" class="f_features_button" onclick="window.location.href='features.html'">FEATURES</button>
                 <button id="f-about_us-btn" class="f_about_us_button" onclick="window.location.href='about_us.html'">ABOUT US</button>
                 <button id="f-contact-btn" class="f_contact_button" onclick="window.location.href='contact.html'">CONTACT</button>
-                <button id="f-sign_in-btn" class="f_sign_in_button" onclick="window.location.href='sign_in.html'">SIGN IN</button>
+                <p class="customer_care">CUSTOMER CARE</p>
+                <button id="privacy-policy-btn" class="privacy_policy" onclick="window.location.href='index.php'">PRIVACY POLICY</button> 
+                <button id="terms-and-conditions-btn" class="terms_and_conditions" onclick="window.location.href='listings.html'">TERMS AND CONDITIONS</button>
+                <button id="faq-btn" class="faq" onclick="window.location.href='features.html'">FAQ</button>
             </footer>
             
         </div>

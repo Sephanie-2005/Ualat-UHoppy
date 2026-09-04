@@ -13,7 +13,7 @@ footer {
   font-size: 10px;
   top: 30px;
   padding-bottom: 0px;
-  right: 240px;
+  right: 250px;
   border-bottom: solid;
   border-bottom-color: rgb(246, 144, 104);
   border-bottom-width: 1.5px; 
@@ -53,12 +53,14 @@ footer {
   font-size: 10px;
   border: none;
   top: 80px;
-  right: 265px;
+  right: 275px;
   cursor: pointer;
 } 
 
 .f_home_button:hover {
-  transform: scale(1.05);
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1px; 
 }
 
 .f_listings_button {
@@ -68,12 +70,14 @@ footer {
   font-size: 10px;
   border: none;
   top: 100px;
-  right: 248px;
+  right: 258px;
   cursor: pointer;
 } 
 
 .f_listings_button:hover {
-  transform: scale(1.05);
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1px;
 }
 
 .f_features_button {
@@ -83,12 +87,14 @@ footer {
   font-size: 10px;
   border: none;
   top: 120px;
-  right: 242px;
+  right: 252px;
   cursor: pointer;
 } 
 
 .f_features_button:hover {
-  transform: scale(1.05);
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1px;
 }
 
 .f_about_us_button {
@@ -98,12 +104,14 @@ footer {
   font-size: 10px;
   border: none;
   top: 140px;
-  right: 242px;
+  right: 252px;
   cursor: pointer;
 } 
 
 .f_about_us_button:hover {
-  transform: scale(1.05);
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1px;
 }
 
 .f_contact_button {
@@ -113,10 +121,74 @@ footer {
   font-size: 10px;
   border: none;
   top: 160px;
-  right: 246px;
+  right: 256px;
   cursor: pointer;
 } 
 
 .f_contact_button:hover {
-  transform: scale(1.05);
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1px;
+}
+
+.customer_care {
+  position: absolute;
+  font-size: 10px;
+  top: 30px;
+  padding-bottom: 0px;
+  right: 124px;
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1.5px; 
+}
+
+.privacy_policy {
+  position: absolute;
+  color: black;
+  background: none;
+  font-size: 10px;
+  border: none;
+  top: 80px;
+  right: 123px;
+  cursor: pointer;
+} 
+
+.privacy_policy:hover {
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1px;
+}
+
+.terms_and_conditions {
+  position: absolute;
+  color: black;
+  background: none;
+  font-size: 10px;
+  border: none;
+  top: 100px;
+  right: 80px;
+  cursor: pointer;
+} 
+
+.terms_and_conditions:hover {
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1px;
+}
+
+.faq {
+  position: absolute;
+  color: black;
+  background: none;
+  font-size: 10px;
+  border: none;
+  top: 120px;
+  right: 186px;
+  cursor: pointer;
+} 
+
+.faq:hover {
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1px;
 }
