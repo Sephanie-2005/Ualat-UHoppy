@@ -27,8 +27,7 @@ footer {
 .quicklinks {
   position: absolute;
   font-size: 10px;
-  top: 30px;
-  padding-bottom: 0px;
+  top: 40px;
   right: 250px;
   border-bottom: solid;
   border-bottom-color: rgb(246, 144, 104);
@@ -123,8 +122,7 @@ footer {
 .customer_care {
   position: absolute;
   font-size: 10px;
-  top: 30px;
-  padding-bottom: 0px;
+  top: 40px;
   right: 124px;
   border-bottom: solid;
   border-bottom-color: rgb(246, 144, 104);
