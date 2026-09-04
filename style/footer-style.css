@@ -13,7 +13,14 @@ footer {
   display: block;
   width: 220px; 
   height: auto;
-  top: 8px;
+  top: 30px;
+  left: 30px;
+}
+
+.text_bottom {
+  position: absolute;
+  font-size: 15px;
+  top: 100px;
   left: 30px;
 }
 
@@ -212,4 +219,29 @@ footer {
   font-size: 15px;
   top: 87px;
   left: 700px;
+}
+
+.copyright_icon {
+  position: absolute;
+  display: block;
+  width: 20px; 
+  height: auto;
+  bottom: 20px;
+  left: 30px;
+}
+
+.uhoppy_2 {
+    font-family: "Berlin Sans FB Demi", sans-serif;
+    bottom: 8px;
+    left: 90px;
+    font-size: 14px; 
+    font-weight: bold;
+    position: absolute;
+}
+
+.copyright_text {
+  position: absolute;
+  font-size: 13px;
+  left: 54px;
+  bottom: 9px;
 }
