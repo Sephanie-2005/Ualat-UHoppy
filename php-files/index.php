@@ -36,7 +36,8 @@
                 <button id="features-btn" class="features_button" onclick="window.location.href='features.php'">FEATURES</button>
                 <button id="about_us-btn" class="about_us_button" onclick="window.location.href='about_us.php'">ABOUT US</button>
                 <button id="contact-btn" class="contact_button" onclick="window.location.href='contact.php'">CONTACT</button>
-                <button id="sign_in-btn" class="sign_in_button" onclick="window.location.href='sign-in.php'">Sign In</button>
+                <button id="sign_in-btn" class="sign_in_button" onclick="openModal()">Sign In</button>
+
 
             </header>
 
