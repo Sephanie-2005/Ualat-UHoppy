@@ -8,17 +8,6 @@ footer {
   position: relative;
 }
 
-.quicklinks {
-  position: absolute;
-  font-size: 10px;
-  top: 30px;
-  padding-bottom: 0px;
-  right: 250px;
-  border-bottom: solid;
-  border-bottom-color: rgb(246, 144, 104);
-  border-bottom-width: 1.5px; 
-}
-
 .second_transparent_logo {
   position: absolute;
   display: block;
@@ -28,22 +17,15 @@ footer {
   left: 30px;
 }
 
-.telephone_icon {
+.quicklinks {
   position: absolute;
-  display: block;
-  width: 50px; 
-  height: auto;
-  top: 8px;
-  left: 30px;
-}
-
-.site_icon {
-  position: absolute;
-  display: block;
-  width: 50px; 
-  height: auto;
-  top: 8px;
-  left: 30px;
+  font-size: 10px;
+  top: 30px;
+  padding-bottom: 0px;
+  right: 250px;
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1.5px; 
 }
 
 .f_home_button {
@@ -191,4 +173,43 @@ footer {
   border-bottom: solid;
   border-bottom-color: rgb(246, 144, 104);
   border-bottom-width: 1px;
+}
+
+.for_more_questions {
+  position: absolute;
+  font-size: 15px;
+  top: 50px;
+  left: 430px;
+}
+
+.telephone_icon {
+  position: absolute;
+  display: block;
+  width: 35px; 
+  height: auto;
+  top: 95px;
+  left: 430px;
+}
+
+.phone_num {
+  position: absolute;
+  font-size: 15px;
+  top: 80px;
+  left: 480px;
+}
+
+.site_icon {
+  position: absolute;
+  display: block;
+  width: 35px; 
+  height: auto;
+  top: 95px;
+  left: 650px;
+}
+
+.gmail {
+  position: absolute;
+  font-size: 15px;
+  top: 87px;
+  left: 700px;
 }

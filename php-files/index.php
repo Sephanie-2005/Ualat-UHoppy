@@ -302,6 +302,9 @@
                 <button id="privacy-policy-btn" class="privacy_policy" onclick="window.location.href='index.php'">PRIVACY POLICY</button> 
                 <button id="terms-and-conditions-btn" class="terms_and_conditions" onclick="window.location.href='listings.html'">TERMS AND CONDITIONS</button>
                 <button id="faq-btn" class="faq" onclick="window.location.href='features.html'">FAQ</button>
+                <p class="for_more_questions">For more questions message or call us through:</p>
+                <p class="phone_num">(+63) 917 123 4567 <br> (+63) 917 765 4321</p>
+                <p class="gmail">uhoppy@gmail.com</p>
             </footer>
             
         </div>
