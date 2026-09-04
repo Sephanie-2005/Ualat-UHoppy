@@ -10,9 +10,13 @@ footer {
 
 .quicklinks {
   position: absolute;
-  margin-top: 10px;
+  font-size: 10px;
+  top: 30px;
   padding-bottom: 0px;
-  right: 150px;
+  right: 240px;
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1.5px; 
 }
 
 .second_transparent_logo {
@@ -46,10 +50,11 @@ footer {
   position: absolute;
   color: black;
   background: none;
+  font-size: 10px;
   border: none;
-  margin-left: 600px;
+  top: 80px;
+  right: 265px;
   cursor: pointer;
-  border-bottom: 3px solid transparent;
 } 
 
 .f_home_button:hover {
@@ -60,10 +65,11 @@ footer {
   position: absolute;
   color: black;
   background: none;
+  font-size: 10px;
   border: none;
-  margin-left: 28px;
+  top: 100px;
+  right: 248px;
   cursor: pointer;
-  border-bottom: 3px solid transparent;
 } 
 
 .f_listings_button:hover {
@@ -74,10 +80,11 @@ footer {
   position: absolute;
   color: black;
   background: none;
+  font-size: 10px;
   border: none;
-  margin-left: 28px;
+  top: 120px;
+  right: 242px;
   cursor: pointer;
-  border-bottom: 3px solid transparent;
 } 
 
 .f_features_button:hover {
@@ -88,10 +95,11 @@ footer {
   position: absolute;
   color: black;
   background: none;
+  font-size: 10px;
   border: none;
-  margin-left: 28px;
+  top: 140px;
+  right: 242px;
   cursor: pointer;
-  border-bottom: 3px solid transparent;
 } 
 
 .f_about_us_button:hover {
@@ -102,26 +110,13 @@ footer {
   position: absolute;
   color: black;
   background: none;
+  font-size: 10px;
   border: none;
-  margin-left: 28px;
+  top: 160px;
+  right: 246px;
   cursor: pointer;
-  border-bottom: 3px solid transparent;
 } 
 
 .f_contact_button:hover {
-  transform: scale(1.05);
-}
-
-.f_sign_in_button {
-  position: absolute;
-  color: black;
-  background: none;
-  border: none;
-  margin-left: 28px;
-  cursor: pointer;
-  border-bottom: 3px solid transparent;
-} 
-
-.f_sign_in_button {
   transform: scale(1.05);
 }

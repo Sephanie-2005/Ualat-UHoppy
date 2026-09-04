@@ -26,7 +26,7 @@
                 
                 <img src="../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
                 
-                <button id="home-btn" class="home_button">HOME</button>
+                <button id="home-btn" class="home_button active">HOME</button>
                 <button id="listings-btn" class="listings_button" onclick="window.location.href='listings.html'">LISTINGS</button>
                 <button id="features-btn" class="features_button" onclick="window.location.href='features.html'">FEATURES</button>
                 <button id="about_us-btn" class="about_us_button" onclick="window.location.href='about_us.html'">ABOUT US</button>

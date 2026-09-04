@@ -28,7 +28,7 @@ header {
 .home_button.active {
   border-bottom: solid;
   border-bottom-color: rgb(246, 144, 104);
-  border-bottom-width: 1.5px;
+  border-bottom-width: 1.5px; 
 }
 
 .home_button:hover {
