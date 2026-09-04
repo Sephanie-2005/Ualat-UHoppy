@@ -1,0 +1,86 @@
+/* Dark blurred transparency overlay canvas container covering full view window screen dimensions */
+.modal-overlay {
+  display: none; /* Hidden by default layout status initialization rules */
+  position: fixed;
+  z-index: 1000; /* Stays securely locked on top of all headers and background elements */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dim background shade layer mask tint */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Central floating pop-up card container panel core structure body layout */
+.modal-content {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeInModal 0.3s ease-out;
+}
+
+/* Smooth zoom/fade transition effect curve logic entry track layout frame definitions */
+@keyframes fadeInModal {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Close action functional 'X' graphic trigger corner item frame button layout specs */
+.close-modal-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #888888;
+  cursor: pointer;
+}
+.close-modal-btn:hover {
+  color: #333333;
+}
+
+.modal-title {
+  margin-bottom: 25px;
+  font-family: sans-serif;
+  color: #333333;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #555555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.modal-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: rgb(246, 144, 104); /* Matching your theme highlight border color shade value */
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.modal-submit-btn:hover {
+  background-color: rgb(226, 124, 84);
+}

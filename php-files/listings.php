@@ -12,18 +12,12 @@
     <link rel="stylesheet" href="../style/header-style.css">
     <link rel="stylesheet" href="../style/footer-style.css">
     <link rel="stylesheet" href="../style/listings.css">
+    <link rel="stylesheet" href="../style/background_shapes.css">
     <link rel="icon" type="image/png" sizes="36x36" href="../system-images/Link Logo.jpg">
     </head>
 
     <body>
         <div class="web-app">
-            <div class="square1"></div>
-            <div class="square2"></div>
-            <div class="square3"></div>
-            <div class="square4"></div>
-            <div class="square5"></div>
-            <div class="square6"></div>
-            <div class="square7"></div>
 
             <header>
                 

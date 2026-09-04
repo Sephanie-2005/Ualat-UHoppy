@@ -8,11 +8,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UHoppy Homepage</title>
-      <link rel="stylesheet" href="../style/web-app.css">
+    <link rel="stylesheet" href="../style/web-app.css">
     <link rel="stylesheet" href="../style/header-style.css">
     <link rel="stylesheet" href="../style/footer-style.css">
     <link rel="stylesheet" href="../style/homepage.css">
     <link rel="stylesheet" href="../style/background-shapes.css">
+    <link rel="stylesheet" href="../style/sign-in.css">
     <link rel="icon" type="image/png" sizes="36x36" href="../system-images/Link Logo.jpg">
     </head>
 
@@ -35,7 +36,7 @@
                 <button id="features-btn" class="features_button" onclick="window.location.href='features.php'">FEATURES</button>
                 <button id="about_us-btn" class="about_us_button" onclick="window.location.href='about_us.php'">ABOUT US</button>
                 <button id="contact-btn" class="contact_button" onclick="window.location.href='contact.php'">CONTACT</button>
-                <button id="sign_in-btn" class="sign_in_button" onclick="window.location.href='sign_in.php'">Sign In</button>
+                <button id="sign_in-btn" class="sign_in_button" onclick="window.location.href='sign-in.php'">Sign In</button>
 
             </header>
 
@@ -277,7 +278,7 @@
                     <br>It makes finding and managing a boarding house simple and stress-free for both sides.
                 </p>
                 <h1 class="text_2">Sign Up Now! As a Renter or Owner.</h1>
-                <button id="sign_up-btn" class="sign_up_button" onclick="window.location.href='sign_in.html'">Sign Up</button>
+                <button id="sign_up-btn" class="sign_up_button" onclick="window.location.href='sign-in.php'">Sign Up</button>
             </main>
 
             <main class="Section_5">
@@ -292,7 +293,10 @@
                 <h2 class="live_happily_text">4. Live Happily</h2>
             </main>
             
-            <?php include 'footer.php'; ?>
+            <?php 
+                include 'footer.php'; 
+                include 'sign-in.php';
+            ?>
             
         </div>
     </body>
