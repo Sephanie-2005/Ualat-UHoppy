@@ -1,5 +1,5 @@
 .modal-overlay {
-    display: none; /* ALIGNED: Visible by default for standalone page */
+    display: none; 
     position: fixed;
     z-index: 1000; 
     left: 0;

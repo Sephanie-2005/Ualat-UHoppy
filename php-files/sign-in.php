@@ -1,14 +1,13 @@
 <?php 
-    require_once 'database-connection.php'; // ALIGNED: Same folder
+    require_once 'database-connection.php'; 
 ?>
-<!-- The Modal Overlay Background Container -->
+
 <div id="signinModal" class="modal-overlay">
     <div class="modal-content">
         <span class="close-modal-btn" onclick="closeModal()">&times;</span>
         
         <h2 class="modal-title">Sign In to UHoppy</h2>
         
-        <!-- Action targets the process runner script file inside the same folder directory -->
         <form action="login-process.php" method="POST" class="modal-form">
             <div class="input-group">
                 <label for="modal-email">Email Address</label>
@@ -31,5 +30,4 @@
     </div>
 </div>
 
-<!-- Links the toggle behaviors script framework straight to the container block -->
 <script src="../javascript-files/sign-in.js"></script>

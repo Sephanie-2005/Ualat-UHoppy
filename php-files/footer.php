@@ -8,7 +8,7 @@
     <button id="f-home-btn" class="f_home_button" onclick="window.location.href='index.php'">HOME</button> 
     <button id="f-listings-btn" class="f_listings_button" onclick="window.location.href='listings.php'">LISTINGS</button>
     <button id="f-features-btn" class="f_features_button" onclick="window.location.href='features.php'">FEATURES</button>
-    <button id="f-about_us-btn" class="f_about_us_button" onclick="window.location.href='about_us.php'">ABOUT US</button>
+    <button id="f-about_us-btn" class="f_about_us_button" onclick="window.location.href='about-us.php'">ABOUT US</button>
     <button id="f-contact-btn" class="f_contact_button" onclick="window.location.href='contact.php'">CONTACT</button>
     <p class="customer_care">CUSTOMER CARE</p>
     <button id="privacy-policy-btn" class="privacy_policy" onclick="window.location.href='privacy-policy.php'">PRIVACY POLICY</button> 
