@@ -31,11 +31,11 @@
                 <img src="../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
                 
                 <button id="home-btn" class="home_button active">HOME</button>
-                <button id="listings-btn" class="listings_button" onclick="window.location.href='listings.html'">LISTINGS</button>
-                <button id="features-btn" class="features_button" onclick="window.location.href='features.html'">FEATURES</button>
-                <button id="about_us-btn" class="about_us_button" onclick="window.location.href='about_us.html'">ABOUT US</button>
-                <button id="contact-btn" class="contact_button" onclick="window.location.href='contact.html'">CONTACT</button>
-                <button id="sign_in-btn" class="sign_in_button" onclick="window.location.href='sign_in.html'">Sign In</button>
+                <button id="listings-btn" class="listings_button" onclick="window.location.href='listings.php'">LISTINGS</button>
+                <button id="features-btn" class="features_button" onclick="window.location.href='features.php'">FEATURES</button>
+                <button id="about_us-btn" class="about_us_button" onclick="window.location.href='about_us.php'">ABOUT US</button>
+                <button id="contact-btn" class="contact_button" onclick="window.location.href='contact.php'">CONTACT</button>
+                <button id="sign_in-btn" class="sign_in_button" onclick="window.location.href='sign_in.php'">Sign In</button>
 
             </header>
 
@@ -46,12 +46,12 @@
                     <br> Track duration of stay and rent payments. 
                     <br> Chat with landlords and landlady.
                 </p>
-                <button id="start_search-btn" class="start_search_button" onclick="window.location.href='listings.html'">Start Your Search</button>     
+                <button id="start_search-btn" class="start_search_button" onclick="window.location.href='listings.php'">Start Your Search</button>     
             </main>
 
             <main class="Section_2">
                 <h2 class="featured_listings">Featured Listings</h1>
-                <button id="view_all-btn" class="view_all_button" onclick="window.location.href='listings.html'">View All</button>
+                <button id="view_all-btn" class="view_all_button" onclick="window.location.href='listings.php'">View All</button>
 
                 <div class="card-container">
 
@@ -292,28 +292,7 @@
                 <h2 class="live_happily_text">4. Live Happily</h2>
             </main>
             
-            <footer>
-                <img src="../system-images/Logo.png" alt="Second Website Logo" class="second_transparent_logo">
-                <img src="../system-images/Telephone icon.png" alt="Telephone icon" class="telephone_icon">
-                <img src="../system-images/Site icon.png" alt="Site icon" class="site_icon">
-                <img src="../system-images/Copyright icon.png" alt="Copyright icon" class="copyright_icon">
-                <p class="text_bottom">Hop into the happiness in finding a place to stay!</p>
-                <p class="quicklinks">QUICKLINKS</p>
-                <button id="f-home-btn" class="f_home_button" onclick="window.location.href='index.php'">HOME</button> 
-                <button id="f-listings-btn" class="f_listings_button" onclick="window.location.href='listings.html'">LISTINGS</button>
-                <button id="f-features-btn" class="f_features_button" onclick="window.location.href='features.html'">FEATURES</button>
-                <button id="f-about_us-btn" class="f_about_us_button" onclick="window.location.href='about_us.html'">ABOUT US</button>
-                <button id="f-contact-btn" class="f_contact_button" onclick="window.location.href='contact.html'">CONTACT</button>
-                <p class="customer_care">CUSTOMER CARE</p>
-                <button id="privacy-policy-btn" class="privacy_policy" onclick="window.location.href='index.php'">PRIVACY POLICY</button> 
-                <button id="terms-and-conditions-btn" class="terms_and_conditions" onclick="window.location.href='listings.html'">TERMS AND CONDITIONS</button>
-                <button id="faq-btn" class="faq" onclick="window.location.href='features.html'">FAQ</button>
-                <p class="for_more_questions">For more questions message or call us through:</p>
-                <p class="phone_num">(+63) 917 123 4567 <br> (+63) 917 765 4321</p>
-                <p class="gmail">uhoppy@gmail.com</p>
-                <p class="uhoppy_2">UHoopy</p>
-                <p class="copyright_text"> 2026 &emsp; &emsp; &emsp; &nbsp;. All Rights Reserved. </p>
-            </footer>
+            <?php include 'footer.php'; ?>
             
         </div>
     </body>

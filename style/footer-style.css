@@ -183,8 +183,8 @@ footer {
 .for_more_questions {
   position: absolute;
   font-size: 15px;
-  top: 50px;
-  left: 430px;
+  top: 60px;
+  left: 445px;
 }
 
 .telephone_icon {
@@ -192,15 +192,15 @@ footer {
   display: block;
   width: 35px; 
   height: auto;
-  top: 95px;
-  left: 430px;
+  top: 105px;
+  left: 440px;
 }
 
 .phone_num {
   position: absolute;
   font-size: 15px;
-  top: 80px;
-  left: 480px;
+  top: 90px;
+  left: 490px;
 }
 
 .site_icon {
@@ -208,15 +208,15 @@ footer {
   display: block;
   width: 35px; 
   height: auto;
-  top: 95px;
-  left: 650px;
+  top: 105px;
+  left: 660px;
 }
 
 .gmail {
   position: absolute;
   font-size: 15px;
-  top: 87px;
-  left: 700px;
+  top: 97px;
+  left: 710px;
 }
 
 .copyright_icon {
