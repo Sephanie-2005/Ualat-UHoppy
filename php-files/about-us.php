@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="../style/footer-style.css">
     <link rel="stylesheet" href="../style/about-us.css">
     <link rel="stylesheet" href="../style/background-shapes.css">
+    <link rel="stylesheet" href="../style/sign-in.css">
+    <link rel="stylesheet" href="../style/sign-up.css">
     <link rel="icon" type="image/png" sizes="36x36" href="../system-images/Link Logo.jpg">
     </head>
 
@@ -28,14 +30,18 @@
                 <button id="features-btn" class="features_button" onclick="window.location.href='features.php'">FEATURES</button>
                 <button id="about_us-btn" class="about_us_button active">ABOUT US</button>
                 <button id="contact-btn" class="contact_button" onclick="window.location.href='contact.php'">CONTACT</button>
-                <button id="sign_in-btn" class="sign_in_button" onclick="window.location.href='sign_in.php'">Sign In</button>
+                <button id="sign_in-btn" class="sign_in_button" onclick="openModal()">Sign In</button>
             </header>
 
             <main>
                 
             </main>
             
-            <?php include 'footer.php'; ?>
+            <?php 
+                include 'footer.php';
+                include 'sign-in.php'; 
+                include 'sign-up.php'; 
+            ?>
             
         </div>
     </body>

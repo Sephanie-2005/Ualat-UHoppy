@@ -55,7 +55,7 @@
 
             <main class="Section_2">
                 <h2 class="featured_listings">Featured Listings</h1>
-                <button id="view_all-btn" class="view_all_button" onclick="window.location.href='listings.php'">View All</button>
+                <button id="view_all-btn" class="view_all_button" onclick="window.location.href='listings.php'">- View All</button>
 
                 <div class="card-container">
 

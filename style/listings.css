@@ -5,3 +5,153 @@ main {
     margin: auto;
     padding-top: 15px;
 }
+
+/* General Base Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Search Bar Interface Wrapper */
+.search-container {
+    max-width: 600px;
+    margin: 20px auto 40px auto;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-input-wrapper {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 0 10px;
+}
+
+.search-input-wrapper:focus-within {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.search-icon {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+#search-input {
+    width: 100%;
+    border: none;
+    padding: 10px 0;
+    font-size: 16px;
+    outline: none;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+    display: none;
+    padding: 0 5px;
+}
+
+.clear-btn.visible {
+    display: block;
+}
+
+.search-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 11px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Card Presentation Grid Layout */
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.listing-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.listing-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #e0e0e0;
+}
+
+.listing-details {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.listing-title {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.listing-type {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.listing-address {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.listing-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #28a745;
+    margin-top: auto;
+}
+
+.listing-slots {
+    color: #888;
+    margin-top: 4px;
+}
+
+.no-results {
+    text-align: center; 
+    grid-column: 1 / -1; 
+    color: #666;
+    font-size: 16px;
+    margin-top: 40px;
+}

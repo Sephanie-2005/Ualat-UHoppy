@@ -15,7 +15,6 @@
     } 
 
     catch (PDOException $e) {
-        // If the database fails to link, display a clean error message
         die("Database connection failed: " . $e->getMessage());
     }
 ?>

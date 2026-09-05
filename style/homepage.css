@@ -427,8 +427,7 @@
 }
 
 .how_it_works_text {
-    margin-top: -5px;
-    padding-bottom: 0px;
+    top: 10px;
 }
 
 .search_icon {
