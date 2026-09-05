@@ -1,5 +1,6 @@
 <?php 
-    require_once 'database-connection.php';
+    session_start();
+    require_once 'database-connection.php'; 
 ?>
 
 <!DOCTYPE html> 
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="../style/homepage.css">
     <link rel="stylesheet" href="../style/background-shapes.css">
     <link rel="stylesheet" href="../style/sign-in.css">
+    <link rel="stylesheet" href="../style/sign-up.css">
     <link rel="icon" type="image/png" sizes="36x36" href="../system-images/Link Logo.jpg">
     </head>
 
@@ -279,7 +281,9 @@
                     <br>It makes finding and managing a boarding house simple and stress-free for both sides.
                 </p>
                 <h1 class="text_2">Sign Up Now! As a Renter or Owner.</h1>
-                <button id="sign_up-btn" class="sign_up_button" onclick="window.location.href='sign-in.php'">Sign Up</button>
+                
+                <button id="sign_up-btn" class="sign_up_button" onclick="openSignupModal()">Sign Up</button>
+
             </main>
 
             <main class="Section_5">
@@ -297,6 +301,7 @@
             <?php 
                 include 'footer.php'; 
                 include 'sign-in.php';
+                include 'sign-up.php'; 
             ?>
             
         </div>

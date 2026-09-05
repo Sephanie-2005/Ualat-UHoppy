@@ -1,33 +1,74 @@
-<?php 
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
+    session_start();
     require_once 'database-connection.php'; 
+
+    $role     = $_POST['role'];
+    $email    = trim($_POST['email']);
+    $password = $_POST['password'];
+
+    $table  = ($role === 'owner') ? 'owners' : 'renters';
+    $id_col = ($role === 'owner') ? 'owner_id' : 'renter_id';
+
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM $table WHERE email = ?");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch();
+
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user_id']    = $user[$id_col];
+            $_SESSION['first_name'] = $user['first_name'];
+            $_SESSION['role']       = $role;
+
+            echo "<script>alert('Welcome back, " . $user['first_name'] . "!'); window.location.href='index.php';</script>";
+            exit();
+        } else {
+            echo "<script>alert('Invalid email, password, or login role profile choice!'); window.location.href='index.php';</script>";
+            exit();
+        }
+    } catch (PDOException $e) {
+        die("Login processing block failure error: " . $e->getMessage());
+    }
+}
 ?>
 
-<div id="signinModal" class="modal-overlay">
-    <div class="modal-content">
-        <span class="close-modal-btn" onclick="closeModal()">&times;</span>
+<div id="signinModal" class="sign-in-overlay">
+    <div class="sign-in-content">
+
+        <span class="close-sign-in-btn" onclick="closeModal()">&times;</span>
         
-        <h2 class="modal-title">Sign In to UHoppy</h2>
-        
-        <form action="login-process.php" method="POST" class="modal-form">
-            <div class="input-group">
+        <h2 class="sign-in-title">Sign In to UHoppy</h2>
+    
+        <form action="" method="POST" class="sign-in-form">
+            <div class="input-info">
+                <label for="modal-role">I am a:</label>
+                <div class="input-wrapper">
+                    <!-- FIX: Inline styles completely removed -->
+                    <select id="modal-role" name="role" required>
+                        <option value="renter">Renter (Tenant)</option>
+                        <option value="owner">Owner (Landlord/Landlady)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-info">
                 <label for="modal-email">Email Address</label>
                 <div class="input-wrapper">
                     <input type="email" id="modal-email" name="email" placeholder="Enter your email" required>
                 </div>
             </div>
             
-            <div class="input-group">
+            <div class="input-info">
                 <label for="modal-password">Password</label>
                 <div class="input-wrapper">
                     <input type="password" id="modal-password" name="password" placeholder="Enter your password" required>
                 </div>
             </div>
             
-            <button type="submit" class="modal-submit-btn">Sign In</button>
+            <button type="submit" name="login_submit" class="sign-in-submit-btn">Sign In</button>
         </form>
         
-        <p class="modal-footer-text">Don't have an account? <a href="../signup.html">Sign up</a></p>
+        <p class="sign-in-footer-text">Don't have an account? <a href="#" onclick="switchToSignup(event)">Sign up</a></p>
     </div>
 </div>
-
 <script src="../javascript-files/sign-in.js"></script>

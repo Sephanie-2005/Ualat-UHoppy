@@ -7,12 +7,12 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UHoppy Listings</title>
+    <title>UHoppy About Us</title>
     <link rel="stylesheet" href="../style/web-app.css">
     <link rel="stylesheet" href="../style/header-style.css">
     <link rel="stylesheet" href="../style/footer-style.css">
-    <link rel="stylesheet" href="../style/listings.css">
-    <link rel="stylesheet" href="../style/background_shapes.css">
+    <link rel="stylesheet" href="../style/about-us.css">
+    <link rel="stylesheet" href="../style/background-shapes.css">
     <link rel="icon" type="image/png" sizes="36x36" href="../system-images/Link Logo.jpg">
     </head>
 

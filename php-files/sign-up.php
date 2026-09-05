@@ -1,0 +1,80 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup_submit'])) {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+    require_once 'database-connection.php';
+
+    $role       = $_POST['role'];
+    $first_name = trim($_POST['first_name']);
+    $last_name  = trim($_POST['last_name']);
+    $email      = trim($_POST['email']);
+    $password   = $_POST['password'];
+
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $table = ($role === 'owner') ? 'owners' : 'renters';
+
+    try {
+        $check_stmt = $pdo->prepare("SELECT email FROM $table WHERE email = ?");
+        $check_stmt->execute([$email]);
+        
+        if ($check_stmt->fetch()) {
+            echo "<script>alert('Error: This email address is already registered.'); window.location.href='index.php';</script>";
+            exit();
+        }
+
+        $sql  = "INSERT INTO $table (first_name, last_name, email, password) VALUES (?, ?, ?, ?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$first_name, $last_name, $email, $hashed_password]);
+
+        echo "<script>alert('Account created successfully! Please sign in.'); window.location.href='index.php';</script>";
+        exit();
+    } catch (PDOException $e) {
+        die("Registration error: " . $e->getMessage());
+    }
+}
+?>
+
+<div id="signupModal" class="sign-up-overlay">
+    <div class="sign-up-content">
+        <span class="close-sign-up-btn" onclick="closeSignupModal()">&times;</span>
+        
+        <h2 class="sign-up-title">Create an Account</h2>
+        
+        <form action="" method="POST" class="sign-up-form">
+            <div class="input-info">
+                <label for="reg-role">I want to register as a:</label>
+                <div class="input-wrapper">
+                    <!-- FIX: Inline styles completely removed -->
+                    <select id="reg-role" name="role" required>
+                        <option value="renter">Renter (Searching for space)</option>
+                        <option value="owner">Owner (Listing a space)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-info">
+                <label for="reg-firstname">First Name</label>
+                <div class="input-wrapper"><input type="text" id="reg-firstname" name="first_name" required></div>
+            </div>
+
+            <div class="input-info">
+                <label for="reg-lastname">Last Name</label>
+                <div class="input-wrapper"><input type="text" id="reg-lastname" name="last_name" required></div>
+            </div>
+
+            <div class="input-info">
+                <label for="reg-email">Email Address</label>
+                <div class="input-wrapper"><input type="email" id="reg-email" name="email" placeholder="Enter your email" required></div>
+            </div>
+            
+            <div class="input-info">
+                <label for="reg-password">Password</label>
+                <div class="input-wrapper"><input type="password" id="reg-password" name="password" placeholder="Create a password" required></div>
+            </div>
+            
+            <button type="submit" name="signup_submit" class="sign-up-submit-btn signup-theme-btn">Sign Up</button>
+        </form>
+        
+        <p class="modal-footer-text">Already have an account? <a href="#" onclick="switchToSignin(event)">Sign In</a></p>
+    </div>
+</div>
+<script src="../javascript-files/sign-up.js"></script>
