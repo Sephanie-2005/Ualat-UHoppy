@@ -5,8 +5,7 @@ main {
     margin: auto;
     padding-top: 15px;
 }
-
-/* General Base Styling */
+/* 
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -14,7 +13,6 @@ body {
     padding: 20px;
 }
 
-/* Search Bar Interface Wrapper */
 .search-container {
     max-width: 600px;
     margin: 20px auto 40px auto;
@@ -84,7 +82,6 @@ body {
     background-color: #0056b3;
 }
 
-/* Card Presentation Grid Layout */
 .listings-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -154,4 +151,4 @@ body {
     color: #666;
     font-size: 16px;
     margin-top: 40px;
-}
+} */

@@ -1,6 +1,7 @@
 <?php 
     session_start();
     require_once 'database-connection.php'; 
+    require_once 'header-authentication.php'; 
 ?>
 
 <!DOCTYPE html> 
@@ -38,7 +39,17 @@
                 <button id="features-btn" class="features_button" onclick="window.location.href='features.php'">FEATURES</button>
                 <button id="about_us-btn" class="about_us_button" onclick="window.location.href='about-us.php'">ABOUT US</button>
                 <button id="contact-btn" class="contact_button" onclick="window.location.href='contact.php'">CONTACT</button>
-                <button id="sign_in-btn" class="sign_in_button" onclick="openModal()">Sign In</button>
+                 
+                <?php if ($isLoggedIn): ?>
+                    <div class="profile-nav-wrapper" onclick="window.location.href='profile-settings.php'">
+                        <span class="header-user-name"><?php echo $userFirstName; ?></span>
+                        <img src="<?php echo $profilePic; ?>" alt="Profile Settings" class="header-profile-pic">
+                    </div>
+
+                <?php else: ?>
+                    <button id="sign_in-btn" class="sign_in_button" onclick="openModal()">Sign In</button>
+                <?php endif; ?>
+
 
 
             </header>
