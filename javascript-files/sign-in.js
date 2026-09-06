@@ -20,9 +20,16 @@ function switchToSignup(event) {
     }
 }
 
-document.addEventListener('click', function(event) {
-    const modal = document.getElementById("signinModal");
-    if (event.target === modal) {
-        modal.style.setProperty("display", "none", "important");
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('error') === 'failed') {
+        openModal(); 
     }
 });
+
+
+const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('error') === 'failed') {
+        document.getElementById('signinModal').style.display = 'flex'; 
+        
+    }

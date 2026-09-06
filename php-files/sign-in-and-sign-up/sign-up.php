@@ -1,47 +1,4 @@
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup_submit'])) {
-    if (session_status() === PHP_SESSION_NONE) { session_start(); }
-    require_once 'database-connection.php';
-    /** @var PDO $pdo */
 
-    $role       = $_POST['role'];
-    $first_name = trim($_POST['first_name']);
-    $middle_name = trim($_POST['middle_name']);
-    $last_name  = trim($_POST['last_name']);
-    $email      = trim($_POST['email']);
-    $password = $_POST['password']; 
-
-    $passwordRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$';
-
-    if (!preg_match($passwordRegex, $password)) {
-        $errorMsg = "Please follow the required password input!";
-        exit($errorMsg);
-    } else {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    }
-
-    $table = ($role === 'owner') ? 'owners' : 'renters';
-
-    try {
-        $check_stmt = $pdo->prepare("SELECT email FROM $table WHERE email = ?");
-        $check_stmt->execute([$email]);
-        
-        if ($check_stmt->fetch()) {
-            echo "<script>alert('Error: This email address is already registered.'); window.location.href='index.php';</script>";
-            exit();
-        }
-
-        $sql  = "INSERT INTO $table (first_name, middle_name, last_name, email, password) VALUES (?, ?, ?, ?, ?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$first_name, $middle_name, $last_name, $email, $hashed_password]);
-
-        echo "<script>alert('Account created successfully! Please sign in.'); window.location.href='index.php';</script>";
-        exit();
-    } catch (PDOException $e) {
-        die("Registration error: " . $e->getMessage());
-    }
-}
-?>
 
 <div id="signupModal" class="sign-up-overlay">
     <div class="sign-up-content">
@@ -50,7 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup_submit'])) {
         <h2 class="sign-up-title">Create an Account</h2>
         
         <form action="" method="POST" class="sign-up-form">
-            <div class="input-info">
+             <input type="hidden" name="signup_submit" value="1"> 
+    
+             <div class="input-info">
                 <label for="reg-role">I want to register as a:</label>
                 <div class="input-wrapper">
                     <select id="reg-role" name="role" required>

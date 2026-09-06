@@ -143,7 +143,7 @@
                         $stmt->close();
                         session_unset();
                         session_destroy();
-                        echo "<script>window.location.href = 'index.php';</script>";
+                        echo "<script>window.location.href = '../default-browser/index.php';</script>";
                         exit();
                 }
                 $stmt->close();
@@ -162,7 +162,7 @@
         if ($fetched) { $userData = $fetched; }
         $stmt->close();
     }
-    $modalAvatar = !empty($userData['profile_picture']) ? '../' . str_replace('../', '', $userData['profile_picture']) : '../system-images/default-avatar.png';
+    $modalAvatar = !empty($userData['profile_picture']) ? '../' . str_replace('../', '', $userData['profile_picture']) : '../../system-images/default-avatar.png';
 ?>
 
 <div id="settings-popup-overlay" class="settings-popup-overlay">
@@ -268,9 +268,9 @@
                 </div>
             </div>
 
-        </div> <!-- Closes settings-popup-body cleanly -->
-    </div> <!-- Closes settings-popup-box cleanly -->
-</div> <!-- Closes settings-popup-overlay cleanly -->
+        </div> 
+    </div> 
+</div> 
 
 
-<script src="../javascript-files/profile-settings-modal.js"></script>
+<script src="../../javascript-files/profile-settings-modal.js"></script>

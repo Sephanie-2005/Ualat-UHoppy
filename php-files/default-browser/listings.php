@@ -1,7 +1,6 @@
 <?php
-require_once 'database-connection.php';
+require_once '../process-and-setting/database-connection.php';
 
-// Direct fallback database link instance configuration 
 $conn = new mysqli("localhost", "root", "", "uhoppy_db");
 
 if ($conn->connect_error) {
@@ -51,19 +50,19 @@ if ($searchTerm !== '') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UHoppy Listings</title>
-    <link rel="stylesheet" href="../style/web-app.css">
-    <link rel="stylesheet" href="../style/header-style.css">
-    <link rel="stylesheet" href="../style/footer-style.css">
-    <link rel="stylesheet" href="../style/listings.css">
-    <link rel="stylesheet" href="../style/background_shapes.css">
-    <link rel="stylesheet" href="../style/sign-in.css">
-    <link rel="stylesheet" href="../style/sign-up.css">
-    <link rel="icon" type="image/png" sizes="36x36" href="../system-images/Link Logo.jpg">
+    <link rel="stylesheet" href="../../style/web-app.css">
+    <link rel="stylesheet" href="../../style/header-style.css">
+    <link rel="stylesheet" href="../../style/footer-style.css">
+    <link rel="stylesheet" href="../../style/listings.css">
+    <link rel="stylesheet" href="../../style/background_shapes.css">
+    <link rel="stylesheet" href="../../style/sign-in.css">
+    <link rel="stylesheet" href="../../style/sign-up.css">
+    <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
 </head>
 <body>
     <div class="web-app">
         <header>
-            <img src="../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
+            <img src="../../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
             <button id="home-btn" class="home_button" onclick="window.location.href='index.php'">HOME</button>
             <button id="listings-btn" class="listings_button active">LISTINGS</button>
             <button id="features-btn" class="features_button" onclick="window.location.href='features.php'">FEATURES</button>
@@ -124,11 +123,9 @@ if ($searchTerm !== '') {
         
         <?php 
             include 'footer.php'; 
-            include 'sign-in.php';
-            include 'sign-up.php'; 
         ?>
     </div>
     
-    <script src="../javascript-files/listings.js"></script>
+    <script src="../../javascript-files/listings.js"></script>
 </body>
 </html>

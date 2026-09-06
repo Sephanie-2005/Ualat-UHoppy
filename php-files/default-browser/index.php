@@ -1,15 +1,17 @@
 <?php 
-    session_start();
-    require_once 'database-connection.php'; 
-    require_once 'header-authentication.php'; 
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    require_once '../process-and-setting/database-connection.php'; 
+    require_once '../process-and-setting/header-authentication.php'; 
 
     if (isset($isLoggedIn) && $isLoggedIn) {
         if (isset($role) && $role === 'owner') {
-            header("Location: owner-homepage.php");
+            header("Location: ../owner-browser/owner-homepage.php");
             exit();
         } 
         else {
-            header("Location: renter-homepage.php");
+            header("Location: ../renter-browser/renter-homepage.php");
             exit();
         }
     }
@@ -23,16 +25,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UHoppy Homepage</title>
-    <link rel="stylesheet" href="../style/web-app.css">
-    <link rel="stylesheet" href="../style/header-style.css">
-    <link rel="stylesheet" href="../style/footer-style.css">
-    <link rel="stylesheet" href="../style/homepage.css">
-    <link rel="stylesheet" href="../style/background-shapes.css">
-    <link rel="stylesheet" href="../style/sign-in.css">
-    <link rel="stylesheet" href="../style/sign-up.css">
-    <link rel="stylesheet" href="../style/pass-required-input.css">
+    <link rel="stylesheet" href="../../style/web-app.css">
+    <link rel="stylesheet" href="../../style/header-style.css">
+    <link rel="stylesheet" href="../../style/footer-style.css">
+    <link rel="stylesheet" href="../../style/homepage.css">
+    <link rel="stylesheet" href="../../style/background-shapes.css">
+    <link rel="stylesheet" href="../../style/sign-in.css">
+    <link rel="stylesheet" href="../../style/sign-up.css">
+    <link rel="stylesheet" href="../../style/pass-required-input.css">
 
-    <link rel="icon" type="image/png" sizes="36x36" href="../system-images/Link Logo.jpg">
+    <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
     </head>
 
     <body>
@@ -47,7 +49,7 @@
 
             <header>
                 
-                <img src="../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
+                <img src="../../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
                 
                 <button id="home-btn" class="home_button active">HOME</button>
                 <button id="listings-btn" class="listings_button" onclick="window.location.href='listings.php'">LISTINGS</button>
@@ -304,25 +306,27 @@
 
             <main class="Section_5">
                 <h1 class="how_it_works_text">How it Works</h1>
-                <img src="../system-images/Search icon.png" alt="Search icon" class="search_icon">
+                <img src="../../system-images/Search icon.png" alt="Search icon" class="search_icon">
                 <h2 class="search_text">1. Search</h2>
-                <img src="../system-images/Connect icon.png" alt="Connect icon" class="connect_icon">
+                <img src="../../system-images/Connect icon.png" alt="Connect icon" class="connect_icon">
                 <h2 class="connect_text">2. Connect</h2>
-                <img src="../system-images/Rent icon.png" alt="Rent icon" class="rent_icon">
+                <img src="../../system-images/Rent icon.png" alt="Rent icon" class="rent_icon">
                 <h2 class="rent_text">3. Rent</h2>
-                <img src="../system-images/Live happily icon.png" alt="Live Happily icon" class="live_happily_icon">
+                <img src="../../system-images/Live happily icon.png" alt="Live Happily icon" class="live_happily_icon">
                 <h2 class="live_happily_text">4. Live Happily</h2>
             </main>
             
             <?php 
                 include 'footer.php'; 
-                include 'sign-in.php';
-                include 'sign-up.php'; 
-                include 'profile-settings-modal.php'; 
+                include '../sign-in-and-sign-up/sign-in.php';
+                include '../sign-in-and-sign-up/sign-up.php'; 
+                include '../process-and-setting/profile-settings.php'; 
             ?>
             
         </div>
-
+            <script src="../../javascript-files/sign-up.js"></script>
+            <script src="../../javascript-files/sign-in.js"></script>
+            <script src="../../javascript-files/pass-required-input.js"></script>
     </body>
         
 </html>

@@ -1,32 +1,31 @@
 <?php
+session_start();
+require_once 'database-connection.php'; 
+require_once 'header-authentication.php'; 
+
 $isLoggedIn = $isLoggedIn ?? false;
-$userFirstName = $userFirstName ?? '';
+$role = $role ?? null;
+
+if (!$isLoggedIn || $role !== 'renter') {
+    header("Location: index.php");
+    exit();
+}
 ?>
-
-<?php if ($isLoggedIn): ?>
-    <div class="profile-nav-wrapper">
-        <!-- The user name text element has been cleanly removed from here -->
-        <img src="<?php echo $profilePic; ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()">
-    </div>
-<?php else: ?>
-    <button id="sign_in-btn" class="sign_in_button" onclick="openModal()">Sign In</button>
-<?php endif; ?>
-
 
 <!DOCTYPE html> 
     <html lang="en">
-    <head>
+        <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Owner Homepage</title>
-        <link rel="stylesheet" href="../style/web-app.css">
-        <link rel="stylesheet" href="../style/header-style.css">
-        <link rel="stylesheet" href="../style/footer-style.css">
-        <link rel="stylesheet" href="../style/homepage.css">
-        <link rel="stylesheet" href="../style/background-shapes.css">
-        <link rel="stylesheet" href="../style/profile-settings-modal.css">
-        <link rel="stylesheet" href="../style/pass-required-input.css">
-        <link rel="icon" type="image/png" sizes="36x36" href="../system-images/Link Logo.jpg">
+        <title>Renter Homepage</title>
+        <link rel="stylesheet" href="../../style/web-app.css">
+        <link rel="stylesheet" href="../../style/header-style.css">
+        <link rel="stylesheet" href="../../style/footer-style.css">
+        <link rel="stylesheet" href="../../style/homepage.css">
+        <link rel="stylesheet" href="../../style/background-shapes.css">
+        <link rel="stylesheet" href="../../style/profile-settings-modal.css">
+        <link rel="stylesheet" href="../../style/pass-required-input.css">
+        <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
     </head>
 
     <body>
@@ -41,7 +40,7 @@ $userFirstName = $userFirstName ?? '';
 
             <header>
                 
-                <img src="../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
+                <img src="../../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
                 
                 <button id="home-btn" class="home_button active">HOME</button>
                 <button id="listings-btn" class="listings_button" onclick="window.location.href='listings.php'">LISTINGS</button>
@@ -50,9 +49,10 @@ $userFirstName = $userFirstName ?? '';
                 <button id="contact-btn" class="contact_button" onclick="window.location.href='contact.php'">CONTACT</button>
                  
                 <div class="profile-nav-wrapper">
-                    <span class="header-user-name"><?php echo $userFirstName; ?></span>
+                    <span class="header-user-name"><?php echo htmlspecialchars($userFirstName ?? '', ENT_QUOTES, 'UTF-8'); ?></span>
                     <img src="<?php echo $profilePic; ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()">
                 </div>
+
 
             </header>
 
@@ -73,7 +73,7 @@ $userFirstName = $userFirstName ?? '';
                 <div class="card-container">
 
                     <div class="room-card">
-                        <img src="../uploaded-images/Shared_room_1.png" alt="Shared room" class="room-image">
+                        <img src="../../uploaded-images/Shared_room_1.png" alt="Shared room" class="room-image">
                         <div class="room-details">
                             <h3 class="room-title">Shared room</h3>
                             <p class="free-label">Free:</p>
@@ -87,7 +87,7 @@ $userFirstName = $userFirstName ?? '';
                     </div>
 
                     <div class="room-card">
-                        <img src="../uploaded-images/Solo_room.png" alt="Solo room" class="room-image">
+                        <img src="../../uploaded-images/Solo_room.png" alt="Solo room" class="room-image">
                         <div class="room-details">
                             <h3 class="room-title">Solo room</h3>
                             <p class="free-label">Free:</p>
@@ -100,7 +100,7 @@ $userFirstName = $userFirstName ?? '';
                     </div>
 
                     <div class="room-card">
-                        <img src="../uploaded-images/Shared_room_2.png" alt="Shared room" class="room-image">
+                        <img src="../../uploaded-images/Shared_room_2.png" alt="Shared room" class="room-image">
                         <div class="room-details">
                             <h3 class="room-title">Shared room</h3>
                             <p class="free-label">Free:</p>
@@ -118,7 +118,7 @@ $userFirstName = $userFirstName ?? '';
                 <div class="second-card-container">
 
                     <div class="second-room-card">
-                        <img src="../uploaded-images/Shared_room_3.png" alt="Shared room" class="second-room-image">
+                        <img src="../../uploaded-images/Shared_room_3.png" alt="Shared room" class="second-room-image">
                         <div class="second-room-details">
                         <h3 class="second-room-title">Shared room</h3>
                         <p class="second-free-label">Free:</p>
@@ -132,7 +132,7 @@ $userFirstName = $userFirstName ?? '';
                     </div>
 
                     <div class="second-room-card">
-                        <img src="../uploaded-images/Shared_room_4.png" alt="Shared room" class="second-room-image">
+                        <img src="../../uploaded-images/Shared_room_4.png" alt="Shared room" class="second-room-image">
                         <div class="second-room-details">
                             <h3 class="second-room-title">Shared room</h3>
                             <p class="second-free-label">Free:</p>
@@ -147,7 +147,7 @@ $userFirstName = $userFirstName ?? '';
                     </div>
 
                     <div class="second-room-card">
-                        <img src="../uploaded-images/Bedspacer.png" alt="Bedspacer" class="second-room-image">
+                        <img src="../../uploaded-images/Bedspacer.png" alt="Bedspacer" class="second-room-image">
                         <div class="second-room-details">
                             <h3 class="second-room-title">Bedspacer</h3>
                             
@@ -309,15 +309,15 @@ $userFirstName = $userFirstName ?? '';
             
             <?php 
                 include 'footer.php'; 
-                include 'sign-in.php';
-                include 'sign-up.php'; 
-                include 'profile-settings-modal.php'; 
-                include 'pass-required-input.php'; 
+                include '../sign-in-and-sign-up/sign-in.php';
+                include '../sign-in-and-sign-up/sign-up.php'; 
+                include '../process-and-setting/profile-settings.php'; 
+                include '../process-and-setting/pass-required-input.php'; 
             ?>
             
         </div>
 
-        <script src="../javascript-files/profile-settings-modal.js"></script>
+        <script src="../../javascript-files/profile-settings.js"></script>
     </body>
         
 </html>

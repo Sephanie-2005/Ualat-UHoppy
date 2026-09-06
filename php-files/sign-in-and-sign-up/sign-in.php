@@ -21,25 +21,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
-        if ($user && password_verify($password, $user['password'])) {
+                if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id']    = $user[$id_col];
             $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['role']       = $role;
 
-            header("Location: index.php");
+            if ($role === 'owner') {
+                header("Location: owner-homepage.php"); 
+            } else {
+                header("Location: renter-homepage.php");      // Replace with your actual renter filename
+            }
             exit();
         } 
-        else {
-            $_SESSION['login_error'] = "Invalid email, password, or login role profile choice!";
-            header("Location: index.php?error=failed");
-            exit();
-        }
+
     } catch (PDOException $e) {
         die("Login processing block failure error: " . $e->getMessage());
     }
 }
 ?>
 
+<?php if(isset($_SESSION['login_error'])): ?>
+            alert("<?php echo addslashes($_SESSION['login_error']); ?>");
+            <?php unset($_SESSION['login_error']); ?>
+        <?php endif; ?>
 
 <div id="signinModal" class="sign-in-overlay">
     <div class="sign-in-content">
@@ -48,7 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
         
         <h2 class="sign-in-title">Sign In to UHoppy</h2>
     
-        <form action="" method="POST" class="sign-in-form">
+        <form action="index.php" method="POST" class="sign-in-form">
+
+
             <div class="input-info">
                 <label for="modal-role">I am a:</label>
                 <div class="input-wrapper">

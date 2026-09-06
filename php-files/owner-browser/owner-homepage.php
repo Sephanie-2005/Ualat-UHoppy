@@ -1,23 +1,24 @@
 <?php
-session_start();
-require_once 'database-connection.php'; 
-require_once 'header-authentication.php'; 
-
 $isLoggedIn = $isLoggedIn ?? false;
-$role = $role ?? null;
-
-if (!$isLoggedIn || $role !== 'renter') {
-    header("Location: index.php");
-    exit();
-}
+$userFirstName = $userFirstName ?? '';
 ?>
+
+<?php if ($isLoggedIn): ?>
+    <div class="profile-nav-wrapper">
+     
+        <img src="<?php echo $profilePic; ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()">
+    </div>
+<?php else: ?>
+    <button id="sign_in-btn" class="sign_in_button" onclick="openModal()">Sign In</button>
+<?php endif; ?>
+
 
 <!DOCTYPE html> 
     <html lang="en">
-        <head>
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Renter Homepage</title>
+        <title>Owner Homepage</title>
         <link rel="stylesheet" href="../style/web-app.css">
         <link rel="stylesheet" href="../style/header-style.css">
         <link rel="stylesheet" href="../style/footer-style.css">
@@ -49,10 +50,9 @@ if (!$isLoggedIn || $role !== 'renter') {
                 <button id="contact-btn" class="contact_button" onclick="window.location.href='contact.php'">CONTACT</button>
                  
                 <div class="profile-nav-wrapper">
-                    <span class="header-user-name"><?php echo htmlspecialchars($userFirstName ?? '', ENT_QUOTES, 'UTF-8'); ?></span>
+                    <span class="header-user-name"><?php echo $userFirstName; ?></span>
                     <img src="<?php echo $profilePic; ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()">
                 </div>
-
 
             </header>
 

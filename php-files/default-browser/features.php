@@ -1,5 +1,5 @@
 <?php 
-    require_once 'database-connection.php';
+    require_once '../process-and-setting/database-connection.php';
 ?>
 
 <!DOCTYPE html> 
@@ -8,14 +8,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UHoppy Listings</title>
-    <link rel="stylesheet" href="../style/web-app.css">
-    <link rel="stylesheet" href="../style/header-style.css">
-    <link rel="stylesheet" href="../style/footer-style.css">
-    <link rel="stylesheet" href="../style/features.css">
-    <link rel="stylesheet" href="../style/background_shapes.css">
-    <link rel="stylesheet" href="../style/sign-in.css">
-    <link rel="stylesheet" href="../style/sign-up.css">
-    <link rel="icon" type="image/png" sizes="36x36" href="../system-images/Link Logo.jpg">
+    <link rel="stylesheet" href="../../style/web-app.css">
+    <link rel="stylesheet" href="../../style/header-style.css">
+    <link rel="stylesheet" href="../../style/footer-style.css">
+    <link rel="stylesheet" href="../../style/features.css">
+    <link rel="stylesheet" href="../../style/background_shapes.css">
+    <link rel="stylesheet" href="../../style/sign-in.css">
+    <link rel="stylesheet" href="../../style/sign-up.css">
+    <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
     </head>
 
     <body>
@@ -23,7 +23,7 @@
 
             <header>
                 
-                <img src="../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
+                <img src="../../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
                 
                 <button id="home-btn" class="home_button" onclick="window.location.href='index.php'">HOME</button>
                 <button id="listings-btn" class="listings_button" onclick="window.location.href='listings.php'">LISTINGS</button>
@@ -39,11 +39,14 @@
             
             <?php 
                 include 'footer.php'; 
-                include 'sign-in.php';
-                include 'sign-up.php';
+                include '../sign-in-and-sign-up/sign-in.php';
+                include '../sign-in-and-sign-up/sign-up.php';
             ?>
             
         </div>
+         <script src="../../javascript-files/sign-up.js"></script>
+            <script src="../../javascript-files/sign-in.js"></script>
+            <script src="../../javascript-files/pass-required-input.js"></script>
     </body>
         
 </html>
