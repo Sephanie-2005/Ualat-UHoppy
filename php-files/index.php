@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="../style/background-shapes.css">
     <link rel="stylesheet" href="../style/sign-in.css">
     <link rel="stylesheet" href="../style/sign-up.css">
+    <link rel="stylesheet" href="../style/pass-required-input.css">
+
     <link rel="icon" type="image/png" sizes="36x36" href="../system-images/Link Logo.jpg">
     </head>
 

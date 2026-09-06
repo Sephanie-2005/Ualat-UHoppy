@@ -1,0 +1,22 @@
+
+.password-rules-list {
+    list-style: none;
+    padding: 0px;
+    margin: 8px 0px 0px 0px;
+    text-align: left;
+}
+
+.password-rules-list li {
+    font-size: 12px;
+    margin-bottom: 4px;
+    transition: color 0.2s ease;
+    font-weight: 500;
+}
+
+.password-rules-list li.rule-invalid {
+    color: #dc3545;
+}
+
+.password-rules-list li.rule-valid {
+    color: #28a745; 
+}

@@ -2,14 +2,16 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup_submit'])) {
     if (session_status() === PHP_SESSION_NONE) { session_start(); }
     require_once 'database-connection.php';
+    /** @var PDO $pdo */
 
     $role       = $_POST['role'];
     $first_name = trim($_POST['first_name']);
+    $middle_name = trim($_POST['middle_name']);
     $last_name  = trim($_POST['last_name']);
     $email      = trim($_POST['email']);
     $password = $_POST['password']; 
 
-    $passwordRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
+    $passwordRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$';
 
     if (!preg_match($passwordRegex, $password)) {
         $errorMsg = "Please follow the required password input!";
@@ -29,9 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup_submit'])) {
             exit();
         }
 
-        $sql  = "INSERT INTO $table (first_name, last_name, email, password) VALUES (?, ?, ?, ?)";
+        $sql  = "INSERT INTO $table (first_name, middle_name, last_name, email, password) VALUES (?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$first_name, $last_name, $email, $hashed_password]);
+        $stmt->execute([$first_name, $middle_name, $last_name, $email, $hashed_password]);
 
         echo "<script>alert('Account created successfully! Please sign in.'); window.location.href='index.php';</script>";
         exit();
@@ -61,6 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup_submit'])) {
             <div class="input-info">
                 <label for="reg-firstname">First Name</label>
                 <div class="input-wrapper"><input type="text" id="reg-firstname" name="first_name" required></div>
+            </div>
+
+            <div class="input-info">
+                <label for="reg-middlename">Middle Name</label>
+                <div class="input-wrapper"><input type="text" id="reg-middlename" name="middle_name" required></div>
             </div>
 
             <div class="input-info">
@@ -101,4 +108,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup_submit'])) {
         <p class="modal-footer-text">Already have an account? <a href="#" onclick="switchToSignin(event)">Sign In</a></p>
     </div>
 </div>
+
 <script src="../javascript-files/sign-up.js"></script>
+<script src="../javascript-files/pass-required-input.js"></script>

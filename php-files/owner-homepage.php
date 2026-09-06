@@ -25,6 +25,7 @@ $userFirstName = $userFirstName ?? '';
         <link rel="stylesheet" href="../style/homepage.css">
         <link rel="stylesheet" href="../style/background-shapes.css">
         <link rel="stylesheet" href="../style/profile-settings-modal.css">
+        <link rel="stylesheet" href="../style/pass-required-input.css">
         <link rel="icon" type="image/png" sizes="36x36" href="../system-images/Link Logo.jpg">
     </head>
 
@@ -311,6 +312,7 @@ $userFirstName = $userFirstName ?? '';
                 include 'sign-in.php';
                 include 'sign-up.php'; 
                 include 'profile-settings-modal.php'; 
+                include 'pass-required-input.php'; 
             ?>
             
         </div>

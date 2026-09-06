@@ -13,26 +13,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
     $id_col = ($role === 'owner') ? 'owner_id' : 'renter_id';
 
     try {
-        // Fallback detector mapping support variable name
         if (!isset($pdo) && isset($conn)) {
             $pdo = $conn;
         }
 
-        // Secure authentication retrieval
         $stmt = $pdo->prepare("SELECT * FROM $table WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id']    = $user[$id_col];
-            $_SESSION['first_name'] = $user['first_name'];
+            // $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['role']       = $role;
 
-            // SUCCESS: Redirect straight to index.php cleanly via backend headers
             header("Location: index.php");
             exit();
-        } else {
-            // FAILURE: Set a temporary session flag error and route back cleanly
+        } 
+        else {
             $_SESSION['login_error'] = "Invalid email, password, or login role profile choice!";
             header("Location: index.php?error=failed");
             exit();

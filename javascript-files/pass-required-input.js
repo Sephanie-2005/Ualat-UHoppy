@@ -1,52 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const modalProfilePicInput = document.getElementById('modal_profile_pic');
-    const modalPreviewAvatarImage = document.getElementById('modal-preview-avatar');
-
-    if (modalProfilePicInput && modalPreviewAvatarImage) {
-        modalProfilePicInput.addEventListener('change', function () {
-            const [file] = this.files;
-            if (file) {
-               
-                modalPreviewAvatarImage.src = URL.createObjectURL(file);
-            }
-        });
-    }
-});
-
-function openSettingsModal() {
-    const overlay = document.getElementById('settings-popup-overlay');
-    if (overlay) {
-        overlay.classList.add('active');
-    }
-}
-
-function closeSettingsModal() {
-    const overlay = document.getElementById('settings-popup-overlay');
-    if (overlay) {
-        overlay.classList.remove('active');
-    }
-}
-
-function switchPopupTab(tabId, btnNode) {
-    document.querySelectorAll('.popup-section').forEach(section => {
-        section.classList.remove('visible');
-    });
-
-    document.querySelectorAll('.popup-nav-tab').forEach(tabButton => {
-        tabButton.classList.remove('active');
-    });
-
-    const targetSection = document.getElementById(tabId);
-    if (targetSection) {
-        targetSection.classList.add('visible');
-    }
-
-    if (btnNode) {
-        btnNode.classList.add('active');
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('reg-password');
     
     if (passwordInput) {
@@ -83,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ruleLower.innerHTML = "At least (1) lowercase letter";
             }
 
+        
             if (/\d/.test(val)) {
                 ruleNumber.className = "rule-valid";
                 ruleNumber.innerHTML = "At least (1) number";
@@ -93,10 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (/[\W_]/.test(val)) {
                 ruleSpecial.className = "rule-valid";
-                ruleSpecial.innerHTML = "✅ At least (1) special character";
+                ruleSpecial.innerHTML = "At least (1) special character";
             } else {
                 ruleSpecial.className = "rule-invalid";
-                ruleSpecial.innerHTML = "❌ At least (1) special character";
+                ruleSpecial.innerHTML = "At least (1) special character";
             }
         });
     }
