@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup_submit'])) {
 
     if (!preg_match($passwordRegex, $password)) {
         $errorMsg = "Please follow the required password input!";
-        
+        exit($errorMsg);
     } else {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     }
