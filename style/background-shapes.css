@@ -70,11 +70,3 @@
     z-index: 0;
     transform: rotate(-25deg);
 }
-
-.list_square1 {
-    width: 200px;
-    height: 100px;
-    background: rgb(246, 144, 104);
-    top: 130px;
-    left: 0px;
-}

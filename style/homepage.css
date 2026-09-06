@@ -373,6 +373,17 @@
     z-index: 2;
 }
 
+.Owner_Renter_Section_4 {
+    background-color: rgb(246, 144, 104);
+    height: 240px;
+    width: 1240px;
+    margin: auto;
+    padding-top: 60px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
 .uhoppy {
     font-family: "Berlin Sans FB Demi", sans-serif;
     margin-top: 25px;

@@ -4,8 +4,8 @@ body .sign-in-overlay {
     z-index: 1000; 
     left: 0px;
     top: 0px;
-    width: 100%;
-    height: 100%;
+    width: 1920px;
+    height: 1080px;
     background-color: rgba(0, 0, 0, 0.5); 
     justify-content: center;
     align-items: center;
@@ -14,7 +14,6 @@ body .sign-in-overlay {
 body .sign-in-overlay .sign-in-content {
     position: relative;
     width: 320px;
-    max-width: 90%;
     padding: 15px 20px;
     max-height: 580px;
     overflow-y: auto;
@@ -38,7 +37,7 @@ body .sign-in-overlay .sign-in-content {
     font-weight: bold;
     color: #888888;
     cursor: pointer;
-    line-height: 1;
+    line-height: 1px;
 }
 
 .sign-in-overlay .close-sign-in-btn:hover {
@@ -69,23 +68,23 @@ body .sign-in-overlay .sign-in-content {
 }
 
 .sign-in-overlay .input-wrapper {
-    width: 100%;
+    width: 280px;
     margin-top: 0px;
 }
 
 .sign-in-overlay .input-info input,
 .sign-in-overlay .input-wrapper select {
-    width: 100%;
+    width: 280px;
     padding: 6px 10px;
     border: 1px solid #cccccc;
     border-radius: 6px;
     font-size: 13px;
-    height: auto;
+    height: 32px;
     box-sizing: border-box; 
 }
 
 .sign-in-overlay .sign-in-submit-btn {
-    width: 100%;
+    width: 280px;
     padding: 8px;
     background-color: rgb(246, 144, 104); 
     border: none;
@@ -102,7 +101,7 @@ body .sign-in-overlay .sign-in-content {
     background-color: rgb(226, 124, 84);
 }
 
-.sign-in-overlay .modal-footer-text {
+.sign-in-overlay .sign-in-footer-text {
     font-size: 12px;
     margin-top: 8px;
     text-align: center;

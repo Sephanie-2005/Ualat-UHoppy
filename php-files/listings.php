@@ -73,7 +73,6 @@ if ($searchTerm !== '') {
         </header>
 
         <main>
-            <!-- Fixed the double '<' brackets on the div opening tag below -->
             <div class="search-container">
                 <form action="listings.php" method="GET" class="search-form">
                     <div class="search-input-wrapper">
@@ -87,9 +86,10 @@ if ($searchTerm !== '') {
                         >
                         <button type="button" id="clear-btn" class="clear-btn <?php echo $searchTerm !== '' ? 'visible' : ''; ?>">&times;</button>
                     </div>
-                    <button type="submit" class="search-btn">Search</button>
                 </form>
-            </div> <!-- Removed the stray extra closing div that was right below here -->
+            </div> 
+
+            <button type="submit" class="search-btn">Search</button>
 
             <div class="listings-grid">
                 <?php if ($result && $result->num_rows > 0): ?>

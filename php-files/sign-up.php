@@ -7,9 +7,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup_submit'])) {
     $first_name = trim($_POST['first_name']);
     $last_name  = trim($_POST['last_name']);
     $email      = trim($_POST['email']);
-    $password   = $_POST['password'];
+    $password = $_POST['password']; 
 
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $passwordRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
+
+    if (!preg_match($passwordRegex, $password)) {
+        $errorMsg = "Please follow the required password input!";
+        
+    } else {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    }
+
     $table = ($role === 'owner') ? 'owners' : 'renters';
 
     try {
@@ -43,7 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup_submit'])) {
             <div class="input-info">
                 <label for="reg-role">I want to register as a:</label>
                 <div class="input-wrapper">
-                    <!-- FIX: Inline styles completely removed -->
                     <select id="reg-role" name="role" required>
                         <option value="renter">Renter (Searching for space)</option>
                         <option value="owner">Owner (Listing a space)</option>
@@ -68,9 +75,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup_submit'])) {
             
             <div class="input-info">
                 <label for="reg-password">Password</label>
-                <div class="input-wrapper"><input type="password" id="reg-password" name="password" placeholder="Create a password" required></div>
+                <div class="input-wrapper">
+                    <input 
+                        type="password" 
+                        id="reg-password" 
+                        name="password" 
+                        placeholder="Create a password" 
+                        required
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$"
+                        title="Please follow the required password instructions!"
+                    >
+                </div>
+                <ul class="password-rules-list" id="password-rules">
+                    <li id="rule-length" class="rule-invalid"> Minimum 8 characters</li>
+                    <li id="rule-uppercase" class="rule-invalid"> At least (1) uppercase letter</li>
+                    <li id="rule-lowercase" class="rule-invalid"> At least (1) lowercase letter</li>
+                    <li id="rule-number" class="rule-invalid"> At least (1) number</li>
+                    <li id="rule-special" class="rule-invalid"> At least (1) special character</li>
+                </ul>
             </div>
-            
+
             <button type="submit" name="signup_submit" class="sign-up-submit-btn signup-theme-btn">Sign Up</button>
         </form>
         
