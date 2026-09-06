@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
 
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id']    = $user[$id_col];
-            // $_SESSION['first_name'] = $user['first_name'];
+            $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['role']       = $role;
 
             header("Location: index.php");
