@@ -1,6 +1,8 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     require_once 'database-connection.php'; 
 
     $role     = $_POST['role'];
@@ -11,6 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
     $id_col = ($role === 'owner') ? 'owner_id' : 'renter_id';
 
     try {
+        // Fallback detector mapping support variable name
+        if (!isset($pdo) && isset($conn)) {
+            $pdo = $conn;
+        }
+
+        // Secure authentication retrieval
         $stmt = $pdo->prepare("SELECT * FROM $table WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
@@ -20,10 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
             $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['role']       = $role;
 
-            echo "<script>alert('Welcome back, " . $user['first_name'] . "!'); window.location.href='index.php';</script>";
+            // SUCCESS: Redirect straight to index.php cleanly via backend headers
+            header("Location: index.php");
             exit();
         } else {
-            echo "<script>alert('Invalid email, password, or login role profile choice!'); window.location.href='index.php';</script>";
+            // FAILURE: Set a temporary session flag error and route back cleanly
+            $_SESSION['login_error'] = "Invalid email, password, or login role profile choice!";
+            header("Location: index.php?error=failed");
             exit();
         }
     } catch (PDOException $e) {
@@ -31,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
     }
 }
 ?>
+
 
 <div id="signinModal" class="sign-in-overlay">
     <div class="sign-in-content">
@@ -43,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
             <div class="input-info">
                 <label for="modal-role">I am a:</label>
                 <div class="input-wrapper">
-                    <!-- FIX: Inline styles completely removed -->
                     <select id="modal-role" name="role" required>
                         <option value="renter">Renter (Tenant)</option>
                         <option value="owner">Owner (Landlord/Landlady)</option>

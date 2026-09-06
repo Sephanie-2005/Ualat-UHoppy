@@ -48,7 +48,7 @@ if (!$isLoggedIn || $role !== 'renter') {
                 <button id="contact-btn" class="contact_button" onclick="window.location.href='contact.php'">CONTACT</button>
                  
                 <div class="profile-nav-wrapper">
-                    <span class="header-user-name"><?php echo $userFirstName; ?></span>
+                    <span class="header-user-name"><?php echo htmlspecialchars($userFirstName ?? '', ENT_QUOTES, 'UTF-8'); ?></span>
                     <img src="<?php echo $profilePic; ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()">
                 </div>
 

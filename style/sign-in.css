@@ -1,26 +1,33 @@
+/* --- THE FIXED FULL-SCREEN OVERLAY BACKGROUND MASK --- */
 body .sign-in-overlay {
     display: none; 
     position: fixed;
-    z-index: 1000; 
+    z-index: 100000;          /* Raised layers to ensure it floats above your homepage shapes */
     left: 0px;
     top: 0px;
-    width: 1920px;
-    height: 1080px;
+    width: 100%;             /* FIX: Changed from 1920px to fluid system percentages */
+    height: 100%;            /* FIX: Changed from 1080px to fluid system percentages */
     background-color: rgba(0, 0, 0, 0.5); 
+    
+    /* Using clean absolute layout configurations to force horizontal and vertical centering */
+    display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
+/* --- THE CENTRAL SIGN IN CARD WINDOW FRAME --- */
 body .sign-in-overlay .sign-in-content {
     position: relative;
-    width: 320px;
-    padding: 15px 20px;
+    width: 340px;            /* Widened slightly to give your internal inputs more breathing room */
+    padding: 20px;           /* Clean 20px padding parameters all around */
     max-height: 580px;
     overflow-y: auto;
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
+    margin: 0px auto;        /* Auto-centers block parameters cleanly */
     animation: fadeInModal 0.3s ease-out;
 }
 
@@ -31,13 +38,13 @@ body .sign-in-overlay .sign-in-content {
 
 .sign-in-overlay .close-sign-in-btn {
     position: absolute;
-    top: 12px;
+    top: 15px;
     right: 18px;
     font-size: 26px;
     font-weight: bold;
     color: #888888;
     cursor: pointer;
-    line-height: 1px;
+    line-height: 20px;       /* Stabilizes close icon layout metrics */
 }
 
 .sign-in-overlay .close-sign-in-btn:hover {
@@ -45,56 +52,66 @@ body .sign-in-overlay .sign-in-content {
 }
 
 .sign-in-overlay .sign-in-title {
-    font-size: 20px;
-    margin-top: 0px;
-    margin-bottom: 12px;
+    font-size: 22px;
+    margin-top: 5px;
+    margin-bottom: 20px;
     text-align: center;
     font-family: sans-serif;
     color: #333333;
+    font-weight: bold;
 }
 
 .sign-in-overlay .input-info {
-    margin-bottom: 8px;
+    margin-bottom: 14px;     /* Increased vertical structural padding margins */
     display: flex;
     flex-direction: column; 
     align-items: flex-start;
+    width: 100%;             /* Ensures form cells stretch the card canvas cleanly */
 }
 
 .sign-in-overlay .input-info label {
-    font-size: 12px;
-    margin-bottom: 2px;
+    font-size: 13px;
+    margin-bottom: 5px;
     font-weight: 600;
     color: #555555;
 }
 
 .sign-in-overlay .input-wrapper {
-    width: 280px;
+    width: 100%;             /* Fills parent layout bounds uniformly */
     margin-top: 0px;
 }
 
 .sign-in-overlay .input-info input,
 .sign-in-overlay .input-wrapper select {
-    width: 280px;
-    padding: 6px 10px;
+    width: 100%;             /* Matches input fields uniformly to card layout borders */
+    padding: 6px 12px;
     border: 1px solid #cccccc;
     border-radius: 6px;
-    font-size: 13px;
-    height: 32px;
+    font-size: 14px;
+    height: 36px;            /* Increased input box field target dimensions for usability */
     box-sizing: border-box; 
+    outline: none;
+}
+
+.sign-in-overlay .input-info input:focus,
+.sign-in-overlay .input-wrapper select:focus {
+    border-color: rgb(246, 144, 104); /* Highlights outline theme color on select */
 }
 
 .sign-in-overlay .sign-in-submit-btn {
-    width: 280px;
-    padding: 8px;
+    width: 100%;             /* Stretches sign-in action controls right to card margins */
+    padding: 10px;
     background-color: rgb(246, 144, 104); 
     border: none;
     border-radius: 6px;
-    color: white;
-    font-size: 14px;
+    color: #ffffff;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 5px;
+    margin-top: 10px;
     box-sizing: border-box;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    transition: background-color 0.2s;
 }
 
 .sign-in-overlay .sign-in-submit-btn:hover {
@@ -102,8 +119,18 @@ body .sign-in-overlay .sign-in-content {
 }
 
 .sign-in-overlay .sign-in-footer-text {
-    font-size: 12px;
-    margin-top: 8px;
+    font-size: 13px;
+    margin-top: 15px;
     text-align: center;
     color: #666666;
+}
+
+.sign-in-overlay .sign-in-footer-text a {
+    color: rgb(246, 144, 104);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.sign-in-overlay .sign-in-footer-text a:hover {
+    text-decoration: underline;
 }

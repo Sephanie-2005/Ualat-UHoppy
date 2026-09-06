@@ -1,13 +1,17 @@
-<?php 
-    session_start();
-    require_once 'database-connection.php'; 
-    require_once 'header-authentication.php'; 
-
-    if (!($isLoggedIn ?? false) || ($role ?? null) !== 'owner') {
-    header("Location: index.php");
-    exit();
-}
+<?php
+$isLoggedIn = $isLoggedIn ?? false;
+$userFirstName = $userFirstName ?? '';
 ?>
+
+<?php if ($isLoggedIn): ?>
+    <div class="profile-nav-wrapper">
+        <!-- The user name text element has been cleanly removed from here -->
+        <img src="<?php echo $profilePic; ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()">
+    </div>
+<?php else: ?>
+    <button id="sign_in-btn" class="sign_in_button" onclick="openModal()">Sign In</button>
+<?php endif; ?>
+
 
 <!DOCTYPE html> 
     <html lang="en">

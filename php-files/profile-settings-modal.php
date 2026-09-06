@@ -1,159 +1,173 @@
 <?php
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-    if (!isset($conn)) {
-        require_once 'database-connection.php';
-        $conn = new mysqli("localhost", "root", "", "uhoppy_db");
-    }
+if (!isset($conn)) {
+    require_once 'database-connection.php';
+    $conn = new mysqli("localhost", "root", "", "uhoppy_db");
+}
 
-    $userId = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0;
-    $role   = isset($_SESSION['role']) ? $_SESSION['role'] : 'renter'; 
+$userId = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0;
+$role   = isset($_SESSION['role']) ? $_SESSION['role'] : 'renter'; 
 
-    $modalError = "";
+$modalError = "";
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['modal_settings_action'])) {
-        $table = ($role === 'owner') ? 'owners' : 'renters';
-        $idCol = ($role === 'owner') ? 'owner_id' : 'renter_id';
-        
-        if ($_POST['modal_settings_action'] === 'save_info') {
-            $email = trim($_POST['email']);
-            $phone = trim($_POST['phone_number']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['modal_settings_action'])) {
+    $table = ($role === 'owner') ? 'owners' : 'renters';
+    $idCol = ($role === 'owner') ? 'owner_id' : 'renter_id';
+    
+    // --- ACTION A: SAVE MODIFIED ACCOUNT INFO ---
+    if ($_POST['modal_settings_action'] === 'save_info') {
+        $firstName  = trim($_POST['first_name']);
+        $middleName = trim($_POST['middle_name']);
+        $lastName   = trim($_POST['last_name']);
+        $username   = trim($_POST['username']);
+        $email      = trim($_POST['email']);
+        $phone      = trim($_POST['phone_number']);
 
-                        $profilePicPath = null;
+        $phoneRegex = "/^(?:\+63|0)?9\d{9}$/";
+
+        if (empty($firstName) || empty($lastName) || empty($username) || empty($email)) {
+            $modalError = "All core descriptive name fields are required.";
+        } elseif (!empty($phone) && !preg_match($phoneRegex, $phone)) {
+            $modalError = "Please enter a valid Philippine mobile phone number (e.g., 09123456789).";
+        } else {
+            $profilePicPath = null;
             if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === UPLOAD_ERR_OK) {
                 $fileExtension = strtolower(pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION));
                 if (in_array($fileExtension, ['jpg', 'jpeg', 'png', 'gif'])) {
-                    // Unique file identifier string mapping
                     $newFileName = $role . "_" . $userId . "_" . time() . "." . $fileExtension;
-                    
-                    // 1. Physical directory target destination relative to this file
-                    $physicalUploadDir = '../uploaded-images/';
-                    if (!is_dir($physicalUploadDir)) { 
-                        mkdir($physicalUploadDir, 0755, true); 
-                    }
-                    
-                    // 2. Save the file cleanly onto the physical server hard drive disk
-                    if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $physicalUploadDir . $newFileName)) {
-                        // 3. FIX: Save the string path into the database without leading dots
-                        // This allows any page on your system to call it universally!
+                    $uploadFileDir = '../uploaded-images/';
+                    if (!is_dir($uploadFileDir)) { mkdir($uploadFileDir, 0755, true); }
+                    if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $uploadFileDir . $newFileName)) {
                         $profilePicPath = 'uploaded-images/' . $newFileName;
                     }
                 }
             }
 
-
             if ($profilePicPath !== null) {
-                $stmt = $conn->prepare("UPDATE $table SET email = ?, phone_number = ?, profile_picture = ? WHERE $idCol = ?");
-                $stmt->bind_param("sssi", $email, $phone, $profilePicPath, $userId);
+                // Delete old profile picture before overwriting if it exists
+                $oldStmt = $conn->prepare("SELECT profile_picture FROM $table WHERE $idCol = ?");
+                $oldStmt->bind_param("i", $userId);
+                $oldStmt->execute();
+                $oldResult = $oldStmt->get_result()->fetch_assoc();
+                $oldStmt->close();
+                if ($oldResult && !empty($oldResult['profile_picture']) && file_exists('../' . $oldResult['profile_picture'])) {
+                    if (strpos($oldResult['profile_picture'], 'default-avatar.png') === false) {
+                        unlink('../' . $oldResult['profile_picture']);
+                    }
+                }
+
+                $sql = "UPDATE $table SET first_name = ?, middle_name = ?, last_name = ?, username = ?, email = ?, phone_number = ?, profile_picture = ? WHERE $idCol = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("sssssssi", $firstName, $middleName, $lastName, $username, $email, $phone, $profilePicPath, $userId);
             } else {
-                $stmt = $conn->prepare("UPDATE $table SET email = ?, phone_number = ? WHERE $idCol = ?");
-                $stmt->bind_param("ssi", $email, $phone, $userId);
+                $sql = "UPDATE $table SET first_name = ?, middle_name = ?, last_name = ?, username = ?, email = ?, phone_number = ? WHERE $idCol = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("ssssssi", $firstName, $middleName, $lastName, $username, $email, $phone, $userId);
             }
 
             if ($stmt->execute()) { 
-                echo "<script>alert('Account settings updated.'); window.location.href='" . htmlspecialchars($_SERVER['PHP_SELF']) . "';</script>";
+                echo "<script>alert('Account profile modifications updated.'); window.location.href='" . htmlspecialchars($_SERVER['PHP_SELF']) . "';</script>";
                 exit();
-            } else { $modalError = "Update encountered an operational error."; }
+            } else { 
+                $modalError = ($conn->errno === 1062) ? "The Username or Email entered is already taken." : "Update parameters failed.";
+            }
             $stmt->close();
         }
+    }
 
-                if ($_POST['modal_settings_action'] === 'change_password') {
-            $currPass = $_POST['current_password'];
-            $newPass  = $_POST['new_password'];
+    // --- ACTION B: PASSWORD MODIFICATION ---
+    if ($_POST['modal_settings_action'] === 'change_password') {
+        $currPass = $_POST['current_password'];
+        $newPass  = $_POST['new_password'];
+        $passwordRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
 
-            $passwordRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/';
-
-            if (!preg_match($passwordRegex, $newPass)) {
-                $modalError = "New password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
-            } else {
-                $stmt = $conn->prepare("SELECT password FROM $table WHERE $idCol = ?");
-                $stmt->bind_param("i", $userId);
-                $stmt->execute();
-                $pwdRow = $stmt->get_result()->fetch_assoc();
-                $stmt->close();
-
-                if (password_verify($currPass, $pwdRow['password'])) {
-                    $hashedNew = password_hash($newPass, PASSWORD_DEFAULT);
-                    $stmt = $conn->prepare("UPDATE $table SET password = ? WHERE $idCol = ?");
-                    $stmt->bind_param("si", $hashedNew, $userId);
-                    if ($stmt->execute()) {
-                        echo "<script>alert('Password updated successfully.'); window.location.href='" . htmlspecialchars($_SERVER['PHP_SELF']) . "';</script>";
-                        exit();
-                    }
-                    $stmt->close();
-                } else { 
-                    $modalError = "Current active password is invalid."; 
-                }
-            }
-        }
-
-
-            if ($_POST['modal_settings_action'] === 'delete_account') {
-            $confirmPass = $_POST['delete_password_confirm'];
-
-            // 1. Fetch both password and profile picture path data fields
-            $stmt = $conn->prepare("SELECT password, profile_picture FROM $table WHERE $idCol = ?");
+        if (!preg_match($passwordRegex, $newPass)) {
+            $modalError = "New password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+        } else {
+            $stmt = $conn->prepare("SELECT password FROM $table WHERE $idCol = ?");
             $stmt->bind_param("i", $userId);
             $stmt->execute();
-            $userRow = $stmt->get_result()->fetch_assoc();
+            $pwdRow = $stmt->get_result()->fetch_assoc();
             $stmt->close();
 
-            if ($userRow && password_verify($confirmPass, $userRow['password'])) {
-                
-                // 2. FILE PURGE CONTROLLER:
-                // Check if they have a non-default custom file stored on the local drive disk
-                if (!empty($userRow['profile_picture']) && file_exists($userRow['profile_picture'])) {
-                    // Make sure it isn't your base default placeholder asset before unlinking
-                    if (strpos($userRow['profile_picture'], 'default-avatar.png') === false) {
-                        unlink($userRow['profile_picture']); // Physically removes the file from uploaded-images/
-                    }
-                }
-
-                $stmt = $conn->prepare("DELETE FROM $table WHERE $idCol = ?");
-                $stmt->bind_param("i", $userId);
-                
+            if (password_verify($currPass, $pwdRow['password'])) {
+                $hashedNew = password_hash($newPass, PASSWORD_DEFAULT);
+                $stmt = $conn->prepare("UPDATE $table SET password = ? WHERE $idCol = ?");
+                $stmt->bind_param("si", $hashedNew, $userId);
                 if ($stmt->execute()) {
-                    $stmt->close();
-                    
-                    session_unset();
-                    session_destroy();
-                    
-                    echo "<script>
-                        alert('Your account and uploaded data have been permanently deleted.');
-                        window.location.href = 'index.php';
-                    </script>";
+                    echo "<script>alert('Password updated successfully.'); window.location.href='" . htmlspecialchars($_SERVER['PHP_SELF']) . "';</script>";
                     exit();
                 }
                 $stmt->close();
-            } else { 
-                $modalError = "Incorrect password confirmation."; 
-            }
+            } else { $modalError = "Current active password is invalid."; }
         }
-
     }
 
-    $userData = ['first_name' => '', 'last_name' => '', 'email' => '', 'phone_number' => '', 'profile_picture' => ''];
-    if ($userId > 0) {
-        $table = ($role === 'owner') ? 'owners' : 'renters';
-        $idCol = ($role === 'owner') ? 'owner_id' : 'renter_id';
-        $stmt = $conn->prepare("SELECT first_name, last_name, email, phone_number, profile_picture FROM $table WHERE $idCol = ?");
+    // --- ACTION C: HARD ACCOUNT PURGE (AVATAR + PROPERTY IMAGES ERASER) ---
+    if ($_POST['modal_settings_action'] === 'delete_account') {
+        $confirmPass = $_POST['delete_password_confirm'];
+        $stmt = $conn->prepare("SELECT password, profile_picture FROM $table WHERE $idCol = ?");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
-        $fetched = $stmt->get_result()->fetch_assoc();
-        if ($fetched) { $userData = $fetched; }
+        $userRow = $stmt->get_result()->fetch_assoc();
         $stmt->close();
-    }
-     $dbAvatarPath = !empty($userData['profile_picture']) ? htmlspecialchars($userData['profile_picture']) : '';
-    
-    $dbAvatarPath = str_replace('../', '', $dbAvatarPath);
 
-    if (!empty($dbAvatarPath) && file_exists('../' . $dbAvatarPath)) {
-        $modalAvatar = '../' . $dbAvatarPath;
-    } else {
-        $modalAvatar = '../system-images/Default profile.png';
+        if ($userRow && password_verify($confirmPass, $userRow['password'])) {
+            // 1. Clear out custom profile pictures
+            if (!empty($userRow['profile_picture']) && file_exists('../' . str_replace('../', '', $userRow['profile_picture']))) {
+                if (strpos($userRow['profile_picture'], 'default-avatar.png') === false) {
+                    unlink('../' . str_replace('../', '', $userRow['profile_picture']));
+                }
+            }
+
+            // 2. IF OWNER: Trace and destroy all uploaded unit photos linked to their listings
+            if ($role === 'owner') {
+                $imgQuery = "SELECT pi.image_url FROM property_images pi 
+                             JOIN properties p ON pi.property_id = p.property_id 
+                             WHERE p.owner_id = ?";
+                $imgStmt = $conn->prepare($imgQuery);
+                $imgStmt->bind_param("i", $userId);
+                $imgStmt->execute();
+                $imgResult = $imgStmt->get_result();
+                while ($imgRow = $imgResult->fetch_assoc()) {
+                    $cleanImgPath = '../' . str_replace('../', '', $imgRow['image_url']);
+                    if (!empty($imgRow['image_url']) && file_exists($cleanImgPath)) {
+                        unlink($cleanImgPath); // Deletes room asset file completely from disk
+                    }
+                }
+                $imgStmt->close();
+            }
+
+            // 3. Delete the account row entry from database tables
+            $stmt = $conn->prepare("DELETE FROM $table WHERE $idCol = ?");
+            $stmt->bind_param("i", $userId);
+            if ($stmt->execute()) {
+                $stmt->close();
+                session_unset();
+                session_destroy();
+                echo "<script>window.location.href = 'index.php';</script>";
+                exit();
+            }
+            $stmt->close();
+        } else { $modalError = "Incorrect password confirmation."; }
     }
+}
+
+$userData = ['first_name' => '', 'middle_name' => '', 'last_name' => '', 'username' => '', 'email' => '', 'phone_number' => '', 'profile_picture' => ''];
+if ($userId > 0) {
+    $table = ($role === 'owner') ? 'owners' : 'renters';
+    $idCol = ($role === 'owner') ? 'owner_id' : 'renter_id';
+    $stmt = $conn->prepare("SELECT first_name, middle_name, last_name, username, email, phone_number, profile_picture FROM $table WHERE $idCol = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $fetched = $stmt->get_result()->fetch_assoc();
+    if ($fetched) { $userData = $fetched; }
+    $stmt->close();
+}
+$modalAvatar = !empty($userData['profile_picture']) ? '../' . str_replace('../', '', $userData['profile_picture']) : '../system-images/default-avatar.png';
 ?>
 
 <div id="settings-popup-overlay" class="settings-popup-overlay">
@@ -179,27 +193,48 @@
 
             <!-- TAB 1: Account Info -->
             <div id="popup-account" class="popup-section visible">
+
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="modal_settings_action" value="save_info">
+                    
                     <div class="popup-avatar-row">
                         <img src="<?php echo $modalAvatar; ?>" id="modal-preview-avatar" alt="Avatar">
                         <label for="modal_profile_pic" class="modal-upload-btn">Upload Photo</label>
                         <input type="file" name="profile_pic" id="modal_profile_pic" accept="image/*" style="display: none;">
                     </div>
+
                     <div class="popup-field">
-                        <label>Name (Read-Only)</label>
-                        <input type="text" class="modal-readonly" value="<?php echo htmlspecialchars($userData['first_name'] . ' ' . $userData['last_name']); ?>" readonly>
+                        <label for="m_first_name">First Name</label>
+                        <input type="text" name="first_name" id="m_first_name" value="<?php echo htmlspecialchars($userData['first_name']); ?>" required>
                     </div>
+
                     <div class="popup-field">
-                        <label for="modal_email">Username / Email</label>
-                        <input type="email" name="email" id="modal_email" value="<?php echo htmlspecialchars($userData['email']); ?>" required>
+                        <label for="m_middle_name">Middle Name (Optional)</label>
+                        <input type="text" name="middle_name" id="m_middle_name" value="<?php echo htmlspecialchars($userData['middle_name']); ?>">
                     </div>
+
                     <div class="popup-field">
-                        <label for="modal_phone">Phone Number</label>
-                        <input type="text" name="phone_number" id="modal_phone" value="<?php echo htmlspecialchars($userData['phone_number']); ?>">
+                        <label for="m_last_name">Last Name</label>
+                        <input type="text" name="last_name" id="m_last_name" value="<?php echo htmlspecialchars($userData['last_name']); ?>" required>
                     </div>
+
+                    <div class="popup-field">
+                        <label for="m_username">Username</label>
+                        <input type="text" name="username" id="m_username" value="<?php echo htmlspecialchars($userData['username']); ?>" required>
+                    </div>
+
+                    <div class="popup-field">
+                        <label for="m_email">Email Address</label>
+                     <input type="email" name="email" id="m_email" value="<?php echo htmlspecialchars($userData['email']); ?>" required>
+                    </div>
+
+                    <div class="popup-field">
+                        <label for="m_phone">Phone Number</label>
+                        <input type="text" name="phone_number" id="m_phone" placeholder="e.g. 09123456789" value="<?php echo htmlspecialchars($userData['phone_number']); ?>">
+                    </div>
+
                     <button type="submit" class="popup-submit-btn">Save Changes</button>
-                </form>
+                     </form>
             </div>
 
             <!-- TAB 2: Security -->
