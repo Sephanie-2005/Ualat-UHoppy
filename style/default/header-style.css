@@ -176,7 +176,7 @@ header {
 .header-profile-pic {
   width: 38px;
   height: 38px;
-  border-radius: 50%;         
+  border-radius: 50px;         
   object-fit: cover;
   border: 2px solid rgb(246, 144, 104); 
   padding: 0px;

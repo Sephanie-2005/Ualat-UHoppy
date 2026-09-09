@@ -1,49 +1,10 @@
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-    require_once 'database-connection.php'; 
-
-    $role     = $_POST['role'];
-    $email    = trim($_POST['email']);
-    $password = $_POST['password'];
-
-    $table  = ($role === 'owner') ? 'owners' : 'renters';
-    $id_col = ($role === 'owner') ? 'owner_id' : 'renter_id';
-
-    try {
-        if (!isset($pdo) && isset($conn)) {
-            $pdo = $conn;
-        }
-
-        $stmt = $pdo->prepare("SELECT * FROM $table WHERE email = ?");
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
-
-                if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user_id']    = $user[$id_col];
-            $_SESSION['first_name'] = $user['first_name'];
-            $_SESSION['role']       = $role;
-
-            if ($role === 'owner') {
-                header("Location: owner-homepage.php"); 
-            } else {
-                header("Location: renter-homepage.php");      // Replace with your actual renter filename
-            }
-            exit();
-        } 
-
-    } catch (PDOException $e) {
-        die("Login processing block failure error: " . $e->getMessage());
-    }
-}
-?>
-
-<?php if(isset($_SESSION['login_error'])): ?>
-            alert("<?php echo addslashes($_SESSION['login_error']); ?>");
-            <?php unset($_SESSION['login_error']); ?>
-        <?php endif; ?>
+ <!DOCTYPE html> 
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UHoppy Homepage</title>
+    <link rel="stylesheet" href="../../style/default/web-app.css">
 
 <div id="signinModal" class="sign-in-overlay">
     <div class="sign-in-content">
@@ -86,3 +47,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_submit'])) {
     </div>
 </div>
 <script src="../javascript-files/sign-in.js"></script>
+</html>

@@ -50,11 +50,12 @@ if ($searchTerm !== '') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UHoppy Listings</title>
-    <link rel="stylesheet" href="../../style/web-app.css">
-    <link rel="stylesheet" href="../../style/header-style.css">
-    <link rel="stylesheet" href="../../style/footer-style.css">
-    <link rel="stylesheet" href="../../style/listings.css">
-    <link rel="stylesheet" href="../../style/background_shapes.css">
+    <link rel="stylesheet" href="../../style/default/web-app.css">
+    <link rel="stylesheet" href="../../style/default/header-style.css">
+    <link rel="stylesheet" href="../../style/default/footer-style.css">
+    <link rel="stylesheet" href="../../style/default/listings.css">
+    <link rel="stylesheet" href="../../style/default/background_shapes.css">
+    <link rel="stylesheet" href="../../style/profile-settings.css">
     <link rel="stylesheet" href="../../style/sign-in.css">
     <link rel="stylesheet" href="../../style/sign-up.css">
     <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
@@ -129,3 +130,13 @@ if ($searchTerm !== '') {
     <script src="../../javascript-files/listings.js"></script>
 </body>
 </html>
+
+<?php 
+    include '../sign-in-and-sign-up/sign-in.php';
+    include '../sign-in-and-sign-up/sign-up.php'; 
+    include '../process-and-setting/profile-settings.php'; 
+?>
+
+<script src="../../javascript-files/sign-up.js"></script>
+<script src="../../javascript-files/sign-in.js"></script>
+<script src="../../javascript-files/pass-required-input.js"></script>

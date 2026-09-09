@@ -25,14 +25,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UHoppy Homepage</title>
-    <link rel="stylesheet" href="../../style/web-app.css">
-    <link rel="stylesheet" href="../../style/header-style.css">
-    <link rel="stylesheet" href="../../style/footer-style.css">
-    <link rel="stylesheet" href="../../style/homepage.css">
-    <link rel="stylesheet" href="../../style/background-shapes.css">
+    <link rel="stylesheet" href="../../style/default/web-app.css">
+    <link rel="stylesheet" href="../../style/default/header-style.css">
+    <link rel="stylesheet" href="../../style/default/footer-style.css">
+    <link rel="stylesheet" href="../../style/default/homepage.css">
+    <link rel="stylesheet" href="../../style/default/background-shapes.css">
     <link rel="stylesheet" href="../../style/sign-in.css">
     <link rel="stylesheet" href="../../style/sign-up.css">
     <link rel="stylesheet" href="../../style/pass-required-input.css">
+    <link rel="stylesheet" href="../../style/profile-settings.css">
 
     <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
     </head>
@@ -72,49 +73,34 @@
             </main>
 
             <main class="Section_2">
-                <h2 class="featured_listings">Featured Listings</h1>
+                <h2 class="featured_listings">Featured Listings</h2>
                 <button id="view_all-btn" class="view_all_button" onclick="window.location.href='listings.php'">- View All</button>
 
                 <div class="card-container">
 
                     <div class="room-card">
-                        <img src="../uploaded-images/Shared_room_1.png" alt="Shared room" class="room-image">
+                        <img src="../../uploaded-images/Shared_room_1.png" alt="Shared room" class="room-image">
                         <div class="room-details">
                             <h3 class="room-title">Shared room</h3>
-                            <p class="free-label">Free:</p>
-                            <ul class="amenities-list">
-                                <li>Water</li>
-                                <li>Electricity</li>
-                                <li>Wi-fi</li>
-                            </ul>
+                            <p class="amenities-list"></p>
                             <div class="price-tag1">₱ 2,250</div>
                         </div>
                     </div>
 
                     <div class="room-card">
-                        <img src="../uploaded-images/Solo_room.png" alt="Solo room" class="room-image">
+                        <img src="../../uploaded-images/Solo_room.png" alt="Solo room" class="room-image">
                         <div class="room-details">
                             <h3 class="room-title">Solo room</h3>
-                            <p class="free-label">Free:</p>
-                            <ul class="amenities-list">
-                                <li>Water</li>
-                                <li>Wi-fi</li>
-                            </ul>
+                            <p class="amenities-list"></p>
                             <div class="price-tag2">₱ 2,000</div>
                         </div>
                     </div>
 
                     <div class="room-card">
-                        <img src="../uploaded-images/Shared_room_2.png" alt="Shared room" class="room-image">
+                        <img src="../../uploaded-images/Shared_room_2.png" alt="Shared room" class="room-image">
                         <div class="room-details">
                             <h3 class="room-title">Shared room</h3>
-                            <p class="free-label">Free:</p>
-                            <ul class="amenities-list">
-                                <li>Water</li>
-                                <li>Electricity</li>
-                                <li>Wi-fi</li>
-                                <li>Gated</li>
-                            </ul>
+                            <p class="amenities-list"></p>
                             <div class="price-tag3">₱ 1,800</div>
                         </div>
                     </div>
@@ -123,45 +109,29 @@
                 <div class="second-card-container">
 
                     <div class="second-room-card">
-                        <img src="../uploaded-images/Shared_room_3.png" alt="Shared room" class="second-room-image">
+                        <img src="../../uploaded-images/Shared_room_3.png" alt="Shared room" class="second-room-image">
                         <div class="second-room-details">
                         <h3 class="second-room-title">Shared room</h3>
-                        <p class="second-free-label">Free:</p>
-                        <ul class="second-amenities-list">
-                            <li>Water</li>
-                            <li>Electricity</li>
-                            <li>Wi-fi</li>
-                        </ul>
+                        <p class="second-amenities-list"></p>
                         <div class="second-price-tag1">₱ 1,600</div>
                         </div>
                     </div>
 
                     <div class="second-room-card">
-                        <img src="../uploaded-images/Shared_room_4.png" alt="Shared room" class="second-room-image">
+                        <img src="../../uploaded-images/Shared_room_4.png" alt="Shared room" class="second-room-image">
                         <div class="second-room-details">
                             <h3 class="second-room-title">Shared room</h3>
-                            <p class="second-free-label">Free:</p>
-                            <ul class="second-amenities-list">
-                                <li>Water</li>
-                                <li>Electricity</li>
-                                <li>Wi-fi</li>
-                                <li>24 hr surveilance</li>
-                            </ul>
+                            <p class="second-amenities-list"></p>
                             <div class="second-price-tag2">₱ 3,000</div>
                         </div>
                     </div>
 
                     <div class="second-room-card">
-                        <img src="../uploaded-images/Bedspacer.png" alt="Bedspacer" class="second-room-image">
+                        <img src="../../uploaded-images/Bedspacer.png" alt="Bedspacer" class="second-room-image">
                         <div class="second-room-details">
-                            <h3 class="second-room-title">Bedspacer</h3>
-                            
-                            <ul class="second-amenities-list">
+                            <h3 class="second-room-title">Bedspacer</h3> 
+                            <p class="second-amenities-list">
                                 <p></p>
-                                <li>Air conditioned</li>
-                                <li>Free wi-fi</li>
-                                <li>With parking space</li>
-                            </ul>
                             <div class="second-price-tag3">₱ 3,500</div>
                         </div>
                     </div>
@@ -316,17 +286,20 @@
                 <h2 class="live_happily_text">4. Live Happily</h2>
             </main>
             
-            <?php 
-                include 'footer.php'; 
-                include '../sign-in-and-sign-up/sign-in.php';
-                include '../sign-in-and-sign-up/sign-up.php'; 
-                include '../process-and-setting/profile-settings.php'; 
-            ?>
-            
         </div>
-            <script src="../../javascript-files/sign-up.js"></script>
-            <script src="../../javascript-files/sign-in.js"></script>
-            <script src="../../javascript-files/pass-required-input.js"></script>
+            <?php 
+                include 'footer.php';  
+            ?>
     </body>
         
 </html>
+
+<?php 
+    include '../sign-in-and-sign-up/sign-in.php';
+    include '../sign-in-and-sign-up/sign-up.php'; 
+    include '../process-and-setting/profile-settings.php'; 
+?>
+
+<script src="../../javascript-files/sign-up.js"></script>
+<script src="../../javascript-files/sign-in.js"></script>
+<script src="../../javascript-files/pass-required-input.js"></script>

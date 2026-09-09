@@ -41,7 +41,7 @@
 
 .Section_2 {
     background-color: rgb(255, 246, 223);
-    height: 950px;
+    height: 900px;
     width: 1240px;
     margin: auto;
     padding-top: 60px;
@@ -73,17 +73,18 @@
 .card-container {
     display: flex;
     flex-wrap: wrap; 
-    gap: 30px;       
+    gap: 50px;       
     padding: 20px;
-    margin-left: 40px;
+    margin-top: 20px;
+    margin-left: 75px;
     position: relative;
     z-index: 2;
 }
 
 .room-card {
     position: relative;
-    width: 350px; 
-    height: 350px;
+    width: 320px; 
+    height: 300px;
     background-color: #ffffff;
     border-radius: 16px;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.8);
@@ -91,18 +92,18 @@
 }
 
 .room-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: 4px 7px 12px rgba(0, 0, 0, 0.6);
 }
 
 .room-image {
-    width: 340px;
-    height: 220px;
+    width: 308px;
+    height: 200px;
     object-fit: cover; 
-    margin-top: 5px;
-    margin-left: 5px;
+    margin-top: 6px;
+    margin-left: 6px;
     border-bottom: 1px solid #f0f0f0;
-    border-radius: 16px;
+    border-radius: 14px;
 }
 
 .room-details {
@@ -139,8 +140,8 @@
 .price-tag1 {
     position: absolute;
     top: 82px;
-    left: 240px;
-    font-size: 24px;
+    left: 250px;
+    font-size: 20px;
     font-weight: bold;
     color: #000000;
 }
@@ -148,17 +149,17 @@
 .price-tag2 { 
     position: absolute;
     top: 82px;
-    left: 240px;
-    font-size: 24px;
+    left: 250px;
+    font-size: 20px;
     font-weight: bold;
     color: #000000;
 }
 
 .price-tag3 {
     position: absolute;
-    top: 82px;
-    left: 240px;
-    font-size: 24px;
+    top: 60px;
+    left: 260px;
+    font-size: 18px;
     font-weight: bold;
     color: #000000;
 }
@@ -166,17 +167,18 @@
 .second-card-container {
     display: flex;
     flex-wrap: wrap; 
-    gap: 30px;       
+    gap: 50px;       
     padding: 20px;
-    margin-left: 40px;
+    margin-top: 20px;
+    margin-left: 75px;
     position: relative;
     z-index: 2;
 }
 
 .second-room-card {
     position: relative;
-    width: 350px; 
-    height: 350px;
+    width: 320px; 
+    height: 300px;
     background-color: #ffffff;
     border-radius: 16px;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.8);
@@ -184,18 +186,18 @@
 }
 
 .second-room-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: 4px 7px 12px rgba(0, 0, 0, 0.6);
 }
 
 .second-room-image {
-    width: 340px;
-    height: 220px;
+    width: 308px;
+    height: 200px;
     object-fit: cover; 
-    margin-top: 5px;
-    margin-left: 5px;
+    margin-top: 6px;
+    margin-left: 6px;
     border-bottom: 1px solid #f0f0f0;
-    border-radius: 16px;
+    border-radius: 14px;
 }
 
 .second-room-details {
