@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="../../style/default/header-style.css">
         <link rel="stylesheet" href="../../style/default/footer-style.css">
         <link rel="stylesheet" href="../../style/default/features.css">
-        <link rel="stylesheet" href="../../style/profile-settings.css">
         <link rel="stylesheet" href="../../style/sign-in.css">
         <link rel="stylesheet" href="../../style/sign-up.css">
         <link rel="stylesheet" href="../../style/pass-required-input.css"> 
@@ -226,7 +225,6 @@
 <?php 
     include '../sign-in-and-sign-up/sign-in.php';
     include '../sign-in-and-sign-up/sign-up.php'; 
-    include '../process-and-setting/profile-settings.php'; 
 ?>
 
 <script src="../../javascript-files/sign-up.js"></script>

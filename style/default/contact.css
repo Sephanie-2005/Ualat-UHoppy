@@ -11,7 +11,7 @@
 .Section_2 {
     background-color: rgb(254, 227, 147);
     width: 1240px;
-    height: 650px;
+    height: 580px;
     margin: auto;
     padding-top: 40px;
     text-align: center;
@@ -21,10 +21,113 @@
 .Section_3 {
     background-color: rgb(246, 144, 104);
     width: 1240px;
-    height: 280px; 
+    height: 350px; 
     margin: auto;
     padding-top: 40px;
-    padding-bottom: 50px;
     text-align: center;
     box-sizing: border-box;
+}
+
+.contact-hero-container {
+    padding: 30px 20px;
+}
+.contact-title {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    color: #222222;
+}
+.contact-subtitle {
+    font-size: 1.2rem;
+    color: #444444;
+}
+
+.form-container {
+    width: 600px;
+    margin: 0 auto;
+}
+.form-container h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #222222;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.form-group {
+    width: 100%;
+}
+.contact-input,
+.contact-select,
+.contact-text-area {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+.contact-text-area {
+    resize: none; 
+}
+
+.contact-submit-btn {
+    background-color: rgb(246, 144, 104);
+    border-color: rgb(252, 228, 153);
+    border-style: solid;
+    border-radius: 7px;
+    color: #000000;
+    padding: 14px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 5px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.contact-submit-btn:hover {
+    background-color: rgb(247, 133, 88);
+    border-color: rgb(252, 228, 153);
+    transform: scale(1.05);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.directory-title {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #000000;
+}
+.directory-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 0 20px;
+}
+.directory-card {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 260px;
+    height: 150px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+.directory-icon {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 5px;
+}
+.directory-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #222222;
+}
+.directory-card p {
+    font-size: 0.95rem;
+    color: #555555;
+    margin: 0;
 }

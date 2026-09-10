@@ -11,9 +11,9 @@
     <button id="f-about_us-btn" class="f_about_us_button" onclick="window.location.href='about-us.php'">ABOUT US</button>
     <button id="f-contact-btn" class="f_contact_button" onclick="window.location.href='contact.php'">CONTACT</button>
     <p class="customer_care">CUSTOMER CARE</p>
-    <button id="privacy-policy-btn" class="privacy_policy" onclick="window.location.href='privacy-policy.php'">PRIVACY POLICY</button> 
-    <button id="terms-and-conditions-btn" class="terms_and_conditions" onclick="window.location.href='terms_and_conditons.php'">TERMS AND CONDITIONS</button>
-    <button id="faq-btn" class="faq" onclick="window.location.href='faq.html'">FAQ</button>
+    <button id="privacy-policy-btn" class="privacy_policy" onclick="window.location.href='../customer-care/privacy-policy.php'">PRIVACY POLICY</button> 
+    <button id="terms-and-conditions-btn" class="terms_and_conditions" onclick="window.location.href='../customer-care/terms-and-conditions.php'">TERMS AND CONDITIONS</button>
+    <button id="faq-btn" class="faq" onclick="window.location.href='../customer-care/faq.php'">FAQ</button>
     <p class="for_more_questions">For more questions message or call us through:</p>
     <p class="phone_num">(+63) 917 123 4567 <br> (+63) 917 765 4321</p>
     <p class="gmail">uhoppy@gmail.com</p>
