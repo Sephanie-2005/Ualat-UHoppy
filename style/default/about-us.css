@@ -1,7 +1,134 @@
-main {
+.Section_1 {
     background-color: rgb(146, 213, 215);
-    height: 1000px;
     width: 1240px;
+    height: 240px; 
     margin: auto;
-    padding-top: 15px;
+    padding-top: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.Section_2 {
+    background-color: rgb(255, 246, 223);
+    width: 1240px;
+    height: 260px; 
+    margin: auto;
+    padding-top: 45px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.Section_3 {
+    background-color: rgb(254, 227, 147);
+    width: 1240px;
+    height: 650px;
+    margin: auto;
+    padding-top: 40px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.Section_4 {
+    background-color: rgb(255, 246, 223);
+    width: 1240px;
+    height: 450px; 
+    margin: auto;
+    padding-top: 40px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.Section_5 {
+    background-color: rgb(246, 144, 104);
+    width: 1240px;
+    height: 280px; 
+    margin: auto;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 10px;
+}
+.title {
+    font-family: "Berlin Sans FB Demi", sans-serif;
+     font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+.subtitle {
+    font-size: 25px;
+}
+
+.mission-container {
+    padding: 0 40px;
+}
+.mission-text {
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+.story-container {
+    padding: 0 50px;
+}
+.story-paragraph {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 0 40px;
+}
+.feature-card {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 280px;
+    border-radius: 8px;
+}
+.feature-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.cta-box h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.cta-box p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.start_search_button {
+    font-size: 15px;
+    color: black;
+    background-color: rgb(246, 144, 104);
+    border-color: rgb(252, 228, 153);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 30px;
+    margin-top: 12px;
+    height: 38px;
+    width: 180px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.start_search_button:hover {
+    background-color: rgb(247, 133, 88);
+    border-color: rgb(252, 228, 153);
+    transform: scale(1.10);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }

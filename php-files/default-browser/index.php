@@ -1,20 +1,6 @@
 <?php 
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
     require_once '../process-and-setting/database-connection.php'; 
     require_once '../process-and-setting/header-authentication.php'; 
-
-    if (isset($isLoggedIn) && $isLoggedIn) {
-        if (isset($role) && $role === 'owner') {
-            header("Location: ../owner-browser/owner-homepage.php");
-            exit();
-        } 
-        else {
-            header("Location: ../renter-browser/renter-homepage.php");
-            exit();
-        }
-    }
 ?>
 
 
@@ -58,7 +44,7 @@
                 <button id="about_us-btn" class="about_us_button" onclick="window.location.href='about-us.php'">ABOUT US</button>
                 <button id="contact-btn" class="contact_button" onclick="window.location.href='contact.php'">CONTACT</button>
                  
-                <button id="sign_in-btn" class="sign_in_button" onclick="openModal()">Sign In</button>
+                <button id="sign_in-btn" class="sign_in_button" onclick="openModal(event)">Sign In</button>
 
             </header>
 

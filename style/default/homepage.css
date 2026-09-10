@@ -137,29 +137,11 @@
     line-height: 1.1;
 }
 
-.price-tag1 {
+.price-tag1 .price-tag2 .price-tag3{
     position: absolute;
     top: 82px;
     left: 250px;
     font-size: 20px;
-    font-weight: bold;
-    color: #000000;
-}
-
-.price-tag2 { 
-    position: absolute;
-    top: 82px;
-    left: 250px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #000000;
-}
-
-.price-tag3 {
-    position: absolute;
-    top: 60px;
-    left: 260px;
-    font-size: 18px;
     font-weight: bold;
     color: #000000;
 }
@@ -231,25 +213,7 @@
     line-height: 1.1;
 }
 
-.second-price-tag1 {
-    position: absolute;
-    top: 82px;
-    left: 240px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #000000;
-}
-
-.second-price-tag2 {
-    position: absolute;
-    top: 82px;
-    left: 240px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #000000;
-}
-
-.second-price-tag3 {
+.second-price-tag1 .second-price-tag2 .second-price-tag3{
     position: absolute;
     top: 82px;
     left: 240px;

@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="../../style/default/web-app.css">
         <link rel="stylesheet" href="../../style/default/header-style.css">
         <link rel="stylesheet" href="../../style/default/footer-style.css">
-        <link rel="stylesheet" href="../../style/default/homepage.css">
         <link rel="stylesheet" href="../../style/default/features.css">
         <link rel="stylesheet" href="../../style/profile-settings.css">
         <link rel="stylesheet" href="../../style/sign-in.css">
@@ -167,7 +166,7 @@
                                     </div>
                                 </div>
                                 <div class="chat-header-actions">
-                                    <button class="chat-action-btn" title="View Property Details" onclick="window.location.href='listings.php'">👁️ View Listing</button>
+                                    <button class="chat-action-btn" title="View Property Details">View Listing</button>
                                 </div>
                             </div>
 
@@ -207,9 +206,19 @@
                             </div>
                 </div>
             </main>
+
+             <main class="features-section-6">  
+                <h1>SIGN UP NOW!</h1> 
+                <h3 class="features-description">Discover the unique features of UHoppy that make finding your perfect home a breeze.     
+                <br> From our user-friendly interface to our comprehensive property listings,  
+                <br> we provide everything you need to make your home search effortless and enjoyable.</h3> 
+                <button id="sign_up-btn" class="sign_up_button" onclick="openSignupModal()">Sign Up</button>
+            </main>
+
             <?php 
                 include 'footer.php'; 
             ?>
+
         </div>
     </body>
 </html>           

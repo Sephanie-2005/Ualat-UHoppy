@@ -36,92 +36,94 @@
 
 .features-section-5 {
     background-color: rgb(254, 227, 147);
-    height: 500px;
+    min-height: 500px;
     width: 1240px;
     margin: auto;
     padding-top: 40px;
+    padding-bottom: 50px;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .feature-previews {
-    position:absolute;
     margin-top: 60px;
     display: flex;
     flex-direction: column;
     gap: 50px;
+    padding: 0 40px;
 }
 
 .preview-section {
-    position:absolute;
     background: #fdfdfd;
     border: 1px solid #eaeaea;
     border-radius: 12px;
     padding: 30px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    text-align: left;
 }
 
 .section-title {
-    position:absolute;
     font-size: 1.6rem;
     color: #2c3e50;
-    margin-bottom: 5px;
+    margin: 0 0 5px 0;
 }
 
 .section-subtitle {
-    position:absolute;
     font-size: 1rem;
     color: #7f8c8d;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
 }
 
 .map-mockup {
-    position:absolute;
     display: flex;
     height: 350px;
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid #ddd;
+    background: #ffffff;
 }
+
 .map-sidebar {
-    position:absolute;
-    width: 30px;
+    width: 250px; 
     background: #f8f9fa;
     border-right: 1px solid #ddd;
     overflow-y: auto;
 }
+
 .sidebar-item {
-    position:absolute;
     padding: 15px;
     border-bottom: 1px solid #eee;
     cursor: pointer;
 }
+
 .sidebar-item.active { 
-    position:absolute;
     background: #e8f4fd; 
     border-left: 4px solid #3498db; 
 }
+
 .sidebar-item h4 { 
-    position:absolute;
-    margin: 0 0 5px 0; font-size: 1rem; 
+    margin: 0 0 5px 0; 
+    font-size: 1rem; 
 }
+
 .sidebar-item p { 
-    position:absolute;
-    margin: 0; font-size: 0.85rem; 
+    margin: 0; 
+    font-size: 0.85rem; 
     color: #666; 
 }
 
 .map-canvas {
-    position:absolute;
-    width: 70%;
+    flex: 1; 
     background: #e5e3df; 
-    position: relative;
+    position: relative; 
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .map-placeholder-text { 
-    position:absolute;
-    color: #888; font-weight: bold; 
+    color: #888; 
+    font-weight: bold; 
     opacity: 0.6; 
 }
 
@@ -134,93 +136,94 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     font-weight: bold;
 }
+
 .pin-label { 
-    position:absolute;
     margin-left: 5px; 
     font-size: 0.75rem; 
 }
 
 .tracker-mockup {
-    position:absolute;
     background: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 20px;
 }
+
 .tracker-header {
-    position:absolute;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-bottom: 15px;
     border-bottom: 1px solid #eee;
     margin-bottom: 15px;
 }
+
 .status-badge {
-    position:absolute;
     background: #2ecc71;
     color: white;
     padding: 4px 10px;
     border-radius: 12px;
     font-size: 0.8rem;
 }
+
 .tracker-stats-grid {
-    position:absolute;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
     margin-bottom: 20px;
 }
+
 .stat-box {
-    position:absolute;
     background: #f9f9f9;
     padding: 15px;
     border-radius: 6px;
     border: 1px solid #eee;
 }
+
 .stat-label { 
     display: block; 
     font-size: 0.85rem; 
     color: #7f8c8d; 
 }
+
 .stat-value { 
-    position:absolute;
     display: block; 
     font-size: 1.4rem; 
     font-weight: bold; 
     color: #2c3e50; 
     margin: 5px 0; 
 }
+
 .stat-sub { 
-    position:absolute;
     display: block; 
     font-size: 0.75rem; 
     color: #95a5a6; 
 }
 
 .payment-history-table {
-    position:absolute;
     width: 100%;
     border-collapse: collapse;
     font-size: 0.9rem;
 }
-.payment-history-table th, .payment-history-table td {
-    position: absolute;
-    padding: 10px;
+
+.payment-history-table th, 
+.payment-history-table td {
+    padding: 12px 10px;
     text-align: left;
     border-bottom: 1px solid #eee;
 }
+
 .payment-history-table th { 
-    position: absolute;
     background: #f4f6f7; 
     color: #34495e; 
 }
+
 .badge.paid { 
-    position: absolute;
     color: #2ecc71; 
     font-weight: bold; 
 }
+
 .chat-mockup {
-    position: absolute;
     display: flex;
     height: 480px;
     border: 1px solid #e2e8f0;
@@ -231,15 +234,13 @@
 }
 
 .chat-sidebar {
-    position: absolute;
-    width: 32px;
+    width: 260px; 
     background: #f8fafc;
     border-right: 1px solid #e2e8f0;
     overflow-y: auto;
 }
 
 .chat-user-node {
-    position: absolute;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -250,22 +251,20 @@
 }
 
 .chat-user-node:hover { 
-    position: absolute;
     background: #f1f5f9; 
 }
 
 .chat-user-node.active { 
-    position: absolute;
     background: #e0f2fe; 
     border-left: 4px solid #0284c7; 
 }
+
 .chat-node-info { 
-    position: absolute;
     flex: 1; 
     min-width: 0; 
 }
+
 .chat-node-info strong { 
-    position: absolute;
     display: block; 
     font-size: 0.9rem; 
     color: #1e293b; 
@@ -273,8 +272,8 @@
     overflow: hidden; 
     white-space: nowrap; 
 }
+
 .chat-node-info .preview-text { 
-    position: absolute;
     display: block; 
     font-size: 0.8rem; 
     color: #64748b; 
@@ -285,7 +284,6 @@
 }
 
 .chat-avatar {
-    position: absolute;
     width: 40px;
     height: 40px;
     background: #0284c7;
@@ -298,60 +296,56 @@
     font-size: 0.85rem;
     flex-shrink: 0;
 }
+
 .chat-user-node:nth-child(2) .chat-avatar { 
-    position: absolute;
     background: #0d9488; 
 }
+
 .header-avatar { 
-    position: absolute;
     width: 36px; 
     height: 36px; 
     font-size: 0.8rem; 
 }
 
 .chat-window {
-    position: absolute;
-    width: 68px;
+    flex: 1; 
     display: flex;
     flex-direction: column;
     background: #ffffff;
 }
 
 .chat-window-header {
-    position: absolute;
     padding: 14px 20px;
     background: #ffffff;
     border-bottom: 1px solid #e2e8f0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 2;
 }
 
 .header-user-details { 
-    position: absolute;
     display: flex; 
     align-items: center; 
     gap: 12px; 
 }
 
 .chat-target-name { 
-    position: absolute;
-    margin: 0; font-size: 0.95rem; 
+    margin: 0; 
+    font-size: 0.95rem; 
     color: #0f172a; 
     font-weight: 600; 
 }
 
 .chat-target-status { 
-    position: absolute;
     font-size: 0.75rem; 
     color: #64748b; 
     display: block; 
 }
+
 .chat-action-btn { 
-    position: absolute;
     background: #f1f5f9; 
-    border: none; padding: 6px 12px; 
+    border: none; 
+    padding: 6px 12px; 
     border-radius: 6px; 
     font-size: 0.8rem; 
     font-weight: 500; 
@@ -361,12 +355,10 @@
 }
 
 .chat-action-btn:hover { 
-    position: absolute;
     background: #e2e8f0; 
 }
 
 .chat-messages-area {
-    position: absolute;
     flex: 1;
     padding: 20px;
     background: #f8fafc;
@@ -375,13 +367,13 @@
     flex-direction: column;
     gap: 16px;
 }
+
 .chat-date-separator { 
     text-align: center; 
     margin: 10px 0; 
-    position: relative; 
 }
+
 .chat-date-separator span { 
-    position: absolute;
     background: #f8fafc; 
     padding: 4px 12px; 
     font-size: 0.75rem; 
@@ -392,26 +384,25 @@
 }
 
 .message { 
-    position: absolute;
     display: flex; 
-    width: 100px; 
+    width: 100%; 
 }
+
 .message-content { 
     max-width: 65%; 
     padding: 10px 14px; 
     border-radius: 12px; 
-    position: relative; 
     box-shadow: 0 1px 2px rgba(0,0,0,0.03); 
 }
+
 .message p { 
-    position: absolute;
     margin: 0; 
     font-size: 0.9rem; 
     line-height: 1.4; 
     word-break: break-word; 
 }
+
 .message .timestamp { 
-    position: absolute;
     font-size: 0.7rem; 
     color: #94a3b8; 
     display: block; 
@@ -420,11 +411,10 @@
 }
 
 .message.incoming { 
-    position: absolute;
     justify-content: flex-start; 
 }
+
 .message.incoming .message-content {
-    position: absolute; 
     background: #ffffff; 
     border: 1px solid #e2e8f0; 
     border-top-left-radius: 2px; 
@@ -432,59 +422,52 @@
 }
 
 .message.outgoing { 
-    position: absolute;
     justify-content: flex-end; 
 }
+
 .message.outgoing .message-content { 
-    position: absolute;
     background: #0ea5e9; 
     border-top-right-radius: 2px; 
     color: #ffffff; 
 }
+
 .message.outgoing .timestamp { 
-    position: absolute;
     color: #bae6fd; 
 }
 
 .chat-input-mock {
-    position: absolute;
     padding: 14px 20px;
     background: #ffffff;
     border-top: 1px solid #e2e8f0;
-    display: flex;
-    align-items: center;
-    gap: 14px;
 }
-.chat-attachment-trigger { 
-    position: absolute;
-    font-size: 1.2rem; 
-    color: #94a3b8; 
-    cursor: not-allowed; 
-    transition: color 0.2s; 
+
+.features-section-6 {
+    background-color: rgb(146, 213, 215);
+    height: 320px;
+    width: 1240px;
+    margin: auto;
+    padding-top: 40px;
+    text-align: center;
 }
-.chat-input-field { 
-    position: absolute;
-    flex: 1; padding: 10px 16px; 
-    border: 1px solid #cbd5e1; 
-    border-radius: 20px; 
-    font-size: 0.9rem; 
-    background: #f8fafc; 
-    color: #64748b; 
-    cursor: not-allowed; 
-    outline: none; 
+.sign_up_button {
+    font-size: 25px;
+    color: black;
+    background-color: rgb(246, 144, 104);
+    border-color: rgb(254, 227, 147);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    margin-top: 5px;
+    height: 50px;
+    width: 145px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
-.send-mock-btn { 
-    position: absolute;
-    background: #cbd5e1; 
-    color: #ffffff; 
-    border: none; 
-    width: 38px; 
-    height: 38px; 
-    border-radius: 50%; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    cursor: not-allowed; 
-    flex-shrink: 0; 
-    padding: 0; 
+
+.sign_up_button:hover {
+    background-color: rgb(247, 133, 88);
+    border-color: rgb(252, 228, 153);
+    transform: scale(1.10);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
