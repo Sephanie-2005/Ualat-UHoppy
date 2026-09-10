@@ -13,8 +13,19 @@
             PDO::ATTR_EMULATE_PREPARES   => false,                  
         ]);
     } 
-
     catch (PDOException $e) {
-        die("Database connection failed: " . $e->getMessage());
+        die("PDO Database connection failed: " . $e->getMessage());
     }
+
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+    $conn = new mysqli($host, $username, $password, $db_name);
+
+
+    $conn->set_charset("utf8mb4");
+
+    if ($conn->connect_error) {
+        die("MySQLi Database connection failed: " . $conn->connect_error);
+    }
+
 ?>

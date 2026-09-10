@@ -1,17 +1,13 @@
-<?php
-$isLoggedIn = $isLoggedIn ?? false;
-$userFirstName = $userFirstName ?? '';
+<?php 
+    require_once '../process-and-setting/database-connection.php'; 
+    require_once '../process-and-setting/header-authentication.php'; 
+
+    session_start();
+    if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'renter') { // Change 'owner' to 'renter' on the renter homepage
+        header("Location: ../default/index.php");
+        exit();
+}
 ?>
-
-<?php if ($isLoggedIn): ?>
-    <div class="profile-nav-wrapper">
-     
-        <img src="<?php echo $profilePic; ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()">
-    </div>
-<?php else: ?>
-    <button id="sign_in-btn" class="sign_in_button" onclick="openModal()">Sign In</button>
-<?php endif; ?>
-
 
 <!DOCTYPE html> 
     <html lang="en">
@@ -50,7 +46,6 @@ $userFirstName = $userFirstName ?? '';
                 <button id="contact-btn" class="contact_button" onclick="window.location.href='contact.php'">CONTACT</button>
                  
                 <div class="profile-nav-wrapper">
-                    <span class="header-user-name"><?php echo $userFirstName; ?></span>
                     <img src="<?php echo $profilePic; ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()">
                 </div>
 

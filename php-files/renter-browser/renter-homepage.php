@@ -1,31 +1,32 @@
-<?php
-session_start();
-require_once 'database-connection.php'; 
-require_once 'header-authentication.php'; 
+<?php 
+    require_once '../process-and-setting/database-connection.php'; 
+    require_once '../process-and-setting/header-authentication.php'; 
 
-$isLoggedIn = $isLoggedIn ?? false;
-$role = $role ?? null;
+    if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+    }
 
-if (!$isLoggedIn || $role !== 'renter') {
-    header("Location: index.php");
-    exit();
-}
+    if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'renter') { // Change 'owner' to 'renter' on the renter homepage
+        header("Location: ../default/index.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html> 
     <html lang="en">
-        <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Renter Homepage</title>
-        <link rel="stylesheet" href="../../style/web-app.css">
-        <link rel="stylesheet" href="../../style/header-style.css">
-        <link rel="stylesheet" href="../../style/footer-style.css">
-        <link rel="stylesheet" href="../../style/homepage.css">
-        <link rel="stylesheet" href="../../style/background-shapes.css">
-        <link rel="stylesheet" href="../../style/profile-settings-modal.css">
-        <link rel="stylesheet" href="../../style/pass-required-input.css">
-        <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="../../style/default/web-app.css">
+    <link rel="stylesheet" href="../../style/default/header-style.css">
+    <link rel="stylesheet" href="../../style/default/footer-style.css">
+    <link rel="stylesheet" href="../../style/renter/renter-homepage.css">
+    <link rel="stylesheet" href="../../style/default/background-shapes.css">
+    <link rel="stylesheet" href="../../style/pass-required-input.css">
+    <link rel="stylesheet" href="../../style/profile-settings.css">
+
+    <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
     </head>
 
     <body>
@@ -43,16 +44,14 @@ if (!$isLoggedIn || $role !== 'renter') {
                 <img src="../../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
                 
                 <button id="home-btn" class="home_button active">HOME</button>
-                <button id="listings-btn" class="listings_button" onclick="window.location.href='listings.php'">LISTINGS</button>
-                <button id="features-btn" class="features_button" onclick="window.location.href='features.php'">FEATURES</button>
-                <button id="about_us-btn" class="about_us_button" onclick="window.location.href='about-us.php'">ABOUT US</button>
-                <button id="contact-btn" class="contact_button" onclick="window.location.href='contact.php'">CONTACT</button>
-                 
+                <button id="listings-btn" class="listings_button" onclick="window.location.href='renter-listings.php'">LISTINGS</button>
+                <button id="features-btn" class="features_button" onclick="window.location.href='renter-features.php'">FEATURES</button>
+                <button id="about_us-btn" class="about_us_button" onclick="window.location.href='renter-about-us.php'">ABOUT US</button>
+                <button id="contact-btn" class="contact_button" onclick="window.location.href='renter-contact.php'">CONTACT</button>
+
                 <div class="profile-nav-wrapper">
-                    <span class="header-user-name"><?php echo htmlspecialchars($userFirstName ?? '', ENT_QUOTES, 'UTF-8'); ?></span>
                     <img src="<?php echo $profilePic; ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()">
                 </div>
-
 
             </header>
 
@@ -67,7 +66,7 @@ if (!$isLoggedIn || $role !== 'renter') {
             </main>
 
             <main class="Section_2">
-                <h2 class="featured_listings">Featured Listings</h1>
+                <h2 class="featured_listings">Featured Listings</h2>
                 <button id="view_all-btn" class="view_all_button" onclick="window.location.href='listings.php'">- View All</button>
 
                 <div class="card-container">
@@ -76,12 +75,7 @@ if (!$isLoggedIn || $role !== 'renter') {
                         <img src="../../uploaded-images/Shared_room_1.png" alt="Shared room" class="room-image">
                         <div class="room-details">
                             <h3 class="room-title">Shared room</h3>
-                            <p class="free-label">Free:</p>
-                            <ul class="amenities-list">
-                                <li>Water</li>
-                                <li>Electricity</li>
-                                <li>Wi-fi</li>
-                            </ul>
+                            <p class="amenities-list"></p>
                             <div class="price-tag1">₱ 2,250</div>
                         </div>
                     </div>
@@ -90,11 +84,7 @@ if (!$isLoggedIn || $role !== 'renter') {
                         <img src="../../uploaded-images/Solo_room.png" alt="Solo room" class="room-image">
                         <div class="room-details">
                             <h3 class="room-title">Solo room</h3>
-                            <p class="free-label">Free:</p>
-                            <ul class="amenities-list">
-                                <li>Water</li>
-                                <li>Wi-fi</li>
-                            </ul>
+                            <p class="amenities-list"></p>
                             <div class="price-tag2">₱ 2,000</div>
                         </div>
                     </div>
@@ -103,13 +93,7 @@ if (!$isLoggedIn || $role !== 'renter') {
                         <img src="../../uploaded-images/Shared_room_2.png" alt="Shared room" class="room-image">
                         <div class="room-details">
                             <h3 class="room-title">Shared room</h3>
-                            <p class="free-label">Free:</p>
-                            <ul class="amenities-list">
-                                <li>Water</li>
-                                <li>Electricity</li>
-                                <li>Wi-fi</li>
-                                <li>Gated</li>
-                            </ul>
+                            <p class="amenities-list"></p>
                             <div class="price-tag3">₱ 1,800</div>
                         </div>
                     </div>
@@ -121,12 +105,7 @@ if (!$isLoggedIn || $role !== 'renter') {
                         <img src="../../uploaded-images/Shared_room_3.png" alt="Shared room" class="second-room-image">
                         <div class="second-room-details">
                         <h3 class="second-room-title">Shared room</h3>
-                        <p class="second-free-label">Free:</p>
-                        <ul class="second-amenities-list">
-                            <li>Water</li>
-                            <li>Electricity</li>
-                            <li>Wi-fi</li>
-                        </ul>
+                        <p class="second-amenities-list"></p>
                         <div class="second-price-tag1">₱ 1,600</div>
                         </div>
                     </div>
@@ -135,13 +114,7 @@ if (!$isLoggedIn || $role !== 'renter') {
                         <img src="../../uploaded-images/Shared_room_4.png" alt="Shared room" class="second-room-image">
                         <div class="second-room-details">
                             <h3 class="second-room-title">Shared room</h3>
-                            <p class="second-free-label">Free:</p>
-                            <ul class="second-amenities-list">
-                                <li>Water</li>
-                                <li>Electricity</li>
-                                <li>Wi-fi</li>
-                                <li>24 hr surveilance</li>
-                            </ul>
+                            <p class="second-amenities-list"></p>
                             <div class="second-price-tag2">₱ 3,000</div>
                         </div>
                     </div>
@@ -149,14 +122,9 @@ if (!$isLoggedIn || $role !== 'renter') {
                     <div class="second-room-card">
                         <img src="../../uploaded-images/Bedspacer.png" alt="Bedspacer" class="second-room-image">
                         <div class="second-room-details">
-                            <h3 class="second-room-title">Bedspacer</h3>
-                            
-                            <ul class="second-amenities-list">
+                            <h3 class="second-room-title">Bedspacer</h3> 
+                            <p class="second-amenities-list">
                                 <p></p>
-                                <li>Air conditioned</li>
-                                <li>Free wi-fi</li>
-                                <li>With parking space</li>
-                            </ul>
                             <div class="second-price-tag3">₱ 3,500</div>
                         </div>
                     </div>
@@ -287,7 +255,7 @@ if (!$isLoggedIn || $role !== 'renter') {
 
             </main>
 
-            <main class="Owner_Renter_Section_4">
+            <main class="Section_4">
                 <p class="uhoppy">UHoopy</p>
                 <p class="par_2"> &emsp; &emsp; is an easy-to-use web application that connects
                     <br>people looking for a room with landlords who have places to rent.
@@ -297,27 +265,20 @@ if (!$isLoggedIn || $role !== 'renter') {
 
             <main class="Section_5">
                 <h1 class="how_it_works_text">How it Works</h1>
-                <img src="../system-images/Search icon.png" alt="Search icon" class="search_icon">
+                <img src="../../system-images/Search icon.png" alt="Search icon" class="search_icon">
                 <h2 class="search_text">1. Search</h2>
-                <img src="../system-images/Connect icon.png" alt="Connect icon" class="connect_icon">
+                <img src="../../system-images/Connect icon.png" alt="Connect icon" class="connect_icon">
                 <h2 class="connect_text">2. Connect</h2>
-                <img src="../system-images/Rent icon.png" alt="Rent icon" class="rent_icon">
+                <img src="../../system-images/Rent icon.png" alt="Rent icon" class="rent_icon">
                 <h2 class="rent_text">3. Rent</h2>
-                <img src="../system-images/Live happily icon.png" alt="Live Happily icon" class="live_happily_icon">
+                <img src="../../system-images/Live happily icon.png" alt="Live Happily icon" class="live_happily_icon">
                 <h2 class="live_happily_text">4. Live Happily</h2>
             </main>
             
-            <?php 
-                include 'footer.php'; 
-                include '../sign-in-and-sign-up/sign-in.php';
-                include '../sign-in-and-sign-up/sign-up.php'; 
-                include '../process-and-setting/profile-settings.php'; 
-                include '../process-and-setting/pass-required-input.php'; 
-            ?>
-            
         </div>
-
-        <script src="../../javascript-files/profile-settings.js"></script>
+            <?php 
+                include 'r-footer.php';  
+            ?>
     </body>
         
 </html>

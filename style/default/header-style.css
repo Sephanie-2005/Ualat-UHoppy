@@ -151,26 +151,15 @@ header {
 }
 
 .profile-nav-wrapper {
-  position: absolute;          
+  position: absolute;  
+  display: block;         
   display: inline-flex;
   align-items: center;
   gap: 12px;                  
   top: 13px;                   
-  left: 1080px;               
+  right: 20px;               
   background-color: transparent;
   pointer-events: none;        
-}
-
-.header-user-name {
-  border-bottom: solid;
-  border-bottom-color: rgb(246, 144, 104);
-  border-bottom-width: 2px;
-  font-size: 20px;
-  font-weight: 600;
-  color: #000000;             
-  user-select: none;          
-  pointer-events: none;     
-  margin-left: 18px; 
 }
 
 .header-profile-pic {

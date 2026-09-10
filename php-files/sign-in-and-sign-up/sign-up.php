@@ -1,12 +1,13 @@
-
-
+<link rel="stylesheet" href="../../style/default/web-app.css">
 <div id="signupModal" class="sign-up-overlay">
     <div class="sign-up-content">
         <span class="close-sign-up-btn" onclick="closeSignupModal()">&times;</span>
         
         <h2 class="sign-up-title">Create an Account</h2>
         
-        <form action="" method="POST" class="sign-up-form">
+        <!-- Change from signup-process.php to sign-up-process.php -->
+<form action="../process-and-setting/sign-up-process.php" method="POST" class="sign-up-form">
+
              <input type="hidden" name="signup_submit" value="1"> 
     
              <div class="input-info">
