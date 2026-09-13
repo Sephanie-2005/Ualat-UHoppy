@@ -1,16 +1,19 @@
 <?php 
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
     require_once '../process-and-setting/database-connection.php'; 
     require_once '../process-and-setting/header-authentication.php'; 
 
-    if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-    }
-
-    if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'renter') { // Change 'owner' to 'renter' on the renter homepage
-        header("Location: ../default/index.php");
+    // FIX: Verify they are logged in AND that their role is explicitly 'renter'
+    if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'renter') { 
+        // Kick them back to the main login index page if they shouldn't be here
+        header("Location: ../default-browser/index.php?error=unauthorized");
         exit();
     }
 ?>
+
 
 <!DOCTYPE html> 
     <html lang="en">

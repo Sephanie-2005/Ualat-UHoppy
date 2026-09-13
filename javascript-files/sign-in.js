@@ -1,8 +1,6 @@
-// 1. Get references to your elements at the top
 const modal = document.getElementById("signinModal");
 const myButton = document.getElementById('myButton');
 
-// 2. Define the modal functions
 function openModal() {
     if (modal) {
         modal.style.setProperty("display", "flex", "important");
@@ -23,16 +21,24 @@ function switchToSignup(event) {
     }
 }
 
-// 3. Handle page load and event setup when the DOM is ready
+// CRUCIAL: Bind functions to the window object so inline HTML 'onclick' can find them
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.switchToSignup = switchToSignup;
+
+// CONSOLIDATED SINGLE LISTENER: Prevents double-firing anomalies
 document.addEventListener("DOMContentLoaded", function() {
-    // Attach the click event to your button safely
+    // Standard button fallback hook
     if (myButton) {
         myButton.addEventListener('click', openModal);
     }
 
-    // Check URL parameters (Only opens automatically IF 'error=failed' is in the URL)
+    // Force check for both URL string parameter and internal PHP session error containers
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('error') === 'failed') {
-        openModal(); 
+    const hasErrorParam = urlParams.get('error') === 'failed';
+    const hasErrorDiv = document.querySelector('.login-error-msg') !== null;
+
+    if (hasErrorParam || hasErrorDiv) {
+        setTimeout(openModal, 50); // Small 50ms delay gives CSS time to paint before opening
     }
 });

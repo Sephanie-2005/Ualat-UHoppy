@@ -1,13 +1,17 @@
 <?php 
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
     require_once '../process-and-setting/database-connection.php'; 
     require_once '../process-and-setting/header-authentication.php'; 
 
-    session_start();
-    if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'renter') { // Change 'owner' to 'renter' on the renter homepage
-        header("Location: ../default/index.php");
+    if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'owner') { 
+        header("Location: ../default-browser/index.php?error=unauthorized");
         exit();
-}
+    }
 ?>
+
 
 <!DOCTYPE html> 
     <html lang="en">

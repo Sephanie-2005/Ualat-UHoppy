@@ -151,11 +151,11 @@
         }
     }
 
-    $userData = ['first_name' => '', 'middle_name' => '', 'last_name' => '', 'username' => '', 'email' => '', 'phone_number' => '', 'profile_picture' => ''];
+    $userData = ['first_name' => '', 'middle_name' => '', 'last_name' => '', 'email' => '', 'phone_number' => '', 'profile_picture' => ''];
     if ($userId > 0) {
         $table = ($role === 'owner') ? 'owners' : 'renters';
         $idCol = ($role === 'owner') ? 'owner_id' : 'renter_id';
-        $stmt = $conn->prepare("SELECT first_name, middle_name, last_name, username, email, phone_number, profile_picture FROM $table WHERE $idCol = ?");
+        $stmt = $conn->prepare("SELECT first_name, middle_name, last_name, email, phone_number, profile_picture FROM $table WHERE $idCol = ?");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
         $fetched = $stmt->get_result()->fetch_assoc();

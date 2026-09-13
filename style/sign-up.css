@@ -92,7 +92,7 @@ body .sign-up-overlay .sign-up-content {
 
 .sign-up-overlay .sign-up-submit-btn.signup-theme-btn {
     color: #000000;
-    background-color: rgb(146, 213, 215);
+    background-color: rgb(246, 144, 104);
     border-color: rgb(252, 228, 153);
     border-style: solid;
     border-radius: 7px; 
@@ -100,8 +100,8 @@ body .sign-up-overlay .sign-up-content {
 }
 
 .sign-up-overlay .sign-up-submit-btn.signup-theme-btn:hover {
-    background-color: rgb(131, 212, 215);
-    border-color: rgb(237, 207, 117);
+    background-color: rgb(247, 133, 88);
+    border-color: rgb(252, 228, 153);
     transform: scale(1.02);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }

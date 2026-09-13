@@ -73,17 +73,14 @@
                 <h2 class="section-title">What We Do</h2>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <span class="feature-icon">📍</span>
                         <h3>Discover & Map Out</h3>
                         <p>Easily find and visualize local apartments, boarding houses, bedspacers, and alternative spaces tailored to your budget.</p>
                     </div>
                     <div class="feature-card">
-                        <span class="feature-icon">📅</span>
                         <h3>Stay & Rent Tracking</h3>
                         <p>Keep a clear history of your exact duration of stay and organize your ongoing rent payments without the messy paperwork.</p>
                     </div>
                     <div class="feature-card">
-                        <span class="feature-icon">💬</span>
                         <h3>Direct Chat</h3>
                         <p>Communicate instantly with landlords and landladies to ask questions, book viewings, and finalize stay arrangements.</p>
                     </div>

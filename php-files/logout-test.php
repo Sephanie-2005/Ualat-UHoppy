@@ -2,6 +2,6 @@
     session_start();
     session_unset();
     session_destroy();
-    header("Location: ./default-browser/index.php");
+    echo "<script>window.location.href = '../default-browser/index.php';</script>";
     exit();
 ?>

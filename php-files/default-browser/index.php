@@ -1,9 +1,10 @@
 <?php 
-    require_once '../process-and-setting/database-connection.php'; 
-    require_once '../process-and-setting/header-authentication.php'; 
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    require_once '../process-and-setting/database-connection.php';  
 ?>
-
-
 
 <!DOCTYPE html> 
     <html lang="en">
@@ -283,7 +284,6 @@
 <?php 
     include '../sign-in-and-sign-up/sign-in.php';
     include '../sign-in-and-sign-up/sign-up.php'; 
-    include '../process-and-setting/profile-settings.php'; 
 ?>
 
 <script src="../../javascript-files/sign-up.js"></script>
