@@ -1,19 +1,21 @@
+/* Dark blurred overlay background layout */
 .settings-popup-overlay {
     position: fixed;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 99999; /* Higher priority than standard navigation elements */
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease;
 }
 
+/* Class applied by JavaScript to trigger reveal mechanics */
 .settings-popup-overlay.active {
     opacity: 1;
     pointer-events: auto;
@@ -22,6 +24,7 @@
 .settings-popup-box {
     background-color: #ffffff;
     width: 520px;
+    max-height: 85vh; /* Prevents the box from spilling off the screen */
     border-radius: 8px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
     display: flex;
@@ -34,13 +37,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px 15px 20px;
+    padding: 15px 20px;
     border-bottom: 1px solid #eeeeee;
-    background-color: #ffffff;
 }
 
 .settings-popup-header h3 {
-    margin: 0px;
+    margin: 0;
     font-size: 18px;
     color: #333333;
 }
@@ -62,13 +64,13 @@
     display: flex;
     background-color: #f8f9fa;
     border-bottom: 1px solid #eeeeee;
-    padding: 0px 10px 0px 10px;
+    padding: 0 10px;
 }
 
 .popup-nav-tab {
     background: none;
     border: none;
-    padding: 12px 15px 12px 15px;
+    padding: 12px 15px;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
@@ -93,7 +95,8 @@
 
 .settings-popup-body {
     padding: 20px;
-    min-height: 270px;
+    max-height: calc(85vh - 110px); /* Sets the max height for the form contents */
+    overflow-y: auto; /* Adds a nice scrollbar inside the modal if it's too long */
     text-align: left;
 }
 
@@ -123,7 +126,7 @@
 .modal-upload-btn {
     background-color: #f0f0f0;
     font-size: 12px;
-    padding: 6px 12px 6px 12px;
+    padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
     font-weight: 600;
@@ -146,11 +149,10 @@
     font-weight: 600;
     margin-bottom: 5px;
     color: #545454;
-    text-align: left;
 }
 
 .popup-field input {
-    padding: 8px 12px 8px 12px;
+    padding: 8px 12px;
     font-size: 14px;
     border: 1px solid #cccccc;
     border-radius: 5px;
@@ -173,12 +175,11 @@
     background-color: rgb(246, 144, 104);
     color: #ffffff;
     border: none;
-    padding: 10px 18px 10px 18px;
+    padding: 10px 18px;
     border-radius: 5px;
     font-weight: 600;
     cursor: pointer;
     font-size: 14px;
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     transition: background-color 0.2s;
     display: block;
     margin-top: 10px;
@@ -199,8 +200,8 @@
 
 .popup-danger-input {
     width: 95%;
-    padding: 8px 12px 8px 12px;
-    margin: 12px 0px 12px 0px;
+    padding: 8px 12px;
+    margin: 12px 0;
     border: 1px solid #cccccc;
     border-radius: 4px;
 }
@@ -209,7 +210,7 @@
     background-color: #dc3545;
     color: #ffffff;
     border: none;
-    padding: 8px 16px 8px 16px;
+    padding: 8px 16px;
     border-radius: 4px;
     font-weight: 600;
     cursor: pointer;
@@ -231,22 +232,15 @@
 
 .password-rules-list {
     list-style: none;
-    padding: 0px;
-    margin: 8px 0px 0px 0px;
-    text-align: left;
+    padding: 0;
+    margin: 8px 0 0 0;
 }
 
 .password-rules-list li {
     font-size: 12px;
     margin-bottom: 4px;
-    transition: color 0.2s ease;
     font-weight: 500;
 }
 
-.password-rules-list li.rule-invalid {
-    color: #dc3545; /* Red */
-}
-
-.password-rules-list li.rule-valid {
-    color: #28a745; /* Green */
-}
+.rule-invalid { color: #dc3545; }
+.rule-valid { color: #28a745; }

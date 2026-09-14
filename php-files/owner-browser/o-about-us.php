@@ -75,81 +75,72 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Owner Homepage</title>
+        <title>About Us</title>
         <link rel="stylesheet" href="../../style/default/web-app.css">
         <link rel="stylesheet" href="../../style/default/header-style.css">
         <link rel="stylesheet" href="../../style/default/footer-style.css">
-        <link rel="stylesheet" href="../../style/owner/owner-homepage.css">
-        <link rel="stylesheet" href="../../style/default/background-shapes.css">
-        <link rel="stylesheet" href="../../style/default/pass-required-input.css">
+        <link rel="stylesheet" href="../../style/owner/o-about.css">
         <link rel="stylesheet" href="../../style/profile-settings.css">
-        <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/link-logo.jpg">
+        <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
     </head>
 
     <body>
         <div class="web-app">
-            <div class="square1"></div>
-            <div class="square2"></div>
 
-            <header>
+           <header>
+                
                 <img src="../../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
-                <button id="home-btn" class="home_button active">HOME</button>
+                
+                <button id="home-btn" class="home_button" onclick="window.location.href='owner-homepage.php'">HOME</button>
                 <button id="property-btn" class="property_button" onclick="window.location.href='o-property.php'">PROPERTY</button>
                 <button id="messages-btn" class="messages_button" onclick="window.location.href='o-messages.php'">MESSAGES</button>
-                <button id="about_us-btn" class="about_us_button" onclick="window.location.href='o-about-us.php'">ABOUT US</button>
+                <button id="about_us-btn" class="about_us_button active">ABOUT US</button>
                 <button id="contact-btn" class="contact_button" onclick="window.location.href='o-contact.php'">CONTACT</button>
-                
+                 
                 <div class="profile-nav-wrapper">
                     <img src="<?php echo htmlspecialchars($profilePic, ENT_QUOTES, 'UTF-8'); ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()" style="cursor: pointer; border: 2px solid rgb(246, 144, 104);">
                 </div>
+
             </header>
 
             <main class="Section_1">
-                <h1 class="text_1">Show Your Happy Place.</h1>
-                <p class="par_1">Upload and manage your: <br> 
-                apartment, boarding house, bedspacer, and etc.. 
-                    <br> Track renters duration of stay and rent payments. 
-                    <br> Chat with renters.
-                </p>
-                <button id="start-btn" class="start_button" onclick="window.location.href='property.php'">Start</button>     
+                <div class="container">
+                    <h1 class="title">UHoppy</h1>
+                    <p class="subtitle">Hop into the happiness in finding a place to stay!</p>
+                </div>
             </main>
 
             <main class="Section_2">
-                <h2 class="section-title">My Active Renters</h2>
-                
-                <?php if (empty($renters)): ?>
-                    <div class="no-renters-box">
-                        <p class="no-renters-text">No active renters renting your property yet.</p>
-                    </div>
-                <?php else: ?>
-                    <div class="renters-grid">
-                        <?php foreach ($renters as $renter): ?>
-                            <div class="renter-card">
-                                <h3 class="renter-name">
-                                    <?php echo htmlspecialchars($renter['first_name'] . ' ' . $renter['last_name']); ?>
-                                </h3>
-                                <p class="renter-details"><strong>Property:</strong> <?php echo htmlspecialchars($renter['property_name'] . ' (' . ($renter['accommodation_name'] ?? $renter['accomodation_name']) . ')'); ?></p>
-                                <p class="renter-email"> <?php echo htmlspecialchars($renter['email']); ?></p>
-                                <p class="renter-phone"> <?php echo htmlspecialchars($renter['phone_number']); ?></p>
-                            </div>
-                    <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
+                <div class="mission-container">
+                    <h1>Our Mission</h1>
+                    <p class="mission-text">
+                        Our mission is to simplify the housing search by helping users discover, map out, and secure 
+                        affordable accommodations while providing built-in tracking for rent payments and direct 
+                        communication with landlords.
+                    </p>
+                </div>
             </main>
 
             <main class="Section_3">
-                <h2 class="reminder">Reminder!!!</h2>
-                <p class="warning-text">
-                    UHoppy strictly enforces a zero-tolerance policy against fraudulent activities. 
-                    <br> Landlords must provide accurate listing information, and renters must present valid credentials. 
-                    <br> Any accounts involved in deceptive behavior or payment scams will be permanently banned and reported.
-                </p>
+                <div class="story-container">
+                    <h2>How UHoppy Began</h2>
+                    <p class="story-paragraph">
+                        Finding a place to live shouldn't feel like navigating an endless, exhausting maze. UHoppy was born out of a simple, universal frustration that almost every renter knows too well. The exhausting hustle of walking street by street under the blazing sun or pouring rain, scouring fences for faded "Room for Rent" signs. Too many days were wasted knock on doors just to find a single available room, guessing hidden rental costs, and dealing with the constant anxiety of losing track of loose paper rent receipts. We watched students struggling to balance their classes while hunting for bedspacers, and young professionals spending their entire weekends searching for a decent boarding house.
+                    </p>
+                    <p class="story-paragraph">
+                        As we looked closer at the problem, we realized it wasn't just hard for renters, it was stressful for property owners too. Landlords and landladies were relying on old-school notebooks to log payments, manually tracking who paid for what month, and dealing with chaotic text messages scattered across different apps. It became blindingly clear that students, young professionals, and property owners desperately needed a smarter, unified digital ecosystem built specifically to bridge this gap.
+                    </p>
+                    <p class="story-paragraph">
+                        Driven by the vision to make housing seamless, we built UHoppy to completely eliminate the stress of moving and property management. By bringing advanced mapping precision, automated lease and payment tracking, and a direct, secure instant messaging system under one digital roof, we bridge the gap between hosts and seekers. We want to ensure that from the very first click to your final month's rent payment, finding and securing your next home is as joyful, organized, and happy as it truly deserves to be.
+                    </p>
+                </div>
             </main>
-            
+                
             <?php include '../process-and-setting/profile-settings-view.php'; ?>
-
-            <?php include 'o-footer.php'; ?>
+            <?php include 'o-footer.php';  ?>
         </div>
-    </body>  
+    </body>
+        
 </html>
+
 <script src="../../javascript-files/profile-settings-modal.js"></script>

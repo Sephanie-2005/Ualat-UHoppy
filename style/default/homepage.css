@@ -88,12 +88,6 @@
     background-color: #ffffff;
     border-radius: 16px;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.8);
-    cursor: pointer;
-}
-
-.room-card:hover {
-    transform: scale(1.02);
-    box-shadow: 4px 7px 12px rgba(0, 0, 0, 0.6);
 }
 
 .room-image {
@@ -137,10 +131,10 @@
     line-height: 1.1;
 }
 
-.price-tag1 .price-tag2 .price-tag3{
+.price-tag1, .price-tag2, .price-tag3 {
     position: absolute;
-    top: 82px;
-    left: 250px;
+    bottom: -30px;      
+    right: 20px;       
     font-size: 20px;
     font-weight: bold;
     color: #000000;
@@ -164,12 +158,6 @@
     background-color: #ffffff;
     border-radius: 16px;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.8);
-    cursor: pointer;
-}
-
-.second-room-card:hover {
-    transform: scale(1.02);
-    box-shadow: 4px 7px 12px rgba(0, 0, 0, 0.6);
 }
 
 .second-room-image {
@@ -213,11 +201,11 @@
     line-height: 1.1;
 }
 
-.second-price-tag1 .second-price-tag2 .second-price-tag3{
+.second-price-tag1, .second-price-tag2, .second-price-tag3 {
     position: absolute;
-    top: 82px;
-    left: 240px;
-    font-size: 24px;
+    bottom: -30px;      
+    right: 20px;       
+    font-size: 20px;
     font-weight: bold;
     color: #000000;
 }

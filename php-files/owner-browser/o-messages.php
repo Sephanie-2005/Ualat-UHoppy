@@ -67,7 +67,6 @@
     } else {
         $profilePic = '../../system-images/default-profile.png';
     }
-
 ?>
 
 <!DOCTYPE html> 
@@ -75,81 +74,57 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Owner Homepage</title>
+        <title>Messages</title>
         <link rel="stylesheet" href="../../style/default/web-app.css">
         <link rel="stylesheet" href="../../style/default/header-style.css">
         <link rel="stylesheet" href="../../style/default/footer-style.css">
         <link rel="stylesheet" href="../../style/owner/owner-homepage.css">
         <link rel="stylesheet" href="../../style/default/background-shapes.css">
-        <link rel="stylesheet" href="../../style/default/pass-required-input.css">
         <link rel="stylesheet" href="../../style/profile-settings.css">
-        <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/link-logo.jpg">
+        <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
     </head>
 
     <body>
         <div class="web-app">
             <div class="square1"></div>
             <div class="square2"></div>
-
+            <div class="square3"></div>
+            <div class="square4"></div>
+            
             <header>
+                
                 <img src="../../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
-                <button id="home-btn" class="home_button active">HOME</button>
-                <button id="property-btn" class="property_button" onclick="window.location.href='o-property.php'">PROPERTY</button>
-                <button id="messages-btn" class="messages_button" onclick="window.location.href='o-messages.php'">MESSAGES</button>
+                
+                <button id="home-btn" class="home_button" onclick="window.location.href='owner-homepage.php'">HOME</button>
+                <button id="property-btn" class="property_button"  onclick="window.location.href='o-property.php'">PROPERTY</button>
+                <button id="messages-btn" class="messages_button active">MESSAGES</button>
                 <button id="about_us-btn" class="about_us_button" onclick="window.location.href='o-about-us.php'">ABOUT US</button>
                 <button id="contact-btn" class="contact_button" onclick="window.location.href='o-contact.php'">CONTACT</button>
-                
+                 
                 <div class="profile-nav-wrapper">
                     <img src="<?php echo htmlspecialchars($profilePic, ENT_QUOTES, 'UTF-8'); ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()" style="cursor: pointer; border: 2px solid rgb(246, 144, 104);">
                 </div>
+
             </header>
 
             <main class="Section_1">
                 <h1 class="text_1">Show Your Happy Place.</h1>
                 <p class="par_1">Upload and manage your: <br> 
-                apartment, boarding house, bedspacer, and etc.. 
+                apartment, boarding house, bedspacer, and itc.. 
                     <br> Track renters duration of stay and rent payments. 
                     <br> Chat with renters.
                 </p>
-                <button id="start-btn" class="start_button" onclick="window.location.href='property.php'">Start</button>     
+                <button id="start-btn" class="start_button" onclick="window.location.href='property.php'"> Start</button>     
             </main>
 
             <main class="Section_2">
-                <h2 class="section-title">My Active Renters</h2>
-                
-                <?php if (empty($renters)): ?>
-                    <div class="no-renters-box">
-                        <p class="no-renters-text">No active renters renting your property yet.</p>
-                    </div>
-                <?php else: ?>
-                    <div class="renters-grid">
-                        <?php foreach ($renters as $renter): ?>
-                            <div class="renter-card">
-                                <h3 class="renter-name">
-                                    <?php echo htmlspecialchars($renter['first_name'] . ' ' . $renter['last_name']); ?>
-                                </h3>
-                                <p class="renter-details"><strong>Property:</strong> <?php echo htmlspecialchars($renter['property_name'] . ' (' . ($renter['accommodation_name'] ?? $renter['accomodation_name']) . ')'); ?></p>
-                                <p class="renter-email"> <?php echo htmlspecialchars($renter['email']); ?></p>
-                                <p class="renter-phone"> <?php echo htmlspecialchars($renter['phone_number']); ?></p>
-                            </div>
-                    <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
             </main>
 
-            <main class="Section_3">
-                <h2 class="reminder">Reminder!!!</h2>
-                <p class="warning-text">
-                    UHoppy strictly enforces a zero-tolerance policy against fraudulent activities. 
-                    <br> Landlords must provide accurate listing information, and renters must present valid credentials. 
-                    <br> Any accounts involved in deceptive behavior or payment scams will be permanently banned and reported.
-                </p>
-            </main>
-            
             <?php include '../process-and-setting/profile-settings-view.php'; ?>
-
-            <?php include 'o-footer.php'; ?>
+            <?php include 'o-footer.php';  ?>
+            
         </div>
     </body>  
 </html>
+
 <script src="../../javascript-files/profile-settings-modal.js"></script>

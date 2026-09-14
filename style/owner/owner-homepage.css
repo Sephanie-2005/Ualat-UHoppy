@@ -1,0 +1,130 @@
+.Section_1 {
+    background-color: rgb(146, 213, 215);
+    height: 400px;
+    width: 1240px;
+    margin: auto;
+    padding-top: 80px;
+    text-align: center;  
+}
+
+.text_1 {
+    padding-bottom: 0px;
+}
+
+.par_1 {
+    margin-top: -12px;
+    font-size: 20px;
+}
+
+.start_button {
+    font-size: 20px;
+    color: black;
+    background-color: rgb(246, 144, 104);
+    border-color: rgb(252, 228, 153);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 30px;
+    margin-top: 12px;
+    height: 40px;
+    width: 140px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.start_button:hover {
+    background-color: rgb(247, 133, 88);
+    border-color: rgb(252, 228, 153);
+    transform: scale(1.10);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* MODIFIED SECTION_2 FOR DYNAMIC HEIGHT FLEXIBILITY */
+.Section_2 {
+    background-color: rgb(254, 227, 147);
+    min-height: 250px;           /* Changed from fixed height to flexible min-height */
+    height: auto;                /* Allows container to expand with content */
+    width: 1240px;
+    margin: auto;
+    padding: 50px 0px;          /* Clean 30px padding top and bottom, 0px left/right */
+    box-sizing: border-box;
+}
+
+.Section_2 .section-title {
+    font-size: 24px; 
+    color: #333333; 
+    margin-top: 0px;            /* Reset margins so padding handles spacing perfectly */
+    margin-bottom: 25px;
+    text-align: left;
+    padding-left: 40px;
+}
+
+.Section_2 .no-renters-box {
+    text-align: center; 
+    padding: 60px; 
+    background: #ffffff; 
+    border-radius: 12px; 
+    border: 4px solid rgb(246, 144, 104);
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+    width: 90%;
+    margin: 0 auto;
+}
+
+.Section_2 .no-renters-text {
+    color: #666666; 
+    font-size: 1.2rem; 
+    margin: 0;
+}
+
+.Section_2 .renters-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 20px;
+    padding: 0 40px;
+}
+
+.Section_2 .renter-card {
+    background: #ffffff; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+    border-left: 6px solid rgb(246, 144, 104);
+}
+
+.Section_2 .renter-name {
+    margin: 0 0 8px 0; 
+    color: #222222; 
+    font-size: 1.3rem;
+}
+
+.Section_2 .renter-email {
+    margin: 0; 
+    color: #555555; 
+    font-size: 0.95rem;
+}
+
+.Section_2 .renter-details {
+    margin: 0 0 8px 0;
+    color: #444444;
+    font-size: 0.95rem;
+}
+
+.Section_2 .renter-phone {
+    margin: 4px 0 0 0;
+    color: #555555;
+    font-size: 0.95rem;
+}
+
+
+.Section_3 {
+    background-color: rgb(246, 144, 104);
+    height: 200px;
+    width: 1240px;
+    margin: auto;
+    padding-top: 30px;
+    text-align: center;  
+}
+
+.warning-text {
+    margin-top: -12px;
+}

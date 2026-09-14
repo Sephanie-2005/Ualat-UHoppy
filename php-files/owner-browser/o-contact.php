@@ -67,89 +67,98 @@
     } else {
         $profilePic = '../../system-images/default-profile.png';
     }
-
 ?>
 
 <!DOCTYPE html> 
     <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Owner Homepage</title>
-        <link rel="stylesheet" href="../../style/default/web-app.css">
-        <link rel="stylesheet" href="../../style/default/header-style.css">
-        <link rel="stylesheet" href="../../style/default/footer-style.css">
-        <link rel="stylesheet" href="../../style/owner/owner-homepage.css">
-        <link rel="stylesheet" href="../../style/default/background-shapes.css">
-        <link rel="stylesheet" href="../../style/default/pass-required-input.css">
-        <link rel="stylesheet" href="../../style/profile-settings.css">
-        <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/link-logo.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="../../style/default/web-app.css">
+    <link rel="stylesheet" href="../../style/default/header-style.css">
+    <link rel="stylesheet" href="../../style/default/footer-style.css">
+    <link rel="stylesheet" href="../../style/owner/o-contact.css">
+    <link rel="stylesheet" href="../../style/profile-settings.css">
+    <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
     </head>
 
     <body>
         <div class="web-app">
-            <div class="square1"></div>
-            <div class="square2"></div>
-
             <header>
+                    
                 <img src="../../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
-                <button id="home-btn" class="home_button active">HOME</button>
+                    
+                <button id="home-btn" class="home_button" onclick="window.location.href='owner-homepage.php'">HOME</button> 
                 <button id="property-btn" class="property_button" onclick="window.location.href='o-property.php'">PROPERTY</button>
                 <button id="messages-btn" class="messages_button" onclick="window.location.href='o-messages.php'">MESSAGES</button>
                 <button id="about_us-btn" class="about_us_button" onclick="window.location.href='o-about-us.php'">ABOUT US</button>
-                <button id="contact-btn" class="contact_button" onclick="window.location.href='o-contact.php'">CONTACT</button>
-                
+                <button id="contact-btn" class="contact_button active">CONTACT</button>
+                    
                 <div class="profile-nav-wrapper">
                     <img src="<?php echo htmlspecialchars($profilePic, ENT_QUOTES, 'UTF-8'); ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()" style="cursor: pointer; border: 2px solid rgb(246, 144, 104);">
-                </div>
+                </div> 
+
             </header>
 
             <main class="Section_1">
-                <h1 class="text_1">Show Your Happy Place.</h1>
-                <p class="par_1">Upload and manage your: <br> 
-                apartment, boarding house, bedspacer, and etc.. 
-                    <br> Track renters duration of stay and rent payments. 
-                    <br> Chat with renters.
-                </p>
-                <button id="start-btn" class="start_button" onclick="window.location.href='property.php'">Start</button>     
+            <div class="contact-hero-container">
+                <h1 class="contact-title">Get in Touch</h1>
+                <p class="contact-subtitle">Have questions? We are here to help!</p>
+            </div>
             </main>
 
             <main class="Section_2">
-                <h2 class="section-title">My Active Renters</h2>
-                
-                <?php if (empty($renters)): ?>
-                    <div class="no-renters-box">
-                        <p class="no-renters-text">No active renters renting your property yet.</p>
-                    </div>
-                <?php else: ?>
-                    <div class="renters-grid">
-                        <?php foreach ($renters as $renter): ?>
-                            <div class="renter-card">
-                                <h3 class="renter-name">
-                                    <?php echo htmlspecialchars($renter['first_name'] . ' ' . $renter['last_name']); ?>
-                                </h3>
-                                <p class="renter-details"><strong>Property:</strong> <?php echo htmlspecialchars($renter['property_name'] . ' (' . ($renter['accommodation_name'] ?? $renter['accomodation_name']) . ')'); ?></p>
-                                <p class="renter-email"> <?php echo htmlspecialchars($renter['email']); ?></p>
-                                <p class="renter-phone"> <?php echo htmlspecialchars($renter['phone_number']); ?></p>
-                            </div>
-                    <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
+                <div class="form-container">
+                    <h2>Send Us a Message</h2>
+                    <form action="../process-and-setting/send-contact.php" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="contact_name" placeholder="Your Full Name" required class="contact-input">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="contact_email" placeholder="Your Email Address" required class="contact-input">
+                        </div>
+                        <div class="form-group">
+                            <select name="contact_subject" required class="contact-select">
+                                <option value="" disabled selected>Select Your Inquiry Type</option>
+                                <option value="General Question">General Question</option>
+                                <option value="Renting / Mapping Support">Renting / Mapping Support</option>
+                                <option value="Landlord / Property Listing Support">Landlord / Property Listing Support</option>
+                                <option value="Payment Tracking / Technical Bug">Payment Tracking / Technical Bug</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="contact_message" placeholder="Type your message here..." rows="5" required class="contact-text-area"></textarea>
+                        </div>
+                        <button type="submit" class="contact-submit-btn">Send Message</button>
+                    </form>
+                </div>
             </main>
 
             <main class="Section_3">
-                <h2 class="reminder">Reminder!!!</h2>
-                <p class="warning-text">
-                    UHoppy strictly enforces a zero-tolerance policy against fraudulent activities. 
-                    <br> Landlords must provide accurate listing information, and renters must present valid credentials. 
-                    <br> Any accounts involved in deceptive behavior or payment scams will be permanently banned and reported.
-                </p>
+                <h2 class="directory-title">Other Ways to Connect</h2>
+                <div class="directory-grid">
+                    <div class="directory-card">
+                        <h3>Email Support</h3>
+                        <p>uhoppy@gmail.com</p>
+                    </div>
+                    <div class="directory-card">
+                        <h3>Call Center</h3>
+                        <p>(+63) 917 123 4567 <br> (+63) 917 765 4321</p>
+                    </div>
+                    <div class="directory-card">
+                        <h3>Main Office</h3>
+                        <p>Dumaguete City, Negros Oriental, Philippines</p>
+                    </div>
+                </div>
             </main>
             
-            <?php include '../process-and-setting/profile-settings-view.php'; ?>
-
-            <?php include 'o-footer.php'; ?>
         </div>
-    </body>  
+            <?php 
+                include 'o-footer.php';  
+            ?>
+    </body>
+        
 </html>
-<script src="../../javascript-files/profile-settings-modal.js"></script>
+
+<script src="../../javascript-files/pass-required-input.js"></script>

@@ -1,4 +1,5 @@
-body .sign-in-overlay {
+/* CHANGE THIS LINE: Remove the 'body' tag from the selector */
+.sign-in-overlay {
     display: none; 
     position: fixed;
     z-index: 100000;          

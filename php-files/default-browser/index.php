@@ -20,9 +20,8 @@
     <link rel="stylesheet" href="../../style/sign-in.css">
     <link rel="stylesheet" href="../../style/sign-up.css">
     <link rel="stylesheet" href="../../style/pass-required-input.css">
-    <link rel="stylesheet" href="../../style/profile-settings.css">
 
-    <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
+    <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/link-logo.jpg">
     </head>
 
     <body>
@@ -118,7 +117,6 @@
                         <div class="second-room-details">
                             <h3 class="second-room-title">Bedspacer</h3> 
                             <p class="second-amenities-list">
-                                <p></p>
                             <div class="second-price-tag3">₱ 3,500</div>
                         </div>
                     </div>

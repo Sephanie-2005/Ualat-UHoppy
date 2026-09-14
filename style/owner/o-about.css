@@ -9,7 +9,7 @@
 }
 
 .Section_2 {
-    background-color: rgb(255, 246, 223);
+    background-color: rgb(254, 227, 147);
     width: 1240px;
     height: 260px; 
     margin: auto;
@@ -19,32 +19,11 @@
 }
 
 .Section_3 {
-    background-color: rgb(254, 227, 147);
+    background-color: rgb(246, 144, 104);
     width: 1240px;
     height: 650px;
     margin: auto;
     padding-top: 40px;
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.Section_4 {
-    background-color: rgb(255, 246, 223);
-    width: 1240px;
-    height: 450px; 
-    margin: auto;
-    padding-top: 40px;
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.Section_5 {
-    background-color: rgb(246, 144, 104);
-    width: 1240px;
-    height: 280px; 
-    margin: auto;
-    padding-top: 40px;
-    padding-bottom: 50px;
     text-align: center;
     box-sizing: border-box;
 }

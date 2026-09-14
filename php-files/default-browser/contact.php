@@ -7,7 +7,7 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UHoppy Homepage</title>
+    <title>Contact Us</title>
     <link rel="stylesheet" href="../../style/default/web-app.css">
     <link rel="stylesheet" href="../../style/default/header-style.css">
     <link rel="stylesheet" href="../../style/default/footer-style.css">
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../../style/sign-up.css">
     <link rel="stylesheet" href="../../style/pass-required-input.css">
 
-    <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
+    <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/link-logo.jpg">
     </head>
 
     <body>
@@ -74,17 +74,14 @@
                 <h2 class="directory-title">Other Ways to Connect</h2>
                 <div class="directory-grid">
                     <div class="directory-card">
-                        <span class="directory-icon">✉️</span>
                         <h3>Email Support</h3>
                         <p>uhoppy@gmail.com</p>
                     </div>
                     <div class="directory-card">
-                        <span class="directory-icon">📞</span>
                         <h3>Call Center</h3>
                         <p>(+63) 917 123 4567 <br> (+63) 917 765 4321</p>
                     </div>
                     <div class="directory-card">
-                        <span class="directory-icon">📍</span>
                         <h3>Main Office</h3>
                         <p>Dumaguete City, Negros Oriental, Philippines</p>
                     </div>

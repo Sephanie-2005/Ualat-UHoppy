@@ -92,7 +92,7 @@ footer {
   font-size: 10px;
   border: none;
   top: 140px;
-  right: 252px;
+  right: 253px;
   cursor: pointer;
 } 
 
@@ -109,7 +109,7 @@ footer {
   font-size: 10px;
   border: none;
   top: 160px;
-  right: 256px;
+  right: 257px;
   cursor: pointer;
 } 
 
@@ -242,4 +242,40 @@ footer {
   font-size: 13px;
   left: 54px;
   bottom: 9px;
+}
+
+/* Owner browser  */
+
+.f_property_button {
+  position: absolute;
+  color: black;
+  background: none;
+  font-size: 10px;
+  border: none;
+  top: 100px;
+  right: 252px;
+  cursor: pointer;
+} 
+
+.f_property_button:hover {
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1px;
+}
+
+.f_messages_button {
+  position: absolute;
+  color: black;
+  background: none;
+  font-size: 10px;
+  border: none;
+  top: 120px;
+  right: 250px;
+  cursor: pointer;
+} 
+
+.f_messages_button:hover {
+  border-bottom: solid;
+  border-bottom-color: rgb(246, 144, 104);
+  border-bottom-width: 1px;
 }

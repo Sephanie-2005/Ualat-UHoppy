@@ -5,8 +5,8 @@
         
         <h2 class="sign-up-title">Create an Account</h2>
         
-        <!-- Change from signup-process.php to sign-up-process.php -->
-<form action="../process-and-setting/sign-up-process.php" method="POST" class="sign-up-form">
+        
+        <form action="../process-and-setting/sign-up-process.php" method="POST" class="sign-up-form">
 
              <input type="hidden" name="signup_submit" value="1"> 
     
