@@ -78,7 +78,7 @@
         <link rel="stylesheet" href="../../style/default/web-app.css">
         <link rel="stylesheet" href="../../style/default/header-style.css">
         <link rel="stylesheet" href="../../style/default/footer-style.css">
-        <link rel="stylesheet" href="../../style/owner/owner-homepage.css">
+        <link rel="stylesheet" href="../../style/owner/o-property.css">
         <link rel="stylesheet" href="../../style/default/background-shapes.css">
         <link rel="stylesheet" href="../../style/profile-settings.css">
         <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
@@ -102,7 +102,112 @@
             </header>
 
             <main class="Section_1">
-                
+                <div class="property-management-container">
+                    <!-- Navigation Tabs -->
+                    <div class="management-tabs">
+                        <button class="tab-btn active" onclick="switchTab('manage-view')">Manage Properties</button>
+                        <button class="tab-btn" onclick="switchTab('upload-view')">Upload New Property</button>
+                    </div>
+
+                    <!-- TAB 1: MANAGE PROPERTIES VIEW -->
+                    <div id="manage-view" class="tab-content active-content">
+                        <h2>Your Listed Properties</h2>
+                        <div class="property-grid">
+                            <!-- Fetch and loop existing properties from DB here -->
+                            <!-- Example Property Card Item -->
+                            <div class="property-card">
+                                <div class="property-image-wrapper">
+                                    <img src="../../system-images/default-property.png" alt="Property Image">
+                                </div>
+                                <div class="property-details">
+                                    <h3>Sample Property Name</h3>
+                                    <p class="location">Location: Dumaguete City</p>
+                                    <p class="status-badge active-status">Active</p>
+                                    
+                                    <div class="property-actions">
+                                        <button class="action-btn edit-btn">Edit</button>
+                                        <button class="action-btn delete-btn">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Example Card -->
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: UPLOAD PROPERTY VIEW -->
+                    <div id="upload-view" class="tab-content">
+                        <h2>Register New Property</h2>
+                        <form action="../process-and-setting/upload-property-process.php" method="POST" enctype="multipart/form-data" class="upload-form">
+                            
+                            <!-- Section A: Core Property Details -->
+                            <fieldset>
+                                <legend>Core Details</legend>
+                                <div class="form-group">
+                                    <label for="property_name">Property Name *</label>
+                                    <input type="text" id="property_name" name="property_name" required placeholder="e.g., Sunset Heights Dormitory">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="property_address">Full Address *</label>
+                                    <input type="text" id="property_address" name="property_address" required placeholder="Street, Barangay, City, Province">
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="property_type">Property Type *</label>
+                                        <select id="property_type" name="property_type" required>
+                                            <option value="" disabled selected>Select Type</option>
+                                            <option value="dormitory">Dormitory</option>
+                                            <option value="apartment">Apartment</option>
+                                            <option value="house">House</option>
+                                            <option value="room">Single Room</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="property_image">Primary Cover Image *</label>
+                                        <input type="file" id="property_image" name="property_image" accept="image/*" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="property_description">Description</label>
+                                    <textarea id="property_description" name="property_description" rows="4" placeholder="Describe rules, landmarks nearby, security features..."></textarea>
+                                </div>
+                            </fieldset>
+
+                            <!-- Section B: Accommodations Units Generator -->
+                            <fieldset>
+                                <legend>Accommodation Units / Sub-rooms</legend>
+                                <p class="helper-text">Add the individual rooms, floors, or studio categories available in this property.</p>
+                                
+                                <div id="accommodation-rows-container">
+                                    <!-- Individual Dynamic Row Item -->
+                                    <div class="accommodation-row">
+                                        <div class="row-input">
+                                            <label>Unit Name/No.</label>
+                                            <input type="text" name="acc_name[]" required placeholder="Room 101 / Studio A">
+                                        </div>
+                                        <div class="row-input">
+                                            <label>Monthly Rent (PHP)</label>
+                                            <input type="number" name="acc_price[]" min="0" required placeholder="0.00">
+                                        </div>
+                                        <div class="row-input">
+                                            <label>Capacity (Pax)</label>
+                                            <input type="number" name="acc_capacity[]" min="1" required placeholder="1">
+                                        </div>
+                                        <button type="button" class="remove-row-btn" onclick="removeAccommodationRow(this)">Remove</button>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="add-row-btn" onclick="addAccommodationRow()">Add Another Unit Type</button>
+                            </fieldset>
+
+                            <div class="form-submit-wrapper">
+                                <button type="submit" class="submit-form-btn">Publish Property Listing</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </main>
 
             <?php include '../process-and-setting/profile-settings-view.php'; ?>
@@ -113,3 +218,4 @@
 </html>
 
 <script src="../../javascript-files/profile-settings-modal.js"></script>
+<script src="../../javascript-files/property.js"></script>
