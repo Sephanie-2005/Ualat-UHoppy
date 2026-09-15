@@ -229,7 +229,6 @@
 
 .Section_3 .lease-card {
     background: #fafafa;
-    border-left: 6px solid rgb(246, 144, 104);
     padding: 25px;
     border-radius: 8px;
     display: flex;
@@ -237,6 +236,7 @@
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 20px;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.8);
 }
 
 .Section_3 .property-info h3 {

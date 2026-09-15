@@ -101,8 +101,6 @@
                 
             </header>
 
-                         <!-- SECTION 1: REGISTERED PROPERTIES DISPLAY (RESTRICTED TO ONE ONLY) -->
-                        <!-- SECTION 1: REGISTERED PROPERTIES DISPLAY (WITH EDIT ACCESSIBILITY) -->
             <main class="section_1">
                 <div class="dashboard-container">
                     <?php

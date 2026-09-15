@@ -56,19 +56,26 @@
 }
 
 .action-upload-btn:hover {
-    background-color: #e67d55; 
-    transform: translateY(-2px);
+    background-color: rgb(247, 133, 88);
+    border-color: rgb(252, 228, 153);
+    transform: scale(1.05);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .action-upload-btn.secondary-color {
-    background-color: #92d5d7;
-    color: #2c3e50;
-    box-shadow: 0 4px 12px rgba(146, 213, 215, 0.3);
+    background-color: rgb(246, 144, 104);
+    color: rgb(0, 0, 0);
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+    border-color: rgb(252, 228, 153);
+    border-style: solid;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 .action-upload-btn.secondary-color:hover {
-    background-color: #7bc0c2;
-    transform: translateY(-2px);
+    background-color: rgb(247, 133, 88);
+    border-color: rgb(252, 228, 153);
+    transform: scale(1.05);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .listing-grid {
@@ -89,11 +96,12 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.04);
     border: 1px solid rgba(146, 213, 215, 0.25);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .item-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(246, 144, 104, 0.12);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .item-card.horizontal-layout {
@@ -254,12 +262,19 @@
 }
 
 .action-upload-btn.edit-mode-btn {
-    background-color: #2c3e50;
+    background-color: rgb(246, 144, 104);
+    color: rgb(0, 0, 0);
     box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+    border-color: rgb(252, 228, 153);
+    border-style: solid;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 .action-upload-btn.edit-mode-btn:hover {
-    background-color: #1a252f;
+    background-color: rgb(247, 133, 88);
+    border-color: rgb(252, 228, 153);
+    transform: scale(1.05);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .card.item-card.modular-accommodation-card {

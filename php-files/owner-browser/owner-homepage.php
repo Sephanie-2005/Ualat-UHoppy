@@ -245,7 +245,7 @@
                 <button id="start-btn" class="start_button" onclick="window.location.href='o-property.php'">Start</button>     
             </main>
 
-                           <main class="Section_2">
+            <main class="Section_2">
                 <?php if (!empty($success_message)): ?>
                     <div id="successFlashBanner" class="alert-banner alert-success"><?php echo htmlspecialchars($success_message); ?></div>
                     <script>
@@ -352,7 +352,6 @@
                     </div>
                 </div>
 
-                <!-- LEASE AGREEMENT TERMINATION MODAL -->
                 <div id="terminateLeaseModal" class="add-rental-modal-overlay">
                     <div class="modal-form-content" style="border-top-color: #dc3545;">
                         <h3>End Lease Agreement</h3>

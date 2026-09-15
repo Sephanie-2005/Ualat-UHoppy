@@ -76,7 +76,6 @@
 
 .Section_2 .renters-grid {
     display: grid; 
-    /* Strictly enforces a maximum limit of 3 equal columns */
     grid-template-columns: repeat(3, minmax(280px, 1fr)); 
     gap: 20px;
     padding: 0 40px;
@@ -93,7 +92,7 @@
     background: #ffffff; 
     padding: 20px; 
     border-radius: 8px; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
     border-left: 6px solid rgb(246, 144, 104);
 }
 
@@ -132,6 +131,7 @@
 }
 
 .Section_2 .search-action-group {
+    margin-right: 20px;
     display: flex;
     gap: 12px;
     align-items: center;
@@ -140,13 +140,13 @@
 }
 
 .Section_2 .search-action-group input {
-    width: 250px;
+    width: 400px;
     padding: 10px 14px;
     border: 2px solid rgb(246, 144, 104);
     border-radius: 6px;
     font-size: 14px;
     outline: none;
-    box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }
 
 .Section_2 .add-renter-trigger-btn {

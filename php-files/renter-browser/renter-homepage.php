@@ -198,7 +198,6 @@
                 
                 <?php if ($activeRental): ?>
                     <div class="lease-card">
-                        <!-- Left Column: Property & Accommodation Metadata -->
                         <div class="property-info">
                             <h3><?php echo htmlspecialchars($activeRental['property_name']); ?></h3>
                             <p class="info-line"><strong>Location:</strong> <?php echo htmlspecialchars($activeRental['address']); ?></p>

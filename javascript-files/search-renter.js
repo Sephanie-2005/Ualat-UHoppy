@@ -1,8 +1,3 @@
-/**
- * Controller actions for Owner Dashboard Global Renter Search
- */
-
-// Controls modal screen appearance and visibility layout states
 function toggleRentalModal(show) {
     const modal = document.getElementById('addRentalModal');
     if (!modal) return;
@@ -11,12 +6,11 @@ function toggleRentalModal(show) {
         modal.classList.add('is-visible');
     } else {
         modal.classList.remove('is-visible');
-        // Reset the form fields if closed
+       
         document.getElementById('renter_id_select').value = "";
     }
 }
 
-// Search all registered system renters and display with inline Add button
 function searchAllSystemRenters() {
     const searchInput = document.getElementById('renterSearchInput');
     const dropdown = document.getElementById('searchDropdownList');
@@ -25,14 +19,13 @@ function searchAllSystemRenters() {
     if (!searchInput || !dropdown || !storageEl) return;
     
     const searchVal = searchInput.value.trim().toLowerCase();
-    dropdown.innerHTML = ""; // Clear old dropdown results
+    dropdown.innerHTML = ""; 
     
     if (searchVal === "") {
         dropdown.style.display = "none";
         return;
     }
     
-    // Parse the system renters array payload out of our HTML attribute
     let allRenters = [];
     try {
         allRenters = JSON.parse(storageEl.getAttribute('data-all-renters')) || [];
@@ -43,7 +36,6 @@ function searchAllSystemRenters() {
     
     let matchCount = 0;
     
-    // Filter through all data array entries
     allRenters.forEach(function(renter) {
         const firstName = (renter.first_name || "").toLowerCase();
         const lastName = (renter.last_name || "").toLowerCase();
@@ -53,11 +45,9 @@ function searchAllSystemRenters() {
         if (fullName.includes(searchVal) || email.includes(searchVal)) {
             matchCount++;
             
-            // 1. Create container row
             const itemRow = document.createElement('div');
             itemRow.className = "search-result-item";
             
-            // 2. Create Left-hand content info text section (Name and Email)
             const infoDiv = document.createElement('div');
             infoDiv.className = "search-result-info";
             
@@ -71,31 +61,25 @@ function searchAllSystemRenters() {
             infoDiv.appendChild(nameSpan);
             infoDiv.appendChild(emailSpan);
             
-            // 3. Create Right-hand "+ Add" action button
             const addBtn = document.createElement('button');
             addBtn.type = "button";
             addBtn.className = "dropdown-add-action-btn";
-            addBtn.innerText = "+ Add";
+            addBtn.innerText = "Add";
             
-            // Click Handler: Selects renter, closes dropdown, clears input, and launches modal assignment instantly
             addBtn.onclick = function(e) {
-                e.stopPropagation(); // Stops double execution loops
+                e.stopPropagation(); 
                 
-                // Assign value to selector item field drop elements
                 const selectElement = document.getElementById('renter_id_select');
                 if (selectElement) {
                     selectElement.value = renter.renter_id;
                 }
                 
-                // Clear out lookup state variables text entries
                 searchInput.value = "";
                 dropdown.style.display = "none";
                 
-                // Open up lease creation panel window display options
                 toggleRentalModal(true);
             };
             
-            // Append structures together cleanly
             itemRow.appendChild(infoDiv);
             itemRow.appendChild(addBtn);
             dropdown.appendChild(itemRow);
@@ -112,7 +96,6 @@ function searchAllSystemRenters() {
     dropdown.style.display = "block";
 }
 
-// Global click listeners: Closes dropdown if clicked outside the input context wrapper
 document.addEventListener('click', function(event) {
     const searchGroup = document.querySelector('.search-action-group');
     const dropdown = document.getElementById('searchDropdownList');
