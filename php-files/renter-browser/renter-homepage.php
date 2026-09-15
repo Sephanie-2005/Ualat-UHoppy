@@ -51,6 +51,30 @@
     } else {
         $profilePic = '../../system-images/default-profile.png';
     }
+
+        $renter_id = $_SESSION['user_id'];
+    $activeRental = null;
+
+    // Fetch the active rental agreement details for this specific renter
+    $rentalQuery = "SELECT rt.rental_id, rt.start_date, rt.end_date, rt.duration_months, 
+                           a.accommodation_name, a.accommodation_type, a.monthly_rent,
+                           p.property_name, p.address
+                    FROM rentals rt
+                    INNER JOIN accommodations a ON rt.accommodation_id = a.accommodation_id
+                    INNER JOIN properties p ON a.property_id = p.property_id
+                    WHERE rt.renter_id = ? AND rt.rental_status = 'active'
+                    LIMIT 1";
+
+    if ($rStmt = $conn->prepare($rentalQuery)) {
+        $rStmt->bind_param("i", $renter_id);
+        $rStmt->execute();
+        $rResult = $rStmt->get_result();
+        if ($rResult && $rResult->num_rows > 0) {
+            $activeRental = $rResult->fetch_assoc();
+        }
+        $rStmt->close();
+    }
+
 ?>
 
 <!DOCTYPE html> 
@@ -76,9 +100,6 @@
             <div class="square2"></div>
             <div class="square3"></div>
             <div class="square4"></div>
-            <div class="square5"></div>
-            <div class="square6"></div>
-            <div class="square7"></div>
 
             <header>
                 
@@ -98,7 +119,7 @@
 
             <main class="Section_1">
                 <h1 class="text_1">Find Your Happy Place.</h1>
-                <p class="par_1">Find and map out an apartment, boarding house, 
+                <p class="par_1">Find an apartment, boarding house, 
                     <br> bedspacer, and other place to stay. 
                     <br> Track duration of stay and rent payments. 
                     <br> Chat with landlords and landlady.
@@ -173,127 +194,41 @@
             </main>
 
             <main class="Section_3">
-                <h2 class="reviews">Reviews</h1>
-
-                    <div class="reviews-container">
-
-                        <div class="review-card">
-                            <div class="stars">★★★★★</div>
-                            <h2>Sarah L.</h2>
-                            <p>
-                                I've been burned by messy rental agreements before.
-                                Having the rent payment tracker gives me peace of mind.
-                            </p>
+                <h2 class="section-title">My Stay Specifications</h2>
+                
+                <?php if ($activeRental): ?>
+                    <div class="lease-card">
+                        <!-- Left Column: Property & Accommodation Metadata -->
+                        <div class="property-info">
+                            <h3><?php echo htmlspecialchars($activeRental['property_name']); ?></h3>
+                            <p class="info-line"><strong>Location:</strong> <?php echo htmlspecialchars($activeRental['address']); ?></p>
+                            <p class="info-line"><strong>Unit / Unit Name:</strong> <?php echo htmlspecialchars($activeRental['accommodation_name']); ?></p>
+                            <p class="info-line"><strong>Unit Type:</strong> <?php echo htmlspecialchars($activeRental['accommodation_type']); ?></p>
+                            <p class="info-line"><strong>Monthly Rent:</strong> PHP <?php echo number_format($activeRental['monthly_rent'], 2); ?></p>
                         </div>
-
-                        <div class="review-card">
-                            <div class="stars">★★★★★</div>
-                            <h2>Elena R.</h2>
-                            <p>
-                                Managing multiple boarding spaces can be stressful,
-                                but the platform makes everything easier.
-                            </p>
+                        
+                        <div class="dates-info">
+                            <div class="date-row">
+                                <strong>Start Date:</strong> 
+                                <div><?php echo date('F d, Y', strtotime($activeRental['start_date'])); ?></div>
+                            </div>
+                            <div class="date-row">
+                                <strong>Expiration Date:</strong> 
+                                <div class="date-highlight"><?php echo date('F d, Y', strtotime($activeRental['end_date'])); ?></div>
+                            </div>
+                            <div class="date-row" style="margin-top: 12px; padding-top: 8px; border-top: 1px solid #eee;">
+                                <strong>Total Duration:</strong> <?php echo htmlspecialchars($activeRental['duration_months']); ?> Months
+                            </div>
                         </div>
-
-                        <div class="review-card">
-                            <div class="stars">★★★★☆</div>
-                            <h2>Chloe M.</h2>
-                            <p>
-                                The map tool helped me find the right location.
-                            </p>
-                        </div>
-
-                        <div class="review-card">
-                            <div class="stars">★★★★★</div>
-                            <h2>Marcus V.</h2>
-                            <p>
-                                The payment tracking feature saves so much time.
-                            </p>
-                        </div>
-
-                        <div class="review-card">
-                            <div class="stars">★★★★★</div>
-                            <h2>Alisha T.</h2>
-                            <p>
-                                I found an amazing place through this platform.
-                            </p>
-                        </div>
-
                     </div>
-
-                    <div class="second-reviews-container">
-
-                        <div class="second-review-card">
-                            <div class="second-stars">★★★★★</div>
-                            <h2>Rica S.</h2>
-                            <p>
-                                I’ve been burned by messy rental
-                                agreements before, so having the
-                                built-in rent payment tracker on this
-                                app gives me so much peace of mind.
-                                I can see exactly how many months
-                                I have left on my stay, and my landlord
-                                gets the receipts instantly.
-                                Highly recommend!
-                            </p>
-                        </div>
-
-                        <div class="second-review-card">
-                            <div class="second-stars">★★★★★</div>
-                            <h2>David L.</h2>
-                            <p>
-                                As a landlady managing multiple boarding
-                                spaces, keeping rooms filled can be
-                                stressful. Listing on UHoppy was
-                                incredibly straightforward.
-                            </p>
-                        </div>
-
-                        <div class="second-review-card">
-                            <div class="second-stars">★★★★☆</div>
-                            <h2>Smith M.</h2>
-                            <p>
-                                The tenants who message me are
-                                verified, and the direct chat feature
-                                makes it simple to coordinate check-ins
-                                and screen applicants beforehand.
-                            </p>
-                        </div>
-
-                        <div class="second-review-card">
-                            <div class="second-stars">★★★★★</div>
-                            <h2>John H.</h2>
-                            <p>
-                                Managing twelve rooms used to mean
-                                piles of receipts and logbooks.
-                                Now, the app's digital ledger handles
-                                the duration of stay and payment
-                                tracking automatically. It lost one star
-                                because I'd love a feature to export the
-                                monthly logs as a CSV file, but
-                                otherwise, it's brilliant for landlords.
-                            </P>
-                        </div>
-
-                        <div class="second-review-card">
-                            <div class="second-stars">★★★★★</div>
-                            <h2>Jason K.</h2>
-                            <p>
-                                I was terrified of moving to a new city
-                                alone, but the community vibe on this
-                                platform is amazing. I didn't just find a
-                                cheap room, I found an amazing
-                                'hoppy' housemate through the listing
-                                details. It feels less like a sterile rental
-                                app and more like a community
-                            </p>
-                        </div>
-
+                <?php else: ?>
+                    <!-- Fallback view panel block if no active contract row is logged -->
+                    <div class="no-lease-box">
+                        <p class="no-lease-text">You don't have an active rental contract registered under your profile yet.</p>
                     </div>
-
-                </section>
-
+                <?php endif; ?>
             </main>
+
 
             <main class="Section_4">
                 <p class="uhoppy">UHoopy</p>

@@ -39,22 +39,20 @@
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
 
-/* MODIFIED SECTION_2 FOR DYNAMIC HEIGHT FLEXIBILITY */
 .Section_2 {
     background-color: rgb(254, 227, 147);
-    min-height: 250px;           /* Changed from fixed height to flexible min-height */
-    height: auto;                /* Allows container to expand with content */
+    min-height: 250px;          
+    height: auto;                
     width: 1240px;
     margin: auto;
-    padding: 50px 0px;          /* Clean 30px padding top and bottom, 0px left/right */
+    padding: 50px 0px;         
     box-sizing: border-box;
 }
 
 .Section_2 .section-title {
     font-size: 24px; 
     color: #333333; 
-    margin-top: 0px;            /* Reset margins so padding handles spacing perfectly */
-    margin-bottom: 25px;
+    margin-top: 0px;           
     text-align: left;
     padding-left: 40px;
 }
@@ -78,10 +76,18 @@
 
 .Section_2 .renters-grid {
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    /* Strictly enforces a maximum limit of 3 equal columns */
+    grid-template-columns: repeat(3, minmax(280px, 1fr)); 
     gap: 20px;
     padding: 0 40px;
 }
+
+@media (max-width: 1024px) {
+    .Section_2 .renters-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
 
 .Section_2 .renter-card {
     background: #ffffff; 
@@ -115,6 +121,275 @@
     font-size: 0.95rem;
 }
 
+.Section_2 .section-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 0 40px;
+}
+
+.Section_2 .search-action-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    min-width: 320px;
+    position: relative;
+}
+
+.Section_2 .search-action-group input {
+    width: 250px;
+    padding: 10px 14px;
+    border: 2px solid rgb(246, 144, 104);
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.Section_2 .add-renter-trigger-btn {
+    background-color: rgb(246, 144, 104);
+    color: #ffffff;
+    border: none;
+    padding: 11px 22px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    transition: transform 0.1s ease, opacity 0.2s ease;
+}
+
+.Section_2 .add-renter-trigger-btn:hover {
+    opacity: 0.9;
+}
+
+.Section_2 .add-renter-trigger-btn:active {
+    transform: scale(0.97);
+}
+
+.Section_2 .search-results-dropdown {
+    display: none; 
+    position: absolute;
+    top: 45px; 
+    left: 0;
+    width: 250px; 
+    background-color: #ffffff;
+    border: 2px solid rgb(246, 144, 104);
+    border-radius: 6px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.Section_2 .search-result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #333333;
+    border-bottom: 1px solid #f0f0f0;
+    gap: 10px;
+}
+
+.Section_2 .search-result-item:last-child {
+    border-bottom: none;
+}
+
+.Section_2 .search-result-item:hover {
+    background-color: #fffaf0;
+}
+
+.Section_2 .search-result-info {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.Section_2 .search-result-email {
+    font-size: 11px;
+    color: #777777;
+}
+
+.Section_2 .dropdown-add-action-btn {
+    background-color: rgb(246, 144, 104);
+    color: #ffffff;
+    border: none;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+}
+
+.Section_2 .dropdown-add-action-btn:hover {
+    opacity: 0.9;
+}
+
+.Section_2 .search-result-no-match {
+    padding: 12px;
+    font-size: 13px;
+    color: #888888;
+    text-align: center;
+}
+
+.alert-banner {
+    padding: 12px;
+    margin: 0 40px 15px 40px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.add-rental-modal-overlay {
+    display: none; 
+    position: fixed;
+    z-index: 3000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.add-rental-modal-overlay.is-visible {
+    display: flex;
+}
+
+.add-rental-modal-overlay .modal-form-content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    border-top: 8px solid rgb(246, 144, 104);
+}
+
+.add-rental-modal-overlay .modal-form-content h3 {
+    margin-top: 0;
+    color: #222222;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    text-align: left;
+}
+
+.add-rental-modal-overlay .modal-form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.add-rental-modal-overlay .modal-form-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #444444;
+}
+
+.add-rental-modal-overlay .modal-form-group select,
+.add-rental-modal-overlay .modal-form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.add-rental-modal-overlay .modal-form-group select:focus,
+.add-rental-modal-overlay .modal-form-group input:focus {
+    border-color: rgb(246, 144, 104);
+    outline: none;
+}
+
+.add-rental-modal-overlay .modal-action-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.add-rental-modal-overlay .modal-cancel-btn {
+    background: #e0e0e0;
+    color: #333333;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.add-rental-modal-overlay .modal-save-btn {
+    background: rgb(246, 144, 104);
+    color: #ffffff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.Section_2 .renter-card-actions {
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px dashed #dddddd;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.Section_2 .btn-action-pay {
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Section_2 .btn-action-delete {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Section_2 .btn-action-pay:hover,
+.Section_2 .btn-action-delete:hover {
+    opacity: 0.9;
+}
 
 .Section_3 {
     background-color: rgb(246, 144, 104);

@@ -13,8 +13,6 @@
     $owner_id = $_SESSION['user_id'];
     $renters = [];
 
-    // UPDATED QUERY: Pulls ALL renters who have an open conversation thread with this owner, 
-    // and checks if they also have an active lease status.
     $query = "SELECT DISTINCT 
                 r.renter_id, 
                 r.first_name, 
@@ -45,7 +43,6 @@
 
     $userData = []; 
     
-    // Fetch logged-in owner profile data
     $ownerQuery = "SELECT first_name, middle_name, last_name, email, phone_number, profile_picture FROM owners WHERE owner_id = ?";
     if ($ownerStmt = $conn->prepare($ownerQuery)) {
         $ownerStmt->bind_param("i", $owner_id);
@@ -81,9 +78,6 @@
         $profilePic = '../../system-images/default-profile.png';
     }
 
-    // ==========================================
-    // MESSAGING LOGIC INTEGRATION
-    // ==========================================
     $active_renter_id = isset($_GET['renter_id']) ? intval($_GET['renter_id']) : 0;
     $conversation_id = 0;
     $messages_result = [];
@@ -100,7 +94,6 @@
         }
 
         if ($verify_relationship) {
-            // Check if conversation row already exists mapping owner and renter
             $check_convo = "SELECT conversation_id FROM conversations WHERE owner_id = ? AND renter_id = ? LIMIT 1";
             if ($c_stmt = $conn->prepare($check_convo)) {
                 $c_stmt->bind_param("ii", $owner_id, $active_renter_id);
@@ -120,7 +113,6 @@
                 $c_stmt->close();
             }
 
-            // Process message message post submission
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_message']) && $conversation_id > 0) {
                 $message_text = trim($_POST['message']);
                 if (!empty($message_text)) {
@@ -135,7 +127,6 @@
                 }
             }
 
-            // Load full historical transcript logs
             if ($conversation_id > 0) {
                 $history_query = "SELECT sender_type, message, sent_at FROM messages WHERE conversation_id = ? ORDER BY sent_at ASC";
                 if ($hist_stmt = $conn->prepare($history_query)) {
@@ -188,7 +179,6 @@
 
         <main class="Section_1">
             <div class="messaging-box">
-                <!-- Sidebar showing the active renters and prospective clients list -->
                 <div class="renters-sidebar">
                     <div class="sidebar-title">Inbox Channels</div>
                     <div class="renter-list-container">
@@ -199,7 +189,6 @@
                                     $rPicPath = '../../' . ($r['profile_picture'] ?? '');
                                     $renterPic = (!empty($r['profile_picture']) && file_exists($rPicPath)) ? $rPicPath : '../../system-images/default-profile.png';
                                     
-                                    // Set dynamic labels depending on lease setup status
                                     if ($r['rental_status'] === 'active') {
                                         $statusBadge = "Active Tenant";
                                         $subText = htmlspecialchars($r['property_name'] . ' - ' . $r['accommodation_name']);
@@ -225,7 +214,6 @@
                     </div>
                 </div>
 
-                <!-- Chat conversation workspace panel -->
                 <div class="chat-area">
                     <?php if ($active_renter_id > 0): ?>
                         <div class="chat-area-header">

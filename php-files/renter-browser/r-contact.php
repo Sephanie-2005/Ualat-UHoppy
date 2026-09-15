@@ -136,7 +136,7 @@
                     </div>
                 </div>
             </main>
-            <?php include 'o-footer.php';  ?>
+            <?php include 'r-footer.php';  ?>
             <?php include '../process-and-setting/profile-settings-view.php'; ?>
         </div>
             <script src="../../javascript-files/profile-settings-modal.js"></script>

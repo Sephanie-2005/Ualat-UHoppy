@@ -40,21 +40,17 @@
                 <form action="/uhoppy/php-files/process-and-setting/profile-setting-process.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="modal_settings_action" value="save_info">
                     
-                    <!-- UPDATED AVATAR SECTION -->
                     <div class="popup-avatar-row">
                         <img src="<?php echo $profilePic; ?>" id="modal-preview-avatar" alt="Avatar">
-                        
-                        <!-- This container handles stacking the buttons vertically -->
+
                         <div class="avatar-action-buttons">
                             <label for="modal_profile_pic" class="modal-upload-btn">Upload Photo</label>
                             <input type="file" name="profile_pic" id="modal_profile_pic" accept="image/*" style="display: none;">
                             
-                            <!-- Remove Photo button sits directly underneath -->
                             <button type="button" class="modal-remove-btn" onclick="removeProfilePicture()">Remove Photo</button>
                         </div>
                     </div>
-                    
-                    <!-- Hidden input tells the backend if the removal trigger was activated -->
+
                     <input type="hidden" name="delete_avatar_flag" id="delete_avatar_flag" value="0">
 
                     <div class="popup-field">

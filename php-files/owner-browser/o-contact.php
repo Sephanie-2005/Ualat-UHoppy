@@ -154,11 +154,9 @@
             </main>
             
         </div>
-            <?php 
-                include 'o-footer.php';  
-            ?>
+            <?php include '../process-and-setting/profile-settings-view.php'; ?>
+            <?php include 'o-footer.php';  ?>
     </body>
         
 </html>
-
-<script src="../../javascript-files/pass-required-input.js"></script>
+<script src="../../javascript-files/profile-settings-modal.js"></script>

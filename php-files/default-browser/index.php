@@ -50,7 +50,7 @@
 
             <main class="Section_1">
                 <h1 class="text_1">Find Your Happy Place.</h1>
-                <p class="par_1">Find and map out an apartment, boarding house, 
+                <p class="par_1">Find an apartment, boarding house, 
                     <br> bedspacer, and other place to stay. 
                     <br> Track duration of stay and rent payments. 
                     <br> Chat with landlords and landlady.

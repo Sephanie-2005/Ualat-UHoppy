@@ -64,7 +64,7 @@
         <link rel="stylesheet" href="../../style/default/footer-style.css">
         <link rel="stylesheet" href="../../style/owner/o-about.css">
         <link rel="stylesheet" href="../../style/profile-settings.css">
-        <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
+        <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/link-logo.jpg">
     </head>
 
     <body>

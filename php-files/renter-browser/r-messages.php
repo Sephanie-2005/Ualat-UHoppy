@@ -9,7 +9,6 @@
     }
 
     $renter_id = $_SESSION['user_id'];
-
     $profilePic = $_SESSION['profile_picture'] ?? 'uploads/default-avatar.png';
 
     require_once '../process-and-setting/database-connection.php'; 
@@ -51,6 +50,46 @@
     } else {
         $profilePic = '../../system-images/default-profile.png';
     }
+
+    // --- NEW LOGIC: HANDLE REDIRECT FROM PROPERTY DETAILS BUTTON ---
+    if (isset($_GET['recipient_id'])) {
+        $owner_recipient_id = intval($_GET['recipient_id']);
+        
+        if ($owner_recipient_id > 0) {
+            // Check if a conversation entry already exists between this renter and owner
+            $checkConvQuery = "SELECT conversation_id FROM conversations WHERE renter_id = ? AND owner_id = ? LIMIT 1";
+            $target_conversation_id = 0;
+            
+            if ($cStmt = $conn->prepare($checkConvQuery)) {
+                $cStmt->bind_param("ii", $renter_id, $owner_recipient_id);
+                $cStmt->execute();
+                $cResult = $cStmt->get_result();
+                if ($cRow = $cResult->fetch_assoc()) {
+                    $target_conversation_id = $cRow['conversation_id'];
+                }
+                $cStmt->close();
+            }
+            
+            // If no conversation entry exists, seamlessly insert a new one
+            if ($target_conversation_id === 0) {
+                $insertConvQuery = "INSERT INTO conversations (renter_id, owner_id) VALUES (?, ?)";
+                if ($iStmt = $conn->prepare($insertConvQuery)) {
+                    $iStmt->bind_param("ii", $renter_id, $owner_recipient_id);
+                    if ($iStmt->execute()) {
+                        $target_conversation_id = $conn->insert_id;
+                    }
+                    $iStmt->close();
+                }
+            }
+            
+            // Redirect to itself with clean conversation routing parameters to prevent duplicate execution loops
+            if ($target_conversation_id > 0) {
+                header("Location: r-messages.php?conversation_id=" . $target_conversation_id);
+                exit();
+            }
+        }
+    }
+    // --- END OF NEW LOGIC ---
 
     // Handle incoming new message submission
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'send_message') {
@@ -128,7 +167,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Messages</title>
     <link rel="stylesheet" href="../../style/default/web-app.css">
     <link rel="stylesheet" href="../../style/default/header-style.css">
     <link rel="stylesheet" href="../../style/default/footer-style.css">

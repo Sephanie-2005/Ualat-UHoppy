@@ -35,7 +35,7 @@
             </main>
             
             <main class="features-section-2">
-                <h2 class="features-title">Find & Map Accommodations</h2>
+                <h2 class="features-title">Find Accommodations</h2>
                 <p>Locate the perfect apartment, boarding house, or bedspacer via our interactive mapping interface.</p>
             </main>
 
@@ -51,92 +51,31 @@
 
             <main class="features-section-5">
                 <div class="feature-previews">
-                    
-                    <div class="preview-section">
-                        <h2 class="section-title">Map Out Properties</h2>
-                        <p class="section-subtitle">Click listings to map property locations instantly.</p>
+    
+                    <div class="lease-card">
+                        <div class="property-info">
+                            <h3>Maria Dorminatory</h3>
+                            <p class="info-line"><strong>Location:</strong> Culipapa, Negros Occidental</p>
+                            <p class="info-line"><strong>Unit / Unit Name:</strong> Room 204</p>
+                            <p class="info-line"><strong>Unit Type:</strong> Single Room</p>
+                            <p class="info-line"><strong>Monthly Rent:</strong> PHP 2,000.00</p>
+                        </div>
                         
-                        <div class="map-mockup-full">
-                            <div class="map-canvas">
-                                <div class="map-graphic-road-h"></div>
-                                <div class="map-graphic-road-v"></div>
-                                <div class="map-graphic-river"></div>
-                                
-                                <div class="map-pin pin-salmon" style="top: 25%; left: 45%;">
-                                    <div class="pin-label-box">
-                                        <h4>Greenview Apartment</h4>
-                                        <p>₱8,500/mo · 2 Beds</p>
-                                    </div>
-                                </div>
-                                <div class="map-pin pin-yellow" style="top: 65%; left: 15%;">
-                                    <div class="pin-label-box">
-                                        <h4>Dormitel Bedspacer</h4>
-                                        <p>₱2,500/mo · Bedspace</p>
-                                    </div>
-                                </div>
-                                <div class="map-pin pin-turquoise" style="top: 45%; left: 70%;">
-                                    <div class="pin-label-box">
-                                        <h4>Cozy Boarding House</h4>
-                                        <p>₱4,000/mo · Single Room</p>
-                                    </div>
-                                </div>
+                        <div class="dates-info">
+                            <div class="date-row">
+                                Start Date:<br>
+                                <span>September 15, 2026</span>
+                            </div>
+                            <div class="date-row">
+                                Expiration Date:<br>
+                                <span class="date-highlight">October 15, 2026</span>
+                            </div>
+                            <div class="date-row total-duration">
+                                Total Duration: 1 Months
                             </div>
                         </div>
                     </div>
-
-                    <div class="preview-section">
-                        <h2 class="section-title">Stay Duration & Payment Tracker</h2>
-                        <p class="section-subtitle">Real-time status updates for your current active tenancy.</p>
-                        <div class="tracker-mockup">
-                            <div class="tracker-header">
-                                <div><strong>Current Stay:</strong> Greenview Apartment (Room 302)</div>
-                                <div><span class="status-badge paid">Active Contract</span></div>
-                            </div>
-                            <div class="tracker-stats-grid">
-                                <div class="stat-box">
-                                    <span class="stat-label">Total Duration</span>
-                                    <span class="stat-value">6 Months</span>
-                                    <span class="stat-sub">June 1, 2026 - Nov 30, 2026</span>
-                                </div>
-                                <div class="stat-box">
-                                    <span class="stat-label">Days Remaining</span>
-                                    <span class="stat-value">85 Days</span>
-                                    <span class="stat-sub">Next renewal notice: Oct 31</span>
-                                </div>
-                                <div class="stat-box">
-                                    <span class="stat-label">Next Rent Due</span>
-                                    <span class="stat-value">₱8,500.00</span>
-                                    <span class="stat-sub">Due on October 1, 2026</span>
-                                </div>
-                            </div>
-                            <table class="payment-history-table">
-                                <thead>
-                                    <tr>
-                                        <th>Billing Period</th>
-                                        <th>Amount Paid</th>
-                                        <th>Date Transacted</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Sept 1 - Sept 30, 2026</td>
-                                        <td>₱8,500.00</td>
-                                        <td>Sept 01, 2026</td>
-                                        <td><span class="badge-status-paid">Paid</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Aug 1 - Aug 31, 2026</td>
-                                        <td>₱8,500.00</td>
-                                        <td>Aug 02, 2026</td>
-                                        <td><span class="badge-status-paid">Paid</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- SECTION 3: Communication Portal Messaging Canvas -->
+                
                     <div class="preview-section">
                         <h2 class="section-title">Direct Landlord Chat Box</h2>
                         <p class="section-subtitle">Clear transparent communications without leaving the app.</p>

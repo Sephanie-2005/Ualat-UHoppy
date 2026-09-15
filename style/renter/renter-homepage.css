@@ -212,109 +212,82 @@
 
 .Section_3 {
     background-color: rgb(254, 227, 147);
-    height: 800px;
+    min-height: 200px;
+    height: auto;
     width: 1240px;
     margin: auto;
-    padding-top: 60px;
+    padding: 40px;
 }
 
-.reviews {
-    margin-top: -15px;
-    margin-left: 50px;  
-    margin-bottom: -20px;
-    position: relative;
-    z-index: 2;
+.Section_3 .section-title {
+    font-size: 24px;
+    color: #333333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-.reviews-container {
-    top: 30px;
-    display: flex;
-    gap: 40px;
-    overflow-x: visible; 
-    padding: 20px 30px;
-    position: relative;
-    z-index: 2;
-    animation: scrollSideways 15s linear infinite; 
-}
-
-.reviews-container::-webkit-scrollbar {
-  display: none;
-}
-
-@keyframes scrollSideways {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-50% - 10px)); 
-  }
-}
-
-.reviews-container:hover {
-  animation-play-state: paused;
-}
-
-.review-card {
-    position: relative;
-    height: 300px;
-    width: 400px;
-    flex-shrink: 0;
-    background-color: white;
+.Section_3 .lease-card {
+    background: #fafafa;
+    border-left: 6px solid rgb(246, 144, 104);
     padding: 25px;
-    border-radius: 15px;
-    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.8);
-}
-
-.stars {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-}
-
-.second-reviews-container {
-    top: 30px;
+    border-radius: 8px;
     display: flex;
-    gap: 40px;
-    overflow-x: visible;
-    padding: 20px 30px;
-    position: relative;
-    z-index: 2;
-    animation: secondScrollSideways 15s linear infinite; 
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.second-reviews-container::-webkit-scrollbar {
-  display: none;
+.Section_3 .property-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+    color: #222222;
 }
 
-@keyframes secondScrollSideways {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-50% - 10px)); 
-  }
+.Section_3 .info-line {
+    margin: 6px 0;
+    font-size: 1rem;
+    color: #555555;
 }
 
-.second-reviews-container:hover {
-  animation-play-state: paused;
+.Section_3 .info-line strong {
+    color: #333333;
 }
 
-.second-review-card {
-    position: relative;
-    height: 300px;
-    width: 400px;
-    flex-shrink: 0;
-    background-color: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.8);
+.Section_3 .dates-info {
+    background: #ffffff;
+    padding: 15px 20px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    min-width: 250px;
 }
 
-.second-stars {
-    position: absolute;
-    top: 10px;
-    right: 20px;
+.Section_3 .date-row {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    color: #444444;
 }
+
+.Section_3 .date-highlight {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.Section_3 .no-lease-box {
+    text-align: center;
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 2px dashed #ccc;
+}
+
+.Section_3 .no-lease-text {
+    color: #777777;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
 
 .Section_4 {
     background-color: rgb(246, 144, 104);

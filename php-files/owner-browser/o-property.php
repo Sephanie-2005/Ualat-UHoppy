@@ -162,7 +162,7 @@
                             </div>
                         <?php else: ?>
                             <div class="empty-state-notice">
-                                <div class="icon">🏢</div>
+
                                 <h3>No property uploaded yet</h3>
                                 <p>Click the button above to register your single property profile.</p>
                             </div>

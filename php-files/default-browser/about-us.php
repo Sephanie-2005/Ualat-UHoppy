@@ -73,8 +73,8 @@
                 <h2 class="section-title">What We Do</h2>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <h3>Discover & Map Out</h3>
-                        <p>Easily find and visualize local apartments, boarding houses, bedspacers, and alternative spaces tailored to your budget.</p>
+                        <h3>Discover </h3>
+                        <p>Easily find local apartments, boarding houses, bedspacers, and alternative spaces tailored to your budget.</p>
                     </div>
                     <div class="feature-card">
                         <h3>Stay & Rent Tracking</h3>
