@@ -74,7 +74,7 @@
                 <img src="../../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
                     
                 <button id="home-btn" class="home_button" onclick="window.location.href='renter-homepage.php'">HOME</button> 
-                <button id="property-btn" class="property_button" onclick="window.location.href='r-property.php'">PROPERTY</button>
+                <button id="listings-btn" class="listings_button" onclick="window.location.href='r-listings.php'">LISTINGS</button>
                 <button id="messages-btn" class="messages_button" onclick="window.location.href='r-messages.php'">MESSAGES</button>
                 <button id="about_us-btn" class="about_us_button" onclick="window.location.href='r-about.php'">ABOUT US</button>
                 <button id="contact-btn" class="contact_button active">CONTACT</button>
@@ -136,11 +136,10 @@
                     </div>
                 </div>
             </main>
-            
+            <?php include 'o-footer.php';  ?>
+            <?php include '../process-and-setting/profile-settings-view.php'; ?>
         </div>
-            <?php 
-                include 'o-footer.php';  
-            ?>
+            <script src="../../javascript-files/profile-settings-modal.js"></script>
     </body>
         
 </html>
