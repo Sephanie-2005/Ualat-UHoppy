@@ -101,111 +101,152 @@
                 
             </header>
 
-            <main class="Section_1">
-                <div class="property-management-container">
-                    <!-- Navigation Tabs -->
-                    <div class="management-tabs">
-                        <button class="tab-btn active" onclick="switchTab('manage-view')">Manage Properties</button>
-                        <button class="tab-btn" onclick="switchTab('upload-view')">Upload New Property</button>
-                    </div>
+                         <!-- SECTION 1: REGISTERED PROPERTIES DISPLAY (RESTRICTED TO ONE ONLY) -->
+                        <!-- SECTION 1: REGISTERED PROPERTIES DISPLAY (WITH EDIT ACCESSIBILITY) -->
+            <main class="section_1">
+                <div class="dashboard-container">
+                    <?php
+                    $propDisplayQuery = "SELECT p.*, (SELECT image_url FROM property_images pi WHERE pi.property_id = p.property_id LIMIT 1) as cover_image 
+                                         FROM properties p WHERE p.owner_id = ? LIMIT 1";
+                    
+                    $hasProperty = false;
+                    $registered_property_id = 0;
+                    $property_name = '';
 
-                    <!-- TAB 1: MANAGE PROPERTIES VIEW -->
-                    <div id="manage-view" class="tab-content active-content">
-                        <h2>Your Listed Properties</h2>
-                        <div class="property-grid">
-                            <!-- Fetch and loop existing properties from DB here -->
-                            <!-- Example Property Card Item -->
-                            <div class="property-card">
-                                <div class="property-image-wrapper">
-                                    <img src="../../system-images/default-property.png" alt="Property Image">
-                                </div>
-                                <div class="property-details">
-                                    <h3>Sample Property Name</h3>
-                                    <p class="location">Location: Dumaguete City</p>
-                                    <p class="status-badge active-status">Active</p>
-                                    
-                                    <div class="property-actions">
-                                        <button class="action-btn edit-btn">Edit</button>
-                                        <button class="action-btn delete-btn">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Example Card -->
+                    if ($pStmt = $conn->prepare($propDisplayQuery)) {
+                        $pStmt->bind_param("i", $owner_id);
+                        $pStmt->execute();
+                        $pResult = $pStmt->get_result();
+                        
+                        if ($pResult && $pResult->num_rows > 0) {
+                            $hasProperty = true;
+                            $property = $pResult->fetch_assoc();
+                            $registered_property_id = $property['property_id'];
+                            $property_name = $property['property_name'];
+                            $coverPath = !empty($property['cover_image']) ? '../../' . $property['cover_image'] : '../../system-images/default-property.png';
+                        }
+                        $pStmt->close();
+                    }
+                    ?>
+
+                    <div class="section-header-row">
+                        <div class="header-text">
+                            <h2>Your Property</h2>
+                            <p>Manage and review your registered real estate profile</p>
+                        </div>
+                        <div class="header-actions">
+                            <?php if (!$hasProperty): ?>
+                                <button class="action-upload-btn" onclick="window.location.href='upload-property.php'">
+                                    Add Your Property
+                                </button>
+                            <?php else: ?>
+                                <button class="action-upload-btn edit-mode-btn" onclick="window.location.href='edit-property.php'">
+                                    Edit Property Details
+                                </button>
+                            <?php endif; ?>
                         </div>
                     </div>
 
-                    <!-- TAB 2: UPLOAD PROPERTY VIEW -->
-                    <div id="upload-view" class="tab-content">
-                        <h2>Register New Property</h2>
-                        <form action="../process-and-setting/upload-property-process.php" method="POST" enctype="multipart/form-data" class="upload-form">
-                            
-                            <!-- Section A: Core Property Details -->
-                            <fieldset>
-                                <legend>Core Details</legend>
-                                <div class="form-group">
-                                    <label for="property_name">Property Name *</label>
-                                    <input type="text" id="property_name" name="property_name" required placeholder="e.g., Sunset Heights Dormitory">
+                    <div class="listing-grid single-item-view">
+                        <?php if ($hasProperty): ?>
+                            <div class="card item-card horizontal-layout">
+                                <div class="card-image-wrapper">
+                                    <img src="<?php echo htmlspecialchars($coverPath, ENT_QUOTES, 'UTF-8'); ?>" alt="Property Image">
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="property_address">Full Address *</label>
-                                    <input type="text" id="property_address" name="property_address" required placeholder="Street, Barangay, City, Province">
+                                <div class="card-content">
+                                    <h3><?php echo htmlspecialchars($property['property_name'], ENT_QUOTES, 'UTF-8'); ?></h3>
+                                    <span class="badge type-badge"><?php echo htmlspecialchars($property['property_type'], ENT_QUOTES, 'UTF-8'); ?></span>
+                                    <p class="card-address"><?php echo htmlspecialchars($property['address'], ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="card-desc"><?php echo htmlspecialchars($property['description'], ENT_QUOTES, 'UTF-8'); ?></p>
                                 </div>
-
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="property_type">Property Type *</label>
-                                        <select id="property_type" name="property_type" required>
-                                            <option value="" disabled selected>Select Type</option>
-                                            <option value="dormitory">Dormitory</option>
-                                            <option value="apartment">Apartment</option>
-                                            <option value="house">House</option>
-                                            <option value="room">Single Room</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="property_image">Primary Cover Image *</label>
-                                        <input type="file" id="property_image" name="property_image" accept="image/*" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="property_description">Description</label>
-                                    <textarea id="property_description" name="property_description" rows="4" placeholder="Describe rules, landmarks nearby, security features..."></textarea>
-                                </div>
-                            </fieldset>
-
-                            <!-- Section B: Accommodations Units Generator -->
-                            <fieldset>
-                                <legend>Accommodation Units / Sub-rooms</legend>
-                                <p class="helper-text">Add the individual rooms, floors, or studio categories available in this property.</p>
-                                
-                                <div id="accommodation-rows-container">
-                                    <!-- Individual Dynamic Row Item -->
-                                    <div class="accommodation-row">
-                                        <div class="row-input">
-                                            <label>Unit Name/No.</label>
-                                            <input type="text" name="acc_name[]" required placeholder="Room 101 / Studio A">
-                                        </div>
-                                        <div class="row-input">
-                                            <label>Monthly Rent (PHP)</label>
-                                            <input type="number" name="acc_price[]" min="0" required placeholder="0.00">
-                                        </div>
-                                        <div class="row-input">
-                                            <label>Capacity (Pax)</label>
-                                            <input type="number" name="acc_capacity[]" min="1" required placeholder="1">
-                                        </div>
-                                        <button type="button" class="remove-row-btn" onclick="removeAccommodationRow(this)">Remove</button>
-                                    </div>
-                                </div>
-
-                                <button type="button" class="add-row-btn" onclick="addAccommodationRow()">Add Another Unit Type</button>
-                            </fieldset>
-
-                            <div class="form-submit-wrapper">
-                                <button type="submit" class="submit-form-btn">Publish Property Listing</button>
                             </div>
-                        </form>
+                        <?php else: ?>
+                            <div class="empty-state-notice">
+                                <div class="icon">🏢</div>
+                                <h3>No property uploaded yet</h3>
+                                <p>Click the button above to register your single property profile.</p>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </main>  
+
+           <main class="section_2" id="section2">
+                <div class="dashboard-container">
+                    <div class="section-header-row">
+                        <div class="header-text">
+                            <h2>Rooms & Accommodations</h2>
+                            <p>Track pricing, occupancy capacities, and live availability</p>
+                        </div>
+                        <?php if ($hasProperty): ?>
+                            <button class="action-upload-btn secondary-color" onclick="window.location.href='upload-accommodation.php'">
+                                Add Accommodation
+                            </button>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="listing-grid">
+                        <?php
+                        $hasAccommodations = false;
+
+                        if ($hasProperty) {
+                            $accomDisplayQuery = "SELECT * FROM accommodations WHERE property_id = ? ORDER BY accommodation_id DESC";
+                            
+                            if ($aStmt = $conn->prepare($accomDisplayQuery)) {
+                                $aStmt->bind_param("i", $registered_property_id);
+                                $aStmt->execute();
+                                $aResult = $aStmt->get_result();
+                                
+                                if ($aResult && $aResult->num_rows > 0) {
+                                    $hasAccommodations = true;
+                                    while ($accom = $aResult->fetch_assoc()) {
+                                        $statusClass = strtolower(str_replace(' ', '-', $accom['status']));
+                                        // Dynamic path check for accommodation photo row
+                                        $images_array = json_decode($accom['accommodation_image'], true);
+                                        $accomPicPath = (!empty($images_array) && isset($images_array[0])) ? '../../' . $images_array[0] : '../../system-images/default-property.png';
+                                        ?>
+                                        <div class="card item-card modular-accommodation-card" 
+                                                onclick="window.location.href='edit-accommodation.php?id=<?php echo $accom['accommodation_id']; ?>'" 
+                                                style="cursor: pointer;">
+                                            <div class="accommodation-thumbnail">
+                                                <img src="<?php echo htmlspecialchars($accomPicPath, ENT_QUOTES, 'UTF-8'); ?>" alt="Accommodation Unit Layout">
+                                            </div>
+                                            <div class="card-content no-img-padding">
+                                                <div class="card-header-split">
+                                                    <h3><?php echo htmlspecialchars($accom['accommodation_name'], ENT_QUOTES, 'UTF-8'); ?></h3>
+                                                    <span class="status-indicator <?php echo $statusClass; ?>">
+                                                        <?php echo htmlspecialchars(str_replace('_', ' ', $accom['status']), ENT_QUOTES, 'UTF-8'); ?>
+                                                    </span>
+                                                </div>
+                                                <p class="belongs-to">Unit under: <strong><?php echo htmlspecialchars($property_name, ENT_QUOTES, 'UTF-8'); ?></strong></p>
+                                                
+                                                <!-- UPDATED SPECS GRIDS FOR INDEPENDENT DISPLAY -->
+                                                <div class="accom-specs">
+                                                    <div><strong>Type:</strong> <?php echo htmlspecialchars($accom['accommodation_type'], ENT_QUOTES, 'UTF-8'); ?></div>
+                                                    <div><strong>Rent:</strong> ₱<?php echo number_format($accom['monthly_rent'], 2); ?>/mo</div>
+                                                    <div><strong>Total Capacity:</strong> <?php echo htmlspecialchars($accom['capacity'], ENT_QUOTES, 'UTF-8'); ?> Person(s)</div>
+                                                    <div><strong>Open Slots:</strong> <?php echo htmlspecialchars($accom['available_slots'], ENT_QUOTES, 'UTF-8'); ?> Slot(s) Left</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                $aStmt->close();
+                            }
+                        }
+
+                        if (!$hasAccommodations): ?>
+                            <div class="empty-state-notice">
+                                <div class="icon">🛏️</div>
+                                <h3>No accommodation uploaded yet</h3>
+                                <?php if ($hasProperty): ?>
+                                    <p>Click the button above to publish room configurations under your property space.</p>
+                                <?php else: ?>
+                                    <p style="color: #ff6b6b;">You must upload a property profile first before adding accommodations.</p>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </main>
@@ -218,4 +259,4 @@
 </html>
 
 <script src="../../javascript-files/profile-settings-modal.js"></script>
-<script src="../../javascript-files/property.js"></script>
+<script src="../../javascript-files/o-property.js"></script>

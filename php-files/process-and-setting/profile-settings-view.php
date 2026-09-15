@@ -13,22 +13,49 @@
         </div>
 
         <div class="settings-popup-body">
-            <?php if(!empty($modalError)): ?>
-                <div class="modal-error-banner">
-                    <?php echo htmlspecialchars($modalError); ?>
+            <?php 
+            if (isset($_SESSION['modal_message'])): 
+                $bannerClass = ($_SESSION['modal_status'] === 'success') ? 'modal-success-banner' : 'modal-error-banner';
+                $activeTab = $_SESSION['modal_active_tab'] ?? 'popup-account';
+            ?>
+                <div class="<?php echo $bannerClass; ?>" style="margin-bottom: 15px; padding: 10px; border-radius: 4px; font-weight: 500;">
+                    <?php echo htmlspecialchars($_SESSION['modal_message']); ?>
                 </div>
-                <script>document.addEventListener('DOMContentLoaded', () => openSettingsModal());</script>
-            <?php endif; ?>
+                
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        openSettingsModal();
+                        // Find the nav button targeted for this tab and pass it to your switcher function
+                        const targetBtn = document.querySelector(`button[onclick*='${<?php echo json_encode($activeTab); ?>}']`);
+                        switchPopupTab(<?php echo json_encode($activeTab); ?>, targetBtn);
+                    });
+                </script>
+            <?php 
+                unset($_SESSION['modal_message'], $_SESSION['modal_status'], $_SESSION['modal_active_tab']);
+            endif; 
+            ?>
+
         
             <div id="popup-account" class="popup-section visible">
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
+                <form action="/uhoppy/php-files/process-and-setting/profile-setting-process.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="modal_settings_action" value="save_info">
                     
+                    <!-- UPDATED AVATAR SECTION -->
                     <div class="popup-avatar-row">
                         <img src="<?php echo $profilePic; ?>" id="modal-preview-avatar" alt="Avatar">
-                        <label for="modal_profile_pic" class="modal-upload-btn">Upload Photo</label>
-                        <input type="file" name="profile_pic" id="modal_profile_pic" accept="image/*" style="display: none;">
+                        
+                        <!-- This container handles stacking the buttons vertically -->
+                        <div class="avatar-action-buttons">
+                            <label for="modal_profile_pic" class="modal-upload-btn">Upload Photo</label>
+                            <input type="file" name="profile_pic" id="modal_profile_pic" accept="image/*" style="display: none;">
+                            
+                            <!-- Remove Photo button sits directly underneath -->
+                            <button type="button" class="modal-remove-btn" onclick="removeProfilePicture()">Remove Photo</button>
+                        </div>
                     </div>
+                    
+                    <!-- Hidden input tells the backend if the removal trigger was activated -->
+                    <input type="hidden" name="delete_avatar_flag" id="delete_avatar_flag" value="0">
 
                     <div class="popup-field">
                         <label for="m_first_name">First Name</label>
@@ -57,7 +84,6 @@
                         <input type="text" name="username" id="m_username" value="<?php echo htmlspecialchars($generatedUsername ?? ''); ?>" readonly class="modal-readonly">
                     </div>
 
-
                     <div class="popup-field">
                         <label for="m_email">Email Address</label>
                         <input type="email" name="email" id="m_email" value="<?php echo htmlspecialchars($userData['email'] ?? ''); ?>" required>
@@ -67,13 +93,12 @@
                         <label for="m_phone">Phone Number</label>
                         <input type="text" name="phone_number" id="m_phone" placeholder="e.g. 09123456789" value="<?php echo htmlspecialchars($userData['phone_number'] ?? ''); ?>">
                     </div>
-
                     <button type="submit" class="popup-submit-btn">Save Changes</button>
                 </form>
             </div>
 
             <div id="popup-security" class="popup-section">
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+                <form action="/uhoppy/php-files/process-and-setting/profile-setting-process.php" method="POST">
                     <input type="hidden" name="modal_settings_action" value="change_password">
                     <div class="popup-field">
                         <label for="m_curr_pass">Current Password</label>
@@ -97,7 +122,7 @@
             <div id="popup-danger" class="popup-section">
                 <div class="popup-danger-warning">
                     <p style="margin: 0 0 12px 0; font-weight: 600;">Warning: Deleting your account will permanently remove all your data and cannot be undone.</p>
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+                        <form action="/uhoppy/php-files/process-and-setting/profile-setting-process.php" method="POST">
                         <input type="hidden" name="modal_settings_action" value="delete_account">
                         <div class="popup-field">
                             <label for="delete_password_confirm">Confirm Deletion</label>

@@ -2,7 +2,7 @@
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
-
+    $profilePic = $_SESSION['profile_picture'] ?? 'uploads/default-avatar.png';
     require_once '../process-and-setting/database-connection.php';  
   
     if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'owner') { 
@@ -102,6 +102,7 @@
                 <div class="profile-nav-wrapper">
                     <img src="<?php echo htmlspecialchars($profilePic, ENT_QUOTES, 'UTF-8'); ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()" style="cursor: pointer; border: 2px solid rgb(246, 144, 104);">
                 </div>
+                
             </header>
 
             <main class="Section_1">
@@ -111,7 +112,7 @@
                     <br> Track renters duration of stay and rent payments. 
                     <br> Chat with renters.
                 </p>
-                <button id="start-btn" class="start_button" onclick="window.location.href='property.php'">Start</button>     
+                <button id="start-btn" class="start_button" onclick="window.location.href='o-property.php'">Start</button>     
             </main>
 
             <main class="Section_2">

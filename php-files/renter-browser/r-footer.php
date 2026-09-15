@@ -6,10 +6,10 @@
     <p class="text_bottom">Hop into the happiness in finding a place to stay!</p>
     <p class="quicklinks">QUICKLINKS</p>
     <button id="f-home-btn" class="f_home_button" onclick="window.location.href='renter-homepage.php'">HOME</button> 
-    <button id="f-listings-btn" class="f_listings_button" onclick="window.location.href='renter-listings.php'">LISTINGS</button>
-    <button id="f-features-btn" class="f_features_button" onclick="window.location.href='renter-features.php'">FEATURES</button>
-    <button id="f-about_us-btn" class="f_about_us_button" onclick="window.location.href='renter-about-us.php'">ABOUT US</button>
-    <button id="f-contact-btn" class="f_contact_button" onclick="window.location.href='renter-contact.php'">CONTACT</button>
+    <button id="f-listings-btn" class="f_listings_button" onclick="window.location.href='r-listings.php'">LISTINGS</button>
+    <button id="f-messages-btn" class="f_messages_button" onclick="window.location.href='r-messages.php'">MESSAGES</button>
+    <button id="f-about_us-btn" class="f_about_us_button" onclick="window.location.href='r-about.php'">ABOUT US</button>
+    <button id="f-contact-btn" class="f_contact_button" onclick="window.location.href='r-contact.php'">CONTACT</button>
     <p class="customer_care">CUSTOMER CARE</p>
     <button id="privacy-policy-btn" class="privacy_policy" onclick="window.location.href='../customer-care/privacy-policy.php'">PRIVACY POLICY</button> 
     <button id="terms-and-conditions-btn" class="terms_and_conditions" onclick="window.location.href='../customer-care/terms-and-conditions.php'">TERMS AND CONDITIONS</button>

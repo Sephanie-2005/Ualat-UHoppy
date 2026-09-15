@@ -88,12 +88,6 @@
     background-color: #ffffff;
     border-radius: 16px;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.8);
-    cursor: pointer;
-}
-
-.room-card:hover {
-    transform: scale(1.02);
-    box-shadow: 4px 7px 12px rgba(0, 0, 0, 0.6);
 }
 
 .room-image {
@@ -137,10 +131,10 @@
     line-height: 1.1;
 }
 
-.price-tag1 .price-tag2 .price-tag3{
+.price-tag1, .price-tag2, .price-tag3 {
     position: absolute;
-    top: 82px;
-    left: 250px;
+    bottom: -30px;      
+    right: 20px;       
     font-size: 20px;
     font-weight: bold;
     color: #000000;
@@ -164,12 +158,6 @@
     background-color: #ffffff;
     border-radius: 16px;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.8);
-    cursor: pointer;
-}
-
-.second-room-card:hover {
-    transform: scale(1.02);
-    box-shadow: 4px 7px 12px rgba(0, 0, 0, 0.6);
 }
 
 .second-room-image {
@@ -213,11 +201,11 @@
     line-height: 1.1;
 }
 
-.second-price-tag1 .second-price-tag2 .second-price-tag3{
+.second-price-tag1, .second-price-tag2, .second-price-tag3 {
     position: absolute;
-    top: 82px;
-    left: 240px;
-    font-size: 24px;
+    bottom: -30px;      
+    right: 20px;       
+    font-size: 20px;
     font-weight: bold;
     color: #000000;
 }
@@ -330,21 +318,10 @@
 
 .Section_4 {
     background-color: rgb(246, 144, 104);
-    height: 380px;
+    height: 200px;
     width: 1240px;
     margin: auto;
-    padding-top: 60px;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
-
-.Section_4 {
-    background-color: rgb(246, 144, 104);
-    height: 220px;
-    width: 1240px;
-    margin: auto;
-    padding-top: 50px;
+    padding-top: 35px;
     text-align: center;
     position: relative;
     z-index: 2;
@@ -368,6 +345,29 @@
 .text_2 {
     margin-top: 30px;
     margin-bottom: 0px;
+}
+
+.sign_up_button {
+    font-size: 25px;
+    color: black;
+    background-color: rgb(246, 144, 104);
+    border-color: rgb(254, 227, 147);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    margin-top: 25px;
+    height: 50px;
+    width: 145px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.sign_up_button:hover {
+    background-color: rgb(247, 133, 88);
+    border-color: rgb(252, 228, 153);
+    transform: scale(1.10);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .Section_5 {
@@ -443,4 +443,17 @@
     position: absolute;
     margin-top: 170px;
     right: 150px;
+}
+
+.Section_6 {
+    background-color: rgb(246, 144, 104);
+    height: 200px;
+    width: 1240px;
+    margin: auto;
+    padding-top: 30px;
+    text-align: center;  
+}
+
+.warning-text {
+    margin-top: -12px;
 }

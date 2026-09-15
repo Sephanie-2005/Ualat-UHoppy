@@ -3,17 +3,55 @@
         session_start();
     }
 
-    require_once '../process-and-setting/database-connection.php'; 
-    require_once '../process-and-setting/header-authentication.php'; 
-
-    // FIX: Verify they are logged in AND that their role is explicitly 'renter'
     if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'renter') { 
-        // Kick them back to the main login index page if they shouldn't be here
         header("Location: ../default-browser/index.php?error=unauthorized");
         exit();
     }
-?>
 
+    $renter_id = $_SESSION['user_id'];
+
+    $profilePic = $_SESSION['profile_picture'] ?? 'uploads/default-avatar.png';
+
+    require_once '../process-and-setting/database-connection.php'; 
+    
+    $userData = []; 
+    
+    $renterQuery = "SELECT first_name, middle_name, last_name, email, phone_number, profile_picture FROM renters WHERE renter_id = ?";
+    
+    if ($renterStmt = $conn->prepare($renterQuery)) {
+        $renterStmt->bind_param("i", $renter_id);
+        $renterStmt->execute();
+        $renterResult = $renterStmt->get_result();
+        
+        if ($renterResult && $renterResult->num_rows > 0) {
+            $userData = $renterResult->fetch_assoc();
+        } else {
+            $userData = [
+                'first_name'      => $_SESSION['first_name'] ?? '',
+                'middle_name'     => $_SESSION['middle_name'] ?? '',
+                'last_name'       => $_SESSION['last_name'] ?? '',
+                'email'           => $_SESSION['email'] ?? '',
+                'phone_number'    => $_SESSION['phone_number'] ?? '',
+                'profile_picture' => $_SESSION['profile_picture'] ?? ''
+            ];
+        }
+        $renterStmt->close();
+    }
+
+    $generatedUsername = '';
+    if (!empty($userData['first_name']) && !empty($userData['last_name'])) {
+        $firstLetter = strtolower(substr($userData['first_name'], 0, 1));
+        $cleanLastName = strtolower(str_replace(' ', '', $userData['last_name'])); 
+        $generatedUsername = $firstLetter . '.' . $cleanLastName;
+    }
+
+    $dbPicPath = '../../' . ($userData['profile_picture'] ?? '');
+    if (!empty($userData['profile_picture']) && file_exists($dbPicPath)) {
+        $profilePic = $dbPicPath;
+    } else {
+        $profilePic = '../../system-images/default-profile.png';
+    }
+?>
 
 <!DOCTYPE html> 
     <html lang="en">
@@ -29,7 +67,7 @@
     <link rel="stylesheet" href="../../style/pass-required-input.css">
     <link rel="stylesheet" href="../../style/profile-settings.css">
 
-    <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
+    <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/link-logo.jpg">
     </head>
 
     <body>
@@ -47,13 +85,13 @@
                 <img src="../../system-images/Logo.png" alt="Website Logo" class="transparent_logo">
                 
                 <button id="home-btn" class="home_button active">HOME</button>
-                <button id="listings-btn" class="listings_button" onclick="window.location.href='renter-listings.php'">LISTINGS</button>
-                <button id="features-btn" class="features_button" onclick="window.location.href='renter-features.php'">FEATURES</button>
-                <button id="about_us-btn" class="about_us_button" onclick="window.location.href='renter-about-us.php'">ABOUT US</button>
-                <button id="contact-btn" class="contact_button" onclick="window.location.href='renter-contact.php'">CONTACT</button>
+                <button id="listings-btn" class="listings_button" onclick="window.location.href='r-listings.php'">LISTINGS</button>
+                <button id="features-btn" class="features_button" onclick="window.location.href='r-messages.php'">MESSAGES</button>
+                <button id="about_us-btn" class="about_us_button" onclick="window.location.href='r-about.php'">ABOUT US</button>
+                <button id="contact-btn" class="contact_button" onclick="window.location.href='r-contact.php'">CONTACT</button>
 
                 <div class="profile-nav-wrapper">
-                    <img src="<?php echo $profilePic; ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()">
+                    <img src="<?php echo htmlspecialchars($profilePic, ENT_QUOTES, 'UTF-8'); ?>" alt="Profile Settings" class="header-profile-pic" onclick="openSettingsModal()" style="cursor: pointer; border: 2px solid rgb(246, 144, 104);">
                 </div>
 
             </header>
@@ -65,7 +103,7 @@
                     <br> Track duration of stay and rent payments. 
                     <br> Chat with landlords and landlady.
                 </p>
-                <button id="start_search-btn" class="start_search_button" onclick="window.location.href='listings.php'">Start Your Search</button>     
+                <button id="start_search-btn" class="start_search_button" onclick="window.location.href='r-listings.php'">Start Your Search</button>     
             </main>
 
             <main class="Section_2">
@@ -127,7 +165,6 @@
                         <div class="second-room-details">
                             <h3 class="second-room-title">Bedspacer</h3> 
                             <p class="second-amenities-list">
-                                <p></p>
                             <div class="second-price-tag3">₱ 3,500</div>
                         </div>
                     </div>
@@ -277,11 +314,20 @@
                 <img src="../../system-images/Live happily icon.png" alt="Live Happily icon" class="live_happily_icon">
                 <h2 class="live_happily_text">4. Live Happily</h2>
             </main>
+
+            <main class="Section_6">
+                <h2 class="reminder">Reminder!!!</h2>
+                <p class="warning-text">
+                    UHoppy strictly enforces a zero-tolerance policy against fraudulent activities. 
+                    <br> Landlords must provide accurate listing information, and renters must present valid credentials. 
+                    <br> Any accounts involved in deceptive behavior or payment scams will be permanently banned and reported.
+                </p>
+            </main>
             
         </div>
-            <?php 
-                include 'r-footer.php';  
-            ?>
-    </body>
-        
+
+        <?php include '../process-and-setting/profile-settings-view.php'; ?>
+        <?php include 'r-footer.php';  ?>
+    </body>    
+    <script src="../../javascript-files/profile-settings-modal.js"></script>
 </html>

@@ -1,4 +1,6 @@
-/* Dark blurred overlay background layout */
+/* =========================================================================
+   1. MODAL OVERLAY & CONTAINER
+   ========================================================================= */
 .settings-popup-overlay {
     position: fixed;
     top: 0;
@@ -9,13 +11,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99999; /* Higher priority than standard navigation elements */
+    z-index: 99999; 
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease;
 }
 
-/* Class applied by JavaScript to trigger reveal mechanics */
 .settings-popup-overlay.active {
     opacity: 1;
     pointer-events: auto;
@@ -24,7 +25,7 @@
 .settings-popup-box {
     background-color: #ffffff;
     width: 520px;
-    max-height: 85vh; /* Prevents the box from spilling off the screen */
+    max-height: 85vh; 
     border-radius: 8px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
     display: flex;
@@ -60,6 +61,9 @@
     color: #333333;
 }
 
+/* =========================================================================
+   2. NAVIGATION NAVIGATION TABS
+   ========================================================================= */
 .settings-popup-nav {
     display: flex;
     background-color: #f8f9fa;
@@ -93,10 +97,13 @@
     color: #777777;
 }
 
+/* =========================================================================
+   3. BODY PANELS & FORMS
+   ========================================================================= */
 .settings-popup-body {
     padding: 20px;
-    max-height: calc(85vh - 110px); /* Sets the max height for the form contents */
-    overflow-y: auto; /* Adds a nice scrollbar inside the modal if it's too long */
+    max-height: calc(85vh - 110px); 
+    overflow-y: auto; 
     text-align: left;
 }
 
@@ -106,36 +113,6 @@
 
 .popup-section.visible {
     display: block;
-}
-
-.popup-avatar-row {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-#modal-preview-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgb(246, 144, 104);
-}
-
-.modal-upload-btn {
-    background-color: #f0f0f0;
-    font-size: 12px;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    color: #444444;
-    border: 1px solid #dddddd;
-}
-
-.modal-upload-btn:hover {
-    background-color: #e5e5e5;
 }
 
 .popup-field {
@@ -164,13 +141,6 @@
     border-color: rgb(246, 144, 104);
 }
 
-.popup-field input.modal-readonly {
-    background-color: #f9f9f9;
-    color: #888888;
-    cursor: not-allowed;
-    border-color: #e5e5e5;
-}
-
 .popup-submit-btn {
     background-color: rgb(246, 144, 104);
     color: #ffffff;
@@ -189,6 +159,81 @@
     background-color: rgb(226, 124, 84);
 }
 
+/* =========================================================================
+   4. PROFILE AVATAR ROW & SELECTOR BUTTONS
+   ========================================================================= */
+.popup-avatar-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 24px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#modal-preview-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #f69068;
+    background-color: #f8f9fa;
+}
+
+.modal-upload-btn {
+    display: inline-block;
+    background-color: #f69068;
+    color: #ffffff;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.modal-upload-btn:hover {
+    background-color: #e07f57;
+}
+
+.modal-upload-btn:active {
+    transform: scale(0.98);
+}
+
+.modal-remove-btn {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.modal-remove-btn:hover {
+    background-color: #bd2130;
+}
+
+.modal-remove-btn:active {
+    transform: scale(0.98);
+}
+
+/* =========================================================================
+   5. READONLY INPUT MANAGEMENT
+   ========================================================================= */
+.popup-field input.modal-readonly,
+.modal-readonly {
+    background-color: #f1f3f5 !important;
+    color: #6c757d !important;
+    cursor: not-allowed;
+    border: 1px solid #dee2e6 !important;
+}
+
+/* =========================================================================
+   6. ACCOUNT DELETION & DANGER ZONE
+   ========================================================================= */
 .popup-danger-warning {
     border: 1px solid #f5c6cb;
     background-color: #fff5f5;
@@ -214,33 +259,73 @@
     border-radius: 4px;
     font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .popup-delete-btn:hover {
     background-color: #bd2130;
 }
 
+/* =========================================================================
+   7. MESSAGING & NOTIFICATION BANNERS
+   ========================================================================= */
 .modal-error-banner {
-    background-color: #f8d7da; 
-    color: #721c24; 
-    padding: 10px; 
-    border-radius: 4px; 
-    margin-bottom: 15px; 
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.password-rules-list {
-    list-style: none;
-    padding: 0;
-    margin: 8px 0 0 0;
-}
-
-.password-rules-list li {
-    font-size: 12px;
-    margin-bottom: 4px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
     font-weight: 500;
 }
 
-.rule-invalid { color: #dc3545; }
-.rule-valid { color: #28a745; }
+.modal-success-banner {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* =========================================================================
+   8. PASSWORD COMPLEXITY METERS
+   ========================================================================= */
+.password-rules-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 20px 0;
+}
+
+.password-rules-list li {
+    font-size: 13px;
+    margin-bottom: 6px;
+    padding-left: 20px;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.password-rules-list li.rule-invalid {
+    color: #dc3545;
+}
+
+.password-rules-list li.rule-invalid::before {
+    position: absolute;
+    left: 0;
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.password-rules-list li.rule-valid {
+    color: #28a745;
+}
+
+.password-rules-list li.rule-valid::before {
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}

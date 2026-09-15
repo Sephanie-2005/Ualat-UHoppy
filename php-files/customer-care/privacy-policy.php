@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="../../style/default/web-app.css">
         <link rel="stylesheet" href="../../style/customer-care-css/privacy-policy.css">
 
-        <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/Link Logo.jpg">
+        <link rel="icon" type="image/png" sizes="36x36" href="../../system-images/link-logo.jpg">
     </head>
 
     <body>
